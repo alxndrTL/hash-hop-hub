@@ -2,6 +2,7 @@ import math
 import string
 import torch
 
+# todo : décaler n_hops dans sample
 # todo : possibilité d'une ou plusieurs chaines plus grande que n_hops ?
 class HashHop:
     def __init__(self, max_tokens, hash_len = 8, n_hops = 2, cot = True, vocab_size=52):
@@ -20,8 +21,10 @@ class HashHop:
 
         assert self.n_chains > 0, "n_hops is too big and/or max_tokens too small"
 
-    # todo : comment
     def sample(self, batch_size, verbose=False, b=0):
+        """
+        Samples B hash-hop tasks and return prompt and target.
+        """
 
         n_tokens_in_pair = 2 * self.hash_len + 2 # 2 delimiters =,\n
         
@@ -34,15 +37,46 @@ class HashHop:
             print(f"number of hash pairs/lines to generate additionally : {max_lines - n_lines_chains}")
             print()
 
-        # generate hashes
-        # there is a very very small chance that two hashes in the same batch are the same. not very a problem.
-        hashes = torch.randint(low=2, high=2+self.vocab_size, size=(batch_size, self.n_chains, self.n_hops+1, self.hash_len))
+        # generate all hashes of the chains
+        # a "chain" of hashes is just a way to group hashes (will be important below)
+        # (there is a very very small chance that two hashes in the same batch are the same. not very a problem.)
 
+        # so the first item (b=0) of the hashes matrix will look like that (for n_hops=2 and n_chains=2):
+
+        # [hash1, hash2, hash3]
+        # [Hash1, Hash2, Hash3]
+
+        # where all hashn/Hashn are vectors that stick out of the screen
+        # (I've named hashes that are in the second chain with capital H)
+        hashes = torch.randint(low=2, high=2+self.vocab_size, size=(batch_size, self.n_chains, self.n_hops+1, self.hash_len))
+        
+        # here, we create the unshuffled version of the prompt.
+
+        # what we do is concat two version of the hashes matrix to create A, that will have the form:
+
+        # [hash1, hash2] . [hash2, hash3] = [hash1 = hash2 \n, hash2 = hash3 \n]
+        # [Hash1, Hash2]   [Hash2, Hash3]   [Hash1 = Hash2 \n, Hash2 = Hash3 \n]
+
+        # (only b=0 shown)
+        # where . is the concatenation operation along the third dim (the one that goes through the screen)
+        # (it's concatenation as well as adding the right delimiters)
+        # (the delimiters here are shown in their string version (= and \n) but are encoded as 0 and 1 respectively)
+        
         delimiter_1 =  torch.zeros(batch_size, self.n_chains, self.n_hops, 1, dtype=torch.long) # =
         delimiter_2 = torch.ones(batch_size, self.n_chains, self.n_hops, 1, dtype=torch.long) # \n
         A = torch.cat([hashes[:, :, :-1, :], delimiter_1, hashes[:, :, 1:, :], delimiter_2], dim=3) # (B, n_chains, n_hops, 2*hash_len+2)
+
+        # with what we have from above, we simply have to flatten to get something very similar to the unshuffled version of the prompt.
+        # this will leave us with A:
+        # [hash1 = hash2 \n, hash2 = hash3 \n, Hash1 = Hash2 \n, Hash2 = Hash3 \n]
+        # (only b=0 shown)
+        # (again, keep in mind that hash1 = hash2 \n is a vector that goes through the screen)
         A = A.view(batch_size, self.n_chains*self.n_hops, -1) # (B, n_chains*n_hops, 2*hash_len+2)
 
+        # what we have is good. you see that we could just randomly shuffle the entries and we would get our prompt.
+        # but because for every prompt, we want the same number of lines/hash pairs (see explanation elsewhere),
+        # we have to add the right amount of new lines.
+        # the way we create new_hashes here is similar to what's been done on A above.
         n_pairs = max_lines - n_lines_chains
         new_hashes = torch.randint(low=2, high=2+self.vocab_size, size=(batch_size, 2*n_pairs, self.hash_len))
 
@@ -56,15 +90,22 @@ class HashHop:
             print("original hashes:")
             print(hh_to_string(A.view(batch_size, -1)[b]))
 
+        # finally, shuffling
+        A = A[:, torch.randperm(A.shape[1])]
+        A = A.view(batch_size, -1)
+
+        # here, we create the target
+        # the target chain to reconstruct is always the first chain
         if self.cot:
+            # in the CoT case, we take the first chain of hashes and concat them (as well as adding the = delimiter)
             delimiter_1 =  torch.zeros(batch_size, self.n_hops+1, 1, dtype=torch.long) # =
             B = torch.cat([hashes[:, 0], delimiter_1], dim=2)
             B = B.view(batch_size, -1)[:, :-1]
         else:
-            B = torch.cat([hashes[:, 0, 0], torch.zeros(batch_size, 1, dtype=torch.long), hashes[:, 0, -1]], dim=1)
-        
-        A = A[:, torch.randperm(A.shape[1])]
-        A = A.view(batch_size, -1)
+            # in the no-CoT case, we just take the first hash of the first chain and concat it with the last hash of the last chain
+            # (as well as adding the = delimiter)
+            delimiter_1 = torch.zeros(batch_size, 1, dtype=torch.long)
+            B = torch.cat([hashes[:, 0, 0], delimiter_1, hashes[:, 0, -1]], dim=1)
 
         if verbose:
             print("shuffling")

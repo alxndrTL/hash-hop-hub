@@ -19,22 +19,33 @@ class HashHop:
 
         assert self.n_chains > 0, "n_hops is too big and/or max_tokens too small"
 
-    # todo : targets
-    # todo : cot
+    # todo : targets, cot
     # todo : comment
     def sample(self, batch_size):
         # generate hashes
-        hashes = torch.randint(low=2, high=2+self.vocab_size, size=(batch_size, self.n_chains, self.n_hops+1, self.hash_len))
         # there is a very very small chance that two hashes in the same batch are the same. not very a problem.
+        hashes = torch.randint(low=2, high=2+self.vocab_size, size=(batch_size, self.n_chains, self.n_hops+1, self.hash_len))
 
         delimiter_1 =  torch.zeros(batch_size, self.n_chains, self.n_hops, 1, dtype=torch.long) # =
         delimiter_2 = torch.ones(batch_size, self.n_chains, self.n_hops, 1, dtype=torch.long) # \n
         A = torch.cat([hashes[:, :, :-1, :], delimiter_1, hashes[:, :, 1:, :], delimiter_2], dim=3) # (B, n_chains, n_hops, 2*hash_len+2)
         A = A.view(batch_size, self.n_chains*self.n_hops, -1) # (B, n_chains*n_hops, 2*hash_len+2)
 
-        A = A[:, torch.randperm(A.shape[1])]
+        print("original hashes:")
+        print(hh_to_string(A.view(batch_size, -1)[0]))
+
+        delimiter_1 =  torch.zeros(batch_size, self.n_hops+1, 1, dtype=torch.long) # =
+        B = torch.cat([hashes[:, 0], delimiter_1], dim=2)
         
-        return A.view(batch_size, -1)
+        A = A[:, torch.randperm(A.shape[1])]
+
+        print("shuffling")
+        print(hh_to_string(A.view(batch_size, -1)[0]))
+
+        print("chain to find:")
+        print(hh_to_string(B.view(batch_size, -1)[0, :-1]))
+
+        return A.view(batch_size, -1), B.view(batch_size, -1)[:, :-1]
     
 def hh_to_string(tensor):
     mapping = {

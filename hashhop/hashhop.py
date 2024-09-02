@@ -17,15 +17,15 @@ class HashHop:
         self.cot = cot
         self.vocab_size = vocab_size
 
-        print(self.n_chains*self.n_hops+1)
-
         assert self.n_chains > 0, "n_hops is too big and/or max_tokens too small"
 
-    # todo : how to ensure that no two hashes are the same? (within the 2nd and 3rd dim)
+    # todo : targets
+    # todo : cot
     # todo : comment
     def sample(self, batch_size):
-        # generate hashes :
+        # generate hashes
         hashes = torch.randint(low=2, high=2+self.vocab_size, size=(batch_size, self.n_chains, self.n_hops+1, self.hash_len))
+        # there is a very very small chance that two hashes in the same batch are the same. not very a problem.
 
         delimiter_1 =  torch.zeros(batch_size, self.n_chains, self.n_hops, 1, dtype=torch.long) # =
         delimiter_2 = torch.ones(batch_size, self.n_chains, self.n_hops, 1, dtype=torch.long) # \n

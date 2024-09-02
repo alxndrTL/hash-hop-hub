@@ -71,19 +71,6 @@ class HashHop:
         # (again, keep in mind that hash1 = hash2 \n is a vector that goes through the screen)
         A = A.view(batch_size, self.n_chains*self.n_hops, -1) # (B, n_chains*n_hops, 2*hash_len+2)
 
-        # what we have is good. you see that we could just randomly shuffle the entries and we would get our prompt.
-        # but because for every prompt, we want the same number of lines/hash pairs (see explanation elsewhere),
-        # we have to add the right amount of new lines.
-        # the way we create new_hashes here is similar to what's been done on A above.
-        n_pairs = max_lines - n_lines_chains
-        new_hashes = torch.randint(low=2, high=2+self.vocab_size, size=(batch_size, 2*n_pairs, self.hash_len))
-
-        delimiter_1 = torch.zeros(batch_size, n_pairs, 1, dtype=torch.long)
-        delimiter_2 = torch.ones(batch_size, n_pairs, 1, dtype=torch.long)
-        new_hashes = torch.cat([new_hashes[:, 0:n_pairs], delimiter_1, new_hashes[:, n_pairs:], delimiter_2], dim=2) # (B, n_pairs, 2*hash_len+2)
-        
-        A = torch.cat([A, new_hashes], dim=1) # (B, n_chains*n_hops+n_pairs, 2*hash_len+2)
-
         if verbose:
             print("original hashes:")
             print(hh_to_string(A.view(batch_size, -1)[b]))

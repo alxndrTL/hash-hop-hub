@@ -74,15 +74,13 @@ class HashHop:
             print(hh_to_string(B[b]))
 
         return A, B
-    
+
+# works with vocab_size<=52
 def hh_to_string(tensor):
-    mapping = {
-        0: '=',
-        1: '\n'
-    }
-    
+    mapping = {0: '=', 1: '\n'}
     chars = string.ascii_letters
-    for i in range(2, 65):
+
+    for i in range(2, 2+52):
         mapping[i] = chars[(i - 2) % len(chars)]
     
     char_list = [mapping[int(val)] for val in tensor.tolist()]

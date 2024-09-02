@@ -10,7 +10,7 @@ class HashHop:
         self.max_tokens = max_tokens
         self.hash_len = hash_len
 
-        n_tokens_in_pair = 2 * self.hash_len + 2 # 2 delimiters =,\n
+        n_tokens_in_pair = 2 * self.hash_len + 2 # 2 delimiters = and \n
 
         n_tokens_in_chain = n_tokens_in_pair * n_hops
         self.n_chains = math.floor(self.max_tokens / n_tokens_in_chain)
@@ -26,9 +26,8 @@ class HashHop:
         Samples B hash-hop tasks and return prompt and target.
         """
 
-        n_tokens_in_pair = 2 * self.hash_len + 2 # 2 delimiters =,\n
-        
         n_lines_chains = self.n_chains*self.n_hops
+        n_tokens_in_pair = 2 * self.hash_len + 2 # 2 delimiters = and \n
         max_lines = math.floor(self.max_tokens / n_tokens_in_pair)
 
         if verbose:
@@ -51,7 +50,6 @@ class HashHop:
         hashes = torch.randint(low=2, high=2+self.vocab_size, size=(batch_size, self.n_chains, self.n_hops+1, self.hash_len))
         
         # here, we create the unshuffled version of the prompt.
-
         # what we do is concat two version of the hashes matrix to create A, that will have the form:
 
         # [hash1, hash2] . [hash2, hash3] = [hash1 = hash2 \n, hash2 = hash3 \n]

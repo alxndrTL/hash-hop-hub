@@ -36,6 +36,10 @@ class HashHop:
     def sample(self, batch_size, verbose=False, b=0):
         """
         Samples batch_size different hash-hop tasks and return prompt and target.
+
+        batch_size    : number of elements in the batch
+        verbose       : used for debugging. will display the task for element b in the batch
+        b             : see verbose arg.
         """
 
         n_hops = torch.randint(low=1, high=self.max_hops+1, size=(batch_size,))

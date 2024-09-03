@@ -2,7 +2,7 @@ import math
 import string
 import torch
 
-class HashHop:
+class HashHopSampler:
     def __init__(self, max_tokens, hash_len = 8, max_hops = 5, cot = True, vocab_size=52):
         """
         HashHop object, use for sampling hash-hop tasks.

@@ -1,0 +1,53 @@
+wandb: Currently logged in as: alexandretl. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.17.8
+wandb: Run data is saved locally in /workspace/hash-hop-hub/wandb/run-20240903_160950-5ygxr9s3
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run revived-thunder-4
+wandb: ⭐️ View project at https://wandb.ai/alexandretl/hash-hop-hub
+wandb: 🚀 View run at https://wandb.ai/alexandretl/hash-hop-hub/runs/5ygxr9s3
+Run name: revived-thunder-4.
+Model initialized. Number of parameters : 7251561.
+Training is starting.
+Iter 000000/100000. train loss : 4.064. valid loss : 4.065. lr : 0.00000. uptime : 00h00min. ETA : 00h25min.
+Iter 000200/100000. train loss : 3.539. valid loss : 3.539. lr : 0.00020. uptime : 00h00min. ETA : 04h14min.
+Iter 000400/100000. train loss : 3.536. valid loss : 3.538. lr : 0.00040. uptime : 00h01min. ETA : 04h12min.
+Training interrupted.
+Training is done. Took 1.57 minutes.
+Successfully saved checkpoint and config in runs/revived-thunder-4.
+wandb: - 0.014 MB of 0.014 MB uploadedwandb: \ 0.024 MB of 0.028 MB uploaded (0.003 MB deduped)wandb: | 0.026 MB of 0.028 MB uploaded (0.003 MB deduped)wandb: / 0.026 MB of 0.028 MB uploaded (0.003 MB deduped)wandb: - 0.028 MB of 0.028 MB uploaded (0.003 MB deduped)wandb:                                                                                
+wandb: W&B sync reduced upload amount by 9.2%
+wandb: 
+wandb: Run history:
+wandb:         grad_norm ▆▁▄▁▁▁▁▁█▁▁▁
+wandb:                lr ▁▂▂▃▄▄▅▅▆▇▇█
+wandb:         num_iters ▁
+wandb:        num_params ▁
+wandb:        num_tokens ▁
+wandb:           success ▁
+wandb:     time_per_iter ▁█▆▆▆█▆▆▆█▆▆
+wandb:       tokens_seen ▁▂▂▃▄▄▅▅▆▇▇█
+wandb:        train_loss █▆▅▁▁▁▁▁▂▁▁▁
+wandb:    use_flash_attn ▁
+wandb: use_torch_compile ▁
+wandb:          val_loss █▁▁
+wandb: 
+wandb: Run summary:
+wandb:             dtype bfloat16
+wandb:         grad_norm 0.17349
+wandb:                lr 0.00055
+wandb:         num_iters 600
+wandb:        num_params 7251561
+wandb:        num_tokens 39321600
+wandb:           success 0.0
+wandb:     time_per_iter 0.14046
+wandb:       tokens_seen 36044800
+wandb:        train_loss 3.51788
+wandb:    use_flash_attn True
+wandb: use_torch_compile False
+wandb:          val_loss 3.53778
+wandb: 
+wandb: 🚀 View run revived-thunder-4 at: https://wandb.ai/alexandretl/hash-hop-hub/runs/5ygxr9s3
+wandb: ⭐️ View project at: https://wandb.ai/alexandretl/hash-hop-hub
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240903_160950-5ygxr9s3/logs
+wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.

@@ -9,7 +9,7 @@ class HashHopSampler:
 
         max_tokens  : the max number of tokens in the prompt (input+completion)
         hash_len    : length of every hashes (in chars)
-        max_hops    : max number of hops. each example will have a number of hops sampled from [|1, max_hops|]
+        max_hops    : max number of hops. each example will have a number of hops sampled from [1, max_hops]
         cot         : whether to use chain-of-tought or not
         vocab_size  : number of different chars that composed the hashes. 52=2*26=a...zA...Z
         """
@@ -33,7 +33,7 @@ class HashHopSampler:
 
         assert self.n_chains > 0, "max_hops is too big and/or max_tokens too small"
 
-    def sample(self, batch_size, verbose=False, b=0):
+    def sample(self, batch_size, hops=None, return_hops=False, verbose=False, b=0):
         """
         Samples batch_size different hash-hop tasks and return prompt and target.
 
@@ -41,8 +41,12 @@ class HashHopSampler:
         verbose       : used for debugging. will display the task for element b in the batch
         b             : see verbose arg.
         """
-
-        n_hops = torch.randint(low=1, high=self.max_hops+1, size=(batch_size,))
+        
+        if hops is None:
+            n_hops = torch.randint(low=1, high=self.max_hops+1, size=(batch_size,))
+        else:
+            assert 1 <= hops <= self.max_hops, "hops must be in the range [1, max_hops]"
+            n_hops = hops * torch.ones(batch_size, dtype=torch.long)
 
         # generate all hashes of the chains
         # a "chain" of hashes is just a way to group hashes (will be important below)
@@ -157,6 +161,8 @@ class HashHopSampler:
             print(f"chain to find (n_hops={n_hops[b]}):")
             print(hh_to_string(B[b]))
 
+        if return_hops:
+            return A, B, n_hops
         return A, B
 
 # works with vocab_size<=52

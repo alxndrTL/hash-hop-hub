@@ -42,6 +42,8 @@ from models.mamba.mamba2 import Mamba2Config
 
 from hashhop.generator import HashHopGenerator
 
+from eval import eval
+
 from utils.misc import format_time
 
 # ---------------------------------------------
@@ -58,7 +60,6 @@ vocab_size = 52
 # --- downstream eval parameters ---
 eval_interval = 1000
 num_tasks = 100
-# (todo: use these)
 
 # --- model parameters ---
 architecture = "Transformer" # "Transformer" or "Mamba" or "Mamba2"
@@ -80,7 +81,7 @@ n_heads = 8
 n_kv_heads = n_heads # n_heads is MHA, 1 is MQA (multi query attention), in between is GQA (grouped query attention)
 dropout = 0.
 
-pos_emb = "absolute" # "absolute" or "rope"
+pos_emb = "rope" # "absolute" or "rope"
 rope_theta = 10000
 
 optimised_attn = False
@@ -95,7 +96,7 @@ mup_base_width = 288
 
 # --- training parameters ---
 num_iters = 100000
-batch_size = 256
+batch_size = 64
 
 optimizer = "AdamW" # "AdamW" or "Adam-mini"
 
@@ -237,7 +238,7 @@ def seed_worker(worker_id):
 g = torch.Generator()
 g.manual_seed(seed)
 
-ds = HashHopGenerator(max_tokens=200, batch_size=16, hash_len=8, max_hops=4, cot=True)
+ds = HashHopGenerator(max_tokens=max_tokens, batch_size=batch_size, hash_len=hash_len, max_hops=max_hops, cot=True)
 loader = torch.utils.data.DataLoader(ds, batch_size=None, num_workers=8, pin_memory=True, worker_init_fn=seed_worker, generator=g)
 iter_ = iter(loader)
 
@@ -251,7 +252,7 @@ elif architecture == "Mamba2":
 else:
     raise NotImplementedError
 
-model = LM(config, vocab_size=vocab_size+1).to(device) # +3 is : padding, =, \n (respectively tokens 0, 1, 2)
+model = LM(config, vocab_size=vocab_size+3).to(device) # +3 is : padding, =, \n (respectively tokens 0, 1, 2)
 
 if optimizer == "AdamW":
     optim = model.configure_optimizers(weight_decay, lr, (adam_b1, adam_b2), device_type)
@@ -337,7 +338,8 @@ try:
             if benchmark:
                 print(f"avg time_per_iter over the last {train_log_interval} iters: {time_per_iter:.5f}s. used GPU memory : {(torch.cuda.memory_allocated(device=None) / (1024**2)):.0f} MB. max used GPU memory : {(torch.cuda.max_memory_allocated(device=None) / (1024**2)):.0f} MB")
                 torch.cuda.reset_peak_memory_stats(device=None)
-            
+        
+        # val loss
         if (iter % eval_val_interval == 0) and not benchmark:
             with torch.no_grad():
                 model.eval()
@@ -358,18 +360,17 @@ try:
             
             to_log.update({"val_loss": eval_loss})
         
+        # eval accuracy
         if (iter % eval_interval == 0) and not benchmark:
             with torch.no_grad():
                 model.eval()
-
-                # eval accuracy
-                # TODO
-
                 model_generate = model.setup_generation(sample=False)
+
+                success = eval(model_generate, n_tasks=num_tasks, batch_size=batch_size, max_tokens=max_tokens, max_hops=max_hops, cot=cot, hash_len=hash_len, vocab_size=vocab_size)
 
                 model.train()
             
-            #to_log.update({"mean_acc": mean_acc})
+            to_log.update({"success": success})
 
         if to_log:
             to_log.update({"lr": lr_iter, "tokens_seen": iter*max_tokens*batch_size})

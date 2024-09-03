@@ -480,7 +480,7 @@ def load_model(load_dir, device="cuda"):
     else:
         raise NotImplementedError
 
-    model = LM(config, vocab_size=17+1).to(device)
+    model = LM(config, vocab_size=52+3).to(device)
     checkpoint = torch.load(checkpoint_dir, map_location=device)
     model.load_state_dict(checkpoint['model'])
     model.eval()

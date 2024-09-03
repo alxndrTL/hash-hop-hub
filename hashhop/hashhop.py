@@ -2,20 +2,30 @@ import math
 import string
 import torch
 
-# todo : comment (args)
-# todo : comments (shapes)
-# todo : décaler n_hops dans sample
-# todo : possibilité d'une ou plusieurs chaines plus grande que n_hops ?
 class HashHop:
     def __init__(self, max_tokens, hash_len = 8, max_hops = 5, cot = True, vocab_size=52):
+        """
+        HashHop object, use for sampling hash-hop tasks.
+
+        max_tokens  : the max number of tokens in the prompt (input+completion)
+        hash_len    : length of every hashes (in chars)
+        max_hops    : max number of hops. each example will have a number of hops sampled from [|1, max_hops|]
+        cot         : whether to use chain-of-tought or not
+        vocab_size  : number of different chars that composed the hashes. 52=2*26=a...zA...Z
+        """
         
         self.max_tokens = max_tokens
         self.hash_len = hash_len
 
-        n_tokens_in_pair = 2 * self.hash_len + 2 # 2 delimiters = and \n
+        n_tokens_in_pair = 2 * self.hash_len + 2 # 2 delimiters: = and \n
 
         n_tokens_in_chain = n_tokens_in_pair * max_hops
-        self.n_chains = math.floor(self.max_tokens / n_tokens_in_chain)
+
+        if cot:
+            n_tokens_completion = hash_len * max_hops+1 + max_hops  # max_hops+1 hashes and max_hops =
+        else:
+            n_tokens_completion = 2 * hash_len + 1 # 1 delimiter in non-CoT completion: =
+        self.n_chains = math.floor((self.max_tokens - n_tokens_completion) / n_tokens_in_chain)
 
         self.max_hops = max_hops
         self.cot = cot
@@ -25,21 +35,10 @@ class HashHop:
 
     def sample(self, batch_size, verbose=False, b=0):
         """
-        Samples B hash-hop tasks and return prompt and target.
+        Samples batch_size different hash-hop tasks and return prompt and target.
         """
 
         n_hops = torch.randint(low=1, high=self.max_hops+1, size=(batch_size,))
-        
-        # todo : virer ?
-        n_lines_chains = self.n_chains*self.max_hops
-        n_tokens_in_pair = 2 * self.hash_len + 2 # 2 delimiters = and \n
-        max_lines = math.floor(self.max_tokens / n_tokens_in_pair)
-
-        if verbose:
-            print(f"number of hash pairs/lines generated in chains : {n_lines_chains}")
-            print(f"max number of hash pairs/lines that fit : {max_lines}")
-            print(f"number of hash pairs/lines to generate additionally : {max_lines - n_lines_chains}")
-            print()
 
         # generate all hashes of the chains
         # a "chain" of hashes is just a way to group hashes (will be important below)
@@ -139,7 +138,7 @@ class HashHop:
             B = B.view(batch_size, -1)[:, :-1]
 
         else:
-            # similar (and easier : no padding) to the CoT case
+            # similar to the CoT case (and easier : no padding)
             cols = torch.cat([(self.max_hops+1-1-n_hops.unsqueeze(1)), torch.tensor([self.max_hops+1-1]).expand(batch_size, 1)], dim=1)
             B = hashes[torch.arange(hashes.size(0)).unsqueeze(1), 0, cols] # (B, 2, hash_len)
 

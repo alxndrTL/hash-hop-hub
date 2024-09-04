@@ -1,13 +1,13 @@
 import torch
 from torch.utils.data import IterableDataset
 
-from hashhop.hashhop import HashHopSampler
+from copyy.copy import CopySampler
 
-class HashHopGenerator(IterableDataset):
-    def __init__(self, max_tokens, batch_size, hash_len, max_hops, cot=True, vocab_size=52):
+class CopyGenerator(IterableDataset):
+    def __init__(self, max_tokens, batch_size, vocab_size=52):
         super().__init__()
 
-        self.sampler = HashHopSampler(max_tokens, hash_len, max_hops, cot, vocab_size)
+        self.sampler = CopySampler(max_tokens, vocab_size)
         self.batch_size = batch_size
 
     def __iter__(self):

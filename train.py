@@ -41,6 +41,7 @@ from models.mamba.mamba import MambaConfig
 from models.mamba.mamba2 import Mamba2Config
 
 from hashhop.generator import HashHopGenerator
+from copyy.generator import CopyGenerator
 
 from eval import eval
 
@@ -51,7 +52,7 @@ from utils.misc import format_time
 seed = 0 # 0, 1, 2...
 
 # --- hash-hop parameters ---
-max_tokens = 1024
+max_tokens = 512
 hash_len = 8
 max_hops = 2
 cot = True
@@ -238,7 +239,8 @@ def seed_worker(worker_id):
 g = torch.Generator()
 g.manual_seed(seed)
 
-ds = HashHopGenerator(max_tokens=max_tokens, batch_size=batch_size, hash_len=hash_len, max_hops=max_hops, cot=True)
+#ds = HashHopGenerator(max_tokens=max_tokens, batch_size=batch_size, hash_len=hash_len, max_hops=max_hops, cot=True)
+ds = CopyGenerator(max_tokens=max_tokens, batch_size=batch_size, vocab_size=vocab_size)
 loader = torch.utils.data.DataLoader(ds, batch_size=None, num_workers=8, pin_memory=True, worker_init_fn=seed_worker, generator=g)
 iter_ = iter(loader)
 
@@ -299,8 +301,9 @@ try:
         y = y.to(device, non_blocking=True)
 
         with dtype_ctx:
-            logits = model(x)[:, prompt_len-1+8:]
-            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), y[:, prompt_len-1+8:].view(-1), ignore_index=0)
+            logits = model(x)[:, prompt_len-1+8:].contiguous()
+            logits = logits.view(-1, logits.size(-1))
+            loss = F.cross_entropy(logits, y[:, prompt_len-1+8:].contiguous().view(-1), ignore_index=0)
 
         scaler.scale(loss).backward()
 
@@ -346,13 +349,14 @@ try:
                 eval_loss = 0
                 for i in range(eval_val_iters):
                     data = next(iter_)
-                    x, y, _ = data
+                    x, y, prompt_len = data
                     x = x.to(device, non_blocking=True)
                     y = y.to(device, non_blocking=True)
 
                     with dtype_ctx:
-                        logits = model(x)
-                        loss = F.cross_entropy(logits.view(-1, logits.size(-1)), y.view(-1), ignore_index=0)
+                        logits = model(x)[:, prompt_len-1+8:].contiguous()
+                        logits = logits.view(-1, logits.size(-1))
+                        loss = F.cross_entropy(logits, y[:, prompt_len-1+8:].contiguous().view(-1), ignore_index=0)
                     eval_loss += loss.item()
 
                 eval_loss /= eval_val_iters

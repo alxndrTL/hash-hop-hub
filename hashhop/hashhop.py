@@ -171,7 +171,7 @@ def hh_to_string(tensor):
     chars = string.ascii_letters
 
     for i in range(3, 3+52):
-        mapping[i] = chars[(i - 2) % len(chars)]
+        mapping[i] = chars[(i - 3) % len(chars)]
     
     char_list = [mapping[int(val)] for val in tensor.tolist()]
     return ''.join(char_list)

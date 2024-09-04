@@ -294,13 +294,13 @@ torch.cuda.reset_peak_memory_stats(device=None)
 try:
     for iter in range(start_iter, num_iters):
         data = next(iter_)
-        x, y = data
+        x, y, prompt_len = data
         x = x.to(device, non_blocking=True)
         y = y.to(device, non_blocking=True)
 
         with dtype_ctx:
-            logits = model(x)
-            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), y.view(-1), ignore_index=0)
+            logits = model(x)[:, prompt_len-1+8:]
+            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), y[:, prompt_len-1+8:].view(-1), ignore_index=0)
 
         scaler.scale(loss).backward()
 
@@ -346,7 +346,7 @@ try:
                 eval_loss = 0
                 for i in range(eval_val_iters):
                     data = next(iter_)
-                    x, y = data
+                    x, y, _ = data
                     x = x.to(device, non_blocking=True)
                     y = y.to(device, non_blocking=True)
 

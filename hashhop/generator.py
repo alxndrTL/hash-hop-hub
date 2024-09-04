@@ -19,4 +19,4 @@ class HashHopGenerator(IterableDataset):
             x = data[:, :-1].int() # classic shifting
             y = data[:, 1:].long() # long() is necessary for the CE loss
 
-            yield x, y
+            yield x, y, prompt.shape[1]

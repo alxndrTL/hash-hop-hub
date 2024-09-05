@@ -43,7 +43,7 @@ from models.mamba.mamba2 import Mamba2Config
 from hashhop.generator import HashHopGenerator
 from copyy.generator import CopyGenerator
 
-from eval import eval
+from eval import eval_hashhop, eval_copy
 
 from utils.misc import format_time
 
@@ -52,9 +52,9 @@ from utils.misc import format_time
 seed = 0 # 0, 1, 2...
 
 # --- hash-hop parameters ---
-max_tokens = 512
+max_tokens = 256
 hash_len = 8
-max_hops = 2
+max_hops = 1
 cot = True
 vocab_size = 52
 
@@ -64,8 +64,8 @@ num_tasks = 100
 
 # --- model parameters ---
 architecture = "Transformer" # "Transformer" or "Mamba" or "Mamba2"
-d_model = 288
-n_layers = 6
+d_model = 1024
+n_layers = 12
 bias = False
 base_std = 0.02
 
@@ -77,8 +77,8 @@ d_head = 54
 d_state = 64
 
 # Transformer specific
-d_ff = 1008
-n_heads = 8
+d_ff = 3584
+n_heads = 16
 n_kv_heads = n_heads # n_heads is MHA, 1 is MQA (multi query attention), in between is GQA (grouped query attention)
 dropout = 0.
 
@@ -97,14 +97,14 @@ mup_base_width = 288
 
 # --- training parameters ---
 num_iters = 100000
-batch_size = 64
+batch_size = 32
 
 optimizer = "AdamW" # "AdamW" or "Adam-mini"
 
 # LR and scheduler
 schedule = "wsd" # "cosine" or "wsd"
 
-lr = 1e-3
+lr = 5e-5
 lr_warmup_iters = 1000
 
 # cosine schedule specific
@@ -239,8 +239,8 @@ def seed_worker(worker_id):
 g = torch.Generator()
 g.manual_seed(seed)
 
-#ds = HashHopGenerator(max_tokens=max_tokens, batch_size=batch_size, hash_len=hash_len, max_hops=max_hops, cot=True)
-ds = CopyGenerator(max_tokens=max_tokens, batch_size=batch_size, vocab_size=vocab_size)
+ds = HashHopGenerator(max_tokens=max_tokens, batch_size=batch_size, hash_len=hash_len, max_hops=max_hops, cot=True)
+#ds = CopyGenerator(max_tokens=max_tokens, batch_size=batch_size, vocab_size=vocab_size)
 loader = torch.utils.data.DataLoader(ds, batch_size=None, num_workers=8, pin_memory=True, worker_init_fn=seed_worker, generator=g)
 iter_ = iter(loader)
 
@@ -301,9 +301,11 @@ try:
         y = y.to(device, non_blocking=True)
 
         with dtype_ctx:
-            logits = model(x)[:, prompt_len-1+8:].contiguous()
+            logits = model(x)[:, prompt_len-1+8:].contiguous() # hashhop
+            #logits = model(x)[:, prompt_len-1:].contiguous() # copy
             logits = logits.view(-1, logits.size(-1))
-            loss = F.cross_entropy(logits, y[:, prompt_len-1+8:].contiguous().view(-1), ignore_index=0)
+            loss = F.cross_entropy(logits, y[:, prompt_len-1+8:].contiguous().view(-1), ignore_index=0) # hashhop
+            #loss = F.cross_entropy(logits, y[:, prompt_len-1:].contiguous().view(-1), ignore_index=0) # copy
 
         scaler.scale(loss).backward()
 
@@ -355,8 +357,10 @@ try:
 
                     with dtype_ctx:
                         logits = model(x)[:, prompt_len-1+8:].contiguous()
+                        #logits = model(x)[:, prompt_len-1:].contiguous()
                         logits = logits.view(-1, logits.size(-1))
                         loss = F.cross_entropy(logits, y[:, prompt_len-1+8:].contiguous().view(-1), ignore_index=0)
+                        #loss = F.cross_entropy(logits, y[:, prompt_len-1:].contiguous().view(-1), ignore_index=0)
                     eval_loss += loss.item()
 
                 eval_loss /= eval_val_iters
@@ -370,7 +374,8 @@ try:
                 model.eval()
                 model_generate = model.setup_generation(sample=False)
 
-                success = eval(model_generate, n_tasks=num_tasks, batch_size=batch_size, max_tokens=max_tokens, max_hops=max_hops, cot=cot, hash_len=hash_len, vocab_size=vocab_size)
+                success = eval_hashhop(model_generate, n_tasks=num_tasks, batch_size=batch_size, max_tokens=max_tokens, max_hops=max_hops, cot=cot, hash_len=hash_len, vocab_size=vocab_size)
+                #success = eval_copy(model_generate, n_tasks=num_tasks, batch_size=batch_size, max_tokens=max_tokens, vocab_size=vocab_size)
 
                 model.train()
             

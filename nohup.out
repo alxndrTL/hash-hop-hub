@@ -1,259 +1,0 @@
-wandb: Currently logged in as: alexandretl. Use `wandb login --relogin` to force relogin
-wandb: Tracking run with wandb version 0.17.8
-wandb: Run data is saved locally in /workspace/hash-hop-hub/wandb/run-20240903_191205-2w763e8v
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run dulcet-violet-7
-wandb: ⭐️ View project at https://wandb.ai/alexandretl/hash-hop-hub
-wandb: 🚀 View run at https://wandb.ai/alexandretl/hash-hop-hub/runs/2w763e8v
-Run name: dulcet-violet-7.
-Model initialized. Number of parameters : 7251561.
-Compiling the model...
-Done compiling.
-Training is starting.
-Traceback (most recent call last):
-  File "/workspace/hash-hop-hub/train.py", line 302, in <module>
-    logits = model(x)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_dynamo/eval_frame.py", line 328, in _fn
-    return fn(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/workspace/hash-hop-hub/models/lm.py", line 141, in forward
-    x = self.core(x)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 95, in forward
-    X, c = layer(X, caches[i] if caches is not None else None) # (B, L, d_model)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 122, in forward
-    X, cache = self.sa(self.attention_norm(X), cache)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 210, in forward
-    Q = self.rotary_emb.rotate_queries_or_keys(Q)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 211, in <resume in forward>
-    K = self.rotary_emb.rotate_queries_or_keys(K)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 211, in <resume in forward>
-    K = self.rotary_emb.rotate_queries_or_keys(K)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_dynamo/eval_frame.py", line 328, in _fn
-    return fn(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_dynamo/external_utils.py", line 17, in inner
-    return fn(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 3905, in forward
-    return compiled_fn(full_args)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 1482, in g
-    return f(*args)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 2527, in runtime_wrapper
-    all_outs = call_func_with_args(
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 1506, in call_func_with_args
-    out = normalize_as_list(f(args))
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 1482, in g
-    return f(*args)
-  File "/usr/local/lib/python3.10/dist-packages/torch/autograd/function.py", line 539, in apply
-    return super().apply(*args, **kwargs)  # type: ignore[misc]
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 3010, in forward
-    fw_outs = call_func_with_args(
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 1506, in call_func_with_args
-    out = normalize_as_list(f(args))
-  File "/usr/local/lib/python3.10/dist-packages/torch/_inductor/codecache.py", line 374, in __call__
-    return self.get_current_callable()(inputs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_inductor/compile_fx.py", line 628, in run
-    return model(new_inputs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_inductor/codecache.py", line 401, in _run_from_cache
-    return compiled_graph.compiled_artifact(inputs)
-  File "/tmp/torchinductor_root/wx/cwxucpcatnnbdl34v5cdwpqq6irepl5iaidykgatxlz3u32xxn6m.py", line 306, in call
-    buf2 = empty_strided((2048, 997, 997), (994009, 997, 1), device='cuda', dtype=torch.bfloat16)
-torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.79 GiB. GPU 0 has a total capacty of 23.65 GiB of which 3.01 GiB is free. Process 1267599 has 2.85 GiB memory in use. Process 1318935 has 17.78 GiB memory in use. Of the allocated memory 14.61 GiB is allocated by PyTorch, and 2.72 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
-wandb: - 0.014 MB of 0.014 MB uploadedwandb: \ 0.014 MB of 0.023 MB uploadedwandb: | 0.015 MB of 0.023 MB uploadedwandb: 🚀 View run dulcet-violet-7 at: https://wandb.ai/alexandretl/hash-hop-hub/runs/2w763e8v
-wandb: ⭐️ View project at: https://wandb.ai/alexandretl/hash-hop-hub
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240903_191205-2w763e8v/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-wandb: Currently logged in as: alexandretl. Use `wandb login --relogin` to force relogin
-wandb: Tracking run with wandb version 0.17.8
-wandb: Run data is saved locally in /workspace/hash-hop-hub/wandb/run-20240903_191740-qukviayf
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run icy-moon-8
-wandb: ⭐️ View project at https://wandb.ai/alexandretl/hash-hop-hub
-wandb: 🚀 View run at https://wandb.ai/alexandretl/hash-hop-hub/runs/qukviayf
-Run name: icy-moon-8.
-Model initialized. Number of parameters : 7251561.
-Compiling the model...
-Done compiling.
-Training is starting.
-Traceback (most recent call last):
-  File "/workspace/hash-hop-hub/train.py", line 302, in <module>
-    logits = model(x)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_dynamo/eval_frame.py", line 328, in _fn
-    return fn(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/workspace/hash-hop-hub/models/lm.py", line 141, in forward
-    x = self.core(x)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 95, in forward
-    X, c = layer(X, caches[i] if caches is not None else None) # (B, L, d_model)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 122, in forward
-    X, cache = self.sa(self.attention_norm(X), cache)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 210, in forward
-    Q = self.rotary_emb.rotate_queries_or_keys(Q)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 211, in <resume in forward>
-    K = self.rotary_emb.rotate_queries_or_keys(K)
-  File "/workspace/hash-hop-hub/models/transformer/transformer.py", line 211, in <resume in forward>
-    K = self.rotary_emb.rotate_queries_or_keys(K)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_dynamo/eval_frame.py", line 328, in _fn
-    return fn(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_dynamo/external_utils.py", line 17, in inner
-    return fn(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 3905, in forward
-    return compiled_fn(full_args)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 1482, in g
-    return f(*args)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 2527, in runtime_wrapper
-    all_outs = call_func_with_args(
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 1506, in call_func_with_args
-    out = normalize_as_list(f(args))
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 1482, in g
-    return f(*args)
-  File "/usr/local/lib/python3.10/dist-packages/torch/autograd/function.py", line 539, in apply
-    return super().apply(*args, **kwargs)  # type: ignore[misc]
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 3010, in forward
-    fw_outs = call_func_with_args(
-  File "/usr/local/lib/python3.10/dist-packages/torch/_functorch/aot_autograd.py", line 1506, in call_func_with_args
-    out = normalize_as_list(f(args))
-  File "/usr/local/lib/python3.10/dist-packages/torch/_inductor/codecache.py", line 374, in __call__
-    return self.get_current_callable()(inputs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_inductor/compile_fx.py", line 628, in run
-    return model(new_inputs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/_inductor/codecache.py", line 401, in _run_from_cache
-    return compiled_graph.compiled_artifact(inputs)
-  File "/tmp/torchinductor_root/cw/ccwbvuyigvadh4onqiaxse7wdrnuiwooecjhnhhpw3petex3kd3p.py", line 309, in call
-    buf5 = empty_strided((128, 8, 997, 997), (7952072, 994009, 997, 1), device='cuda', dtype=torch.bfloat16)
-torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.90 GiB. GPU 0 has a total capacty of 23.65 GiB of which 18.25 MiB is free. Process 1267599 has 2.85 GiB memory in use. Process 1322773 has 20.77 GiB memory in use. Of the allocated memory 18.93 GiB is allocated by PyTorch, and 1.39 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
-wandb: - 0.014 MB of 0.014 MB uploadedwandb: \ 0.014 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: \ 0.023 MB of 0.023 MB uploadedwandb: | 0.023 MB of 0.023 MB uploadedwandb: / 0.023 MB of 0.023 MB uploadedwandb: - 0.023 MB of 0.023 MB uploadedwandb: 🚀 View run icy-moon-8 at: https://wandb.ai/alexandretl/hash-hop-hub/runs/qukviayf
-wandb: ⭐️ View project at: https://wandb.ai/alexandretl/hash-hop-hub
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240903_191740-qukviayf/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-wandb: Currently logged in as: alexandretl. Use `wandb login --relogin` to force relogin
-wandb: Tracking run with wandb version 0.17.8
-wandb: Run data is saved locally in /workspace/hash-hop-hub/wandb/run-20240903_192009-dm2smx75
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run apricot-fog-9
-wandb: ⭐️ View project at https://wandb.ai/alexandretl/hash-hop-hub
-wandb: 🚀 View run at https://wandb.ai/alexandretl/hash-hop-hub/runs/dm2smx75
-Run name: apricot-fog-9.
-Model initialized. Number of parameters : 7251561.
-Compiling the model...
-Done compiling.
-Training is starting.
-Iter 000000/100000. train loss : 4.068. valid loss : 4.067. lr : 0.00000. uptime : 00h00min. ETA : 06h17min.
-Iter 000200/100000. train loss : 3.635. valid loss : 3.635. lr : 0.00020. uptime : 00h01min. ETA : 04h12min.
-Iter 000400/100000. train loss : 3.544. valid loss : 3.543. lr : 0.00040. uptime : 00h01min. ETA : 04h10min.
-Iter 000600/100000. train loss : 3.656. valid loss : 3.655. lr : 0.00060. uptime : 00h02min. ETA : 04h10min.
-Iter 000800/100000. train loss : 3.588. valid loss : 3.588. lr : 0.00080. uptime : 00h02min. ETA : 04h09min.
-Iter 001000/100000. train loss : 3.532. valid loss : 3.532. lr : 0.00100. uptime : 00h03min. ETA : 04h14min.
-Iter 001200/100000. train loss : 3.516. valid loss : 3.517. lr : 0.00100. uptime : 00h03min. ETA : 04h08min.
-Iter 001400/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h04min. ETA : 04h08min.
-Iter 001600/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h04min. ETA : 04h07min.
-Iter 001800/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h05min. ETA : 04h07min.
-Iter 002000/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h05min. ETA : 04h11min.
-Iter 002200/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h06min. ETA : 04h06min.
-Iter 002400/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h06min. ETA : 04h05min.
-Iter 002600/100000. train loss : 3.517. valid loss : 3.516. lr : 0.00100. uptime : 00h07min. ETA : 04h04min.
-Iter 002800/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h07min. ETA : 04h04min.
-Iter 003000/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h08min. ETA : 04h08min.
-Iter 003200/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h08min. ETA : 04h03min.
-Iter 003400/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h09min. ETA : 04h03min.
-Iter 003600/100000. train loss : 3.518. valid loss : 3.518. lr : 0.00100. uptime : 00h09min. ETA : 04h02min.
-Iter 003800/100000. train loss : 3.515. valid loss : 3.516. lr : 0.00100. uptime : 00h10min. ETA : 04h02min.
-Iter 004000/100000. train loss : 3.517. valid loss : 3.518. lr : 0.00100. uptime : 00h10min. ETA : 04h05min.
-Iter 004200/100000. train loss : 3.518. valid loss : 3.518. lr : 0.00100. uptime : 00h11min. ETA : 04h00min.
-Iter 004400/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h11min. ETA : 04h00min.
-Iter 004600/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h12min. ETA : 03h59min.
-Iter 004800/100000. train loss : 3.517. valid loss : 3.516. lr : 0.00100. uptime : 00h12min. ETA : 03h59min.
-Iter 005000/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h13min. ETA : 04h02min.
-Iter 005200/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h13min. ETA : 03h58min.
-Iter 005400/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h14min. ETA : 03h57min.
-Iter 005600/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h14min. ETA : 03h57min.
-Iter 005800/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h15min. ETA : 03h56min.
-Iter 006000/100000. train loss : 3.534. valid loss : 3.534. lr : 0.00100. uptime : 00h15min. ETA : 04h00min.
-Iter 006200/100000. train loss : 3.519. valid loss : 3.519. lr : 0.00100. uptime : 00h16min. ETA : 03h55min.
-Iter 006400/100000. train loss : 3.522. valid loss : 3.522. lr : 0.00100. uptime : 00h16min. ETA : 03h55min.
-Iter 006600/100000. train loss : 3.518. valid loss : 3.518. lr : 0.00100. uptime : 00h17min. ETA : 03h55min.
-Iter 006800/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h17min. ETA : 03h54min.
-Iter 007000/100000. train loss : 3.519. valid loss : 3.518. lr : 0.00100. uptime : 00h18min. ETA : 03h57min.
-Iter 007200/100000. train loss : 3.516. valid loss : 3.517. lr : 0.00100. uptime : 00h18min. ETA : 03h53min.
-Iter 007400/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h19min. ETA : 03h52min.
-Iter 007600/100000. train loss : 3.519. valid loss : 3.519. lr : 0.00100. uptime : 00h20min. ETA : 03h52min.
-Iter 007800/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h20min. ETA : 03h51min.
-Iter 008000/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h21min. ETA : 03h55min.
-Iter 008200/100000. train loss : 3.518. valid loss : 3.518. lr : 0.00100. uptime : 00h21min. ETA : 03h51min.
-Iter 008400/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h22min. ETA : 03h50min.
-Iter 008600/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h22min. ETA : 03h49min.
-Iter 008800/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h23min. ETA : 03h49min.
-Iter 009000/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h23min. ETA : 03h53min.
-Iter 009200/100000. train loss : 3.516. valid loss : 3.516. lr : 0.00100. uptime : 00h24min. ETA : 03h48min.
-Iter 009400/100000. train loss : 3.517. valid loss : 3.518. lr : 0.00100. uptime : 00h24min. ETA : 03h47min.
-Iter 009600/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h25min. ETA : 03h47min.
-Iter 009800/100000. train loss : 3.516. valid loss : 3.517. lr : 0.00100. uptime : 00h25min. ETA : 03h46min.
-Iter 010000/100000. train loss : 3.515. valid loss : 3.514. lr : 0.00100. uptime : 00h26min. ETA : 03h50min.
-Iter 010200/100000. train loss : 3.516. valid loss : 3.517. lr : 0.00100. uptime : 00h26min. ETA : 03h45min.
-Iter 010400/100000. train loss : 3.518. valid loss : 3.518. lr : 0.00100. uptime : 00h27min. ETA : 03h45min.
-Iter 010600/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h27min. ETA : 03h44min.
-Iter 010800/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h28min. ETA : 03h44min.
-Iter 011000/100000. train loss : 3.517. valid loss : 3.518. lr : 0.00100. uptime : 00h28min. ETA : 03h48min.
-Iter 011200/100000. train loss : 3.520. valid loss : 3.519. lr : 0.00100. uptime : 00h29min. ETA : 03h43min.
-Iter 011400/100000. train loss : 3.518. valid loss : 3.518. lr : 0.00100. uptime : 00h29min. ETA : 03h42min.
-Iter 011600/100000. train loss : 3.516. valid loss : 3.515. lr : 0.00100. uptime : 00h30min. ETA : 03h42min.
-Iter 011800/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h30min. ETA : 03h41min.
-Iter 012000/100000. train loss : 3.517. valid loss : 3.516. lr : 0.00100. uptime : 00h31min. ETA : 03h45min.
-Iter 012200/100000. train loss : 3.519. valid loss : 3.519. lr : 0.00100. uptime : 00h31min. ETA : 03h41min.
-Iter 012400/100000. train loss : 3.515. valid loss : 3.515. lr : 0.00100. uptime : 00h32min. ETA : 03h40min.
-Iter 012600/100000. train loss : 3.520. valid loss : 3.520. lr : 0.00100. uptime : 00h32min. ETA : 03h39min.
-Iter 012800/100000. train loss : 3.518. valid loss : 3.518. lr : 0.00100. uptime : 00h33min. ETA : 03h39min.
-Iter 013000/100000. train loss : 3.514. valid loss : 3.514. lr : 0.00100. uptime : 00h33min. ETA : 03h42min.
-Iter 013200/100000. train loss : 3.515. valid loss : 3.516. lr : 0.00100. uptime : 00h34min. ETA : 03h38min.
-Iter 013400/100000. train loss : 3.520. valid loss : 3.520. lr : 0.00100. uptime : 00h34min. ETA : 03h37min.
-Iter 013600/100000. train loss : 3.521. valid loss : 3.521. lr : 0.00100. uptime : 00h35min. ETA : 03h37min.
-Iter 013800/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h35min. ETA : 03h36min.
-Iter 014000/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h36min. ETA : 03h40min.
-Iter 014200/100000. train loss : 3.519. valid loss : 3.519. lr : 0.00100. uptime : 00h36min. ETA : 03h35min.
-Iter 014400/100000. train loss : 3.520. valid loss : 3.519. lr : 0.00100. uptime : 00h37min. ETA : 03h35min.
-Iter 014600/100000. train loss : 3.519. valid loss : 3.519. lr : 0.00100. uptime : 00h37min. ETA : 03h34min.
-Iter 014800/100000. train loss : 3.513. valid loss : 3.514. lr : 0.00100. uptime : 00h38min. ETA : 03h34min.
-Iter 015000/100000. train loss : 3.519. valid loss : 3.519. lr : 0.00100. uptime : 00h38min. ETA : 03h37min.
-Iter 015200/100000. train loss : 3.517. valid loss : 3.517. lr : 0.00100. uptime : 00h39min. ETA : 03h33min.
-Iter 015400/100000. train loss : 3.522. valid loss : 3.522. lr : 0.00100. uptime : 00h39min. ETA : 03h32min.
-Iter 015600/100000. train loss : 3.518. valid loss : 3.518. lr : 0.00100. uptime : 00h40min. ETA : 03h32min.
-Iter 015800/100000. train loss : 3.521. valid loss : 3.521. lr : 0.00100. uptime : 00h40min. ETA : 03h31min.
-Iter 016000/100000. train loss : 3.518. valid loss : 3.519. lr : 0.00100. uptime : 00h41min. ETA : 03h35min.

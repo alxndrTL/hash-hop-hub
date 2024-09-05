@@ -1,4 +1,3 @@
-import math
 import string
 import torch
 
@@ -11,8 +10,8 @@ class CopySampler:
 
     def sample(self, batch_size):
         strings = torch.randint(low=2, high=2+52, size=(batch_size, self.string_length))
-        answer = torch.cat([torch.ones(batch_size, 1), strings], dim=1)
-        return strings, answer
+        prompt = torch.cat([strings, torch.ones(batch_size, 1)], dim=1)
+        return prompt, strings
 
 # works with vocab_size<=52
 def hh_to_string(tensor):

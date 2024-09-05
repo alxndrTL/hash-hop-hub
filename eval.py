@@ -2,8 +2,38 @@ import math
 import torch
 
 from hashhop.hashhop import HashHopSampler, hh_to_string
+from copyy.copy import CopySampler, hh_to_string
 
-def eval(model_generate, n_tasks, batch_size, max_tokens, max_hops, cot, hops=None, hash_len=8, vocab_size=52, verbose=False):
+def eval_copy(model_generate, n_tasks, batch_size, max_tokens, vocab_size=52, verbose=False):
+    sampler = CopySampler(max_tokens, vocab_size)
+
+    n_batches = math.ceil(n_tasks / batch_size)
+
+    success = 0
+    for _ in range(n_batches):
+        prompts, targets = sampler.sample(batch_size)
+
+        completions = model_generate(prompts, num_tokens=targets.size(1))
+
+        results = [torch.allclose(completions[i], targets[i]) for i in range(batch_size)]
+
+        success += sum(results)
+        
+        # useful for showing the model errors
+        if verbose:
+            for i in range(batch_size):
+                if results[i] == False:
+                    print(hh_to_string(prompts[i]))
+                    print(hh_to_string(targets[i]))
+                    print(hh_to_string(completions[i]))
+
+                    print("-------------------")
+
+    success = success / (n_batches * batch_size)
+
+    return success
+
+def eval_hashhop(model_generate, n_tasks, batch_size, max_tokens, max_hops, cot, hops=None, hash_len=8, vocab_size=52, verbose=False):
 
     sampler = HashHopSampler(max_tokens, hash_len, max_hops, cot, vocab_size)
 

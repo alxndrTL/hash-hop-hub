@@ -52,9 +52,9 @@ from utils.misc import format_time
 seed = 0 # 0, 1, 2...
 
 # --- hash-hop parameters ---
-max_tokens = 256
+max_tokens = 512
 hash_len = 8
-max_hops = 1
+max_hops = 3
 cot = True
 vocab_size = 52
 

@@ -1,0 +1,574 @@
+wandb: Currently logged in as: alexandretl. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.17.8
+wandb: Run data is saved locally in /workspace/hash-hop-hub/wandb/run-20240905_130719-gmq0sk4c
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run rose-monkey-31
+wandb: ⭐️ View project at https://wandb.ai/alexandretl/hash-hop-hub
+wandb: 🚀 View run at https://wandb.ai/alexandretl/hash-hop-hub/runs/gmq0sk4c
+Run name: rose-monkey-31.
+Model initialized. Number of parameters : 182590480.
+Compiling the model...
+Done compiling.
+Training is starting.
+Iter 000000/100000. train loss : 4.164. valid loss : 4.191. lr : 0.00000. uptime : 00h00min. ETA : 03h30min.
+Iter 000200/100000. train loss : 3.884. valid loss : 3.877. lr : 0.00001. uptime : 00h00min. ETA : 03h30min.
+Iter 000400/100000. train loss : 3.534. valid loss : 3.541. lr : 0.00002. uptime : 00h01min. ETA : 03h13min.
+Iter 000600/100000. train loss : 3.551. valid loss : 3.528. lr : 0.00003. uptime : 00h01min. ETA : 03h13min.
+Iter 000800/100000. train loss : 3.510. valid loss : 3.517. lr : 0.00004. uptime : 00h02min. ETA : 03h12min.
+Iter 001000/100000. train loss : 3.506. valid loss : 3.524. lr : 0.00005. uptime : 00h02min. ETA : 03h16min.
+Iter 001200/100000. train loss : 3.508. valid loss : 3.505. lr : 0.00005. uptime : 00h02min. ETA : 03h12min.
+Iter 001400/100000. train loss : 3.483. valid loss : 3.499. lr : 0.00005. uptime : 00h03min. ETA : 03h11min.
+Iter 001600/100000. train loss : 3.134. valid loss : 3.430. lr : 0.00005. uptime : 00h03min. ETA : 03h11min.
+Iter 001800/100000. train loss : 3.501. valid loss : 3.331. lr : 0.00005. uptime : 00h03min. ETA : 03h11min.
+Iter 002000/100000. train loss : 3.664. valid loss : 3.361. lr : 0.00005. uptime : 00h04min. ETA : 03h14min.
+Iter 002200/100000. train loss : 3.512. valid loss : 3.298. lr : 0.00005. uptime : 00h04min. ETA : 03h10min.
+Iter 002400/100000. train loss : 2.995. valid loss : 3.088. lr : 0.00005. uptime : 00h05min. ETA : 03h09min.
+Iter 002600/100000. train loss : 3.171. valid loss : 2.840. lr : 0.00005. uptime : 00h05min. ETA : 03h09min.
+Iter 002800/100000. train loss : 2.606. valid loss : 2.741. lr : 0.00005. uptime : 00h05min. ETA : 03h09min.
+Iter 003000/100000. train loss : 1.488. valid loss : 2.788. lr : 0.00005. uptime : 00h06min. ETA : 03h12min.
+Iter 003200/100000. train loss : 2.796. valid loss : 2.486. lr : 0.00005. uptime : 00h06min. ETA : 03h08min.
+Iter 003400/100000. train loss : 2.693. valid loss : 2.567. lr : 0.00005. uptime : 00h07min. ETA : 03h07min.
+Iter 003600/100000. train loss : 1.791. valid loss : 2.575. lr : 0.00005. uptime : 00h07min. ETA : 03h07min.
+Iter 003800/100000. train loss : 2.818. valid loss : 2.537. lr : 0.00005. uptime : 00h07min. ETA : 03h07min.
+Iter 004000/100000. train loss : 1.601. valid loss : 2.410. lr : 0.00005. uptime : 00h08min. ETA : 03h10min.
+Iter 004200/100000. train loss : 2.905. valid loss : 2.371. lr : 0.00005. uptime : 00h08min. ETA : 03h06min.
+Iter 004400/100000. train loss : 2.772. valid loss : 2.161. lr : 0.00005. uptime : 00h09min. ETA : 03h06min.
+Iter 004600/100000. train loss : 1.683. valid loss : 2.226. lr : 0.00005. uptime : 00h09min. ETA : 03h05min.
+Iter 004800/100000. train loss : 2.713. valid loss : 2.208. lr : 0.00005. uptime : 00h09min. ETA : 03h05min.
+Iter 005000/100000. train loss : 1.671. valid loss : 1.988. lr : 0.00005. uptime : 00h10min. ETA : 03h08min.
+Iter 005200/100000. train loss : 1.444. valid loss : 1.913. lr : 0.00005. uptime : 00h10min. ETA : 03h04min.
+Iter 005400/100000. train loss : 3.042. valid loss : 1.966. lr : 0.00005. uptime : 00h11min. ETA : 03h04min.
+Iter 005600/100000. train loss : 0.607. valid loss : 1.862. lr : 0.00005. uptime : 00h11min. ETA : 03h03min.
+Iter 005800/100000. train loss : 1.160. valid loss : 1.750. lr : 0.00005. uptime : 00h11min. ETA : 03h03min.
+Iter 006000/100000. train loss : 1.001. valid loss : 1.681. lr : 0.00005. uptime : 00h12min. ETA : 03h06min.
+Iter 006200/100000. train loss : 2.559. valid loss : 1.576. lr : 0.00005. uptime : 00h12min. ETA : 03h02min.
+Iter 006400/100000. train loss : 2.399. valid loss : 1.506. lr : 0.00005. uptime : 00h12min. ETA : 03h02min.
+Iter 006600/100000. train loss : 1.030. valid loss : 1.391. lr : 0.00005. uptime : 00h13min. ETA : 03h01min.
+Iter 006800/100000. train loss : 0.550. valid loss : 1.623. lr : 0.00005. uptime : 00h13min. ETA : 03h01min.
+Iter 007000/100000. train loss : 0.510. valid loss : 1.496. lr : 0.00005. uptime : 00h14min. ETA : 03h05min.
+Iter 007200/100000. train loss : 0.837. valid loss : 1.450. lr : 0.00005. uptime : 00h14min. ETA : 03h01min.
+Iter 007400/100000. train loss : 0.720. valid loss : 1.314. lr : 0.00005. uptime : 00h14min. ETA : 03h00min.
+Iter 007600/100000. train loss : 2.485. valid loss : 1.462. lr : 0.00005. uptime : 00h15min. ETA : 03h00min.
+Iter 007800/100000. train loss : 0.435. valid loss : 1.329. lr : 0.00005. uptime : 00h15min. ETA : 02h59min.
+Iter 008000/100000. train loss : 0.475. valid loss : 1.368. lr : 0.00005. uptime : 00h16min. ETA : 03h03min.
+Iter 008200/100000. train loss : 2.358. valid loss : 1.295. lr : 0.00005. uptime : 00h16min. ETA : 02h59min.
+Iter 008400/100000. train loss : 0.638. valid loss : 1.365. lr : 0.00005. uptime : 00h16min. ETA : 02h58min.
+Iter 008600/100000. train loss : 0.526. valid loss : 1.194. lr : 0.00005. uptime : 00h17min. ETA : 02h58min.
+Iter 008800/100000. train loss : 0.836. valid loss : 1.346. lr : 0.00005. uptime : 00h17min. ETA : 02h57min.
+Iter 009000/100000. train loss : 1.558. valid loss : 1.277. lr : 0.00005. uptime : 00h18min. ETA : 03h01min.
+Iter 009200/100000. train loss : 0.627. valid loss : 1.134. lr : 0.00005. uptime : 00h18min. ETA : 02h57min.
+Iter 009400/100000. train loss : 0.857. valid loss : 1.198. lr : 0.00005. uptime : 00h18min. ETA : 02h56min.
+Iter 009600/100000. train loss : 1.103. valid loss : 1.257. lr : 0.00005. uptime : 00h19min. ETA : 02h56min.
+Iter 009800/100000. train loss : 0.442. valid loss : 1.252. lr : 0.00005. uptime : 00h19min. ETA : 02h55min.
+Iter 010000/100000. train loss : 0.648. valid loss : 1.076. lr : 0.00005. uptime : 00h20min. ETA : 02h59min.
+Iter 010200/100000. train loss : 0.462. valid loss : 1.203. lr : 0.00005. uptime : 00h20min. ETA : 02h55min.
+Iter 010400/100000. train loss : 0.615. valid loss : 0.999. lr : 0.00005. uptime : 00h20min. ETA : 02h54min.
+Iter 010600/100000. train loss : 1.428. valid loss : 0.976. lr : 0.00005. uptime : 00h21min. ETA : 02h54min.
+Iter 010800/100000. train loss : 0.490. valid loss : 0.857. lr : 0.00005. uptime : 00h21min. ETA : 02h53min.
+Iter 011000/100000. train loss : 0.840. valid loss : 0.929. lr : 0.00005. uptime : 00h22min. ETA : 02h57min.
+Iter 011200/100000. train loss : 0.526. valid loss : 0.833. lr : 0.00005. uptime : 00h22min. ETA : 02h53min.
+Iter 011400/100000. train loss : 0.473. valid loss : 0.715. lr : 0.00005. uptime : 00h22min. ETA : 02h52min.
+Iter 011600/100000. train loss : 0.609. valid loss : 0.845. lr : 0.00005. uptime : 00h23min. ETA : 02h52min.
+Iter 011800/100000. train loss : 0.597. valid loss : 0.811. lr : 0.00005. uptime : 00h23min. ETA : 02h51min.
+Iter 012000/100000. train loss : 0.795. valid loss : 0.683. lr : 0.00005. uptime : 00h23min. ETA : 02h55min.
+Iter 012200/100000. train loss : 0.626. valid loss : 0.640. lr : 0.00005. uptime : 00h24min. ETA : 02h51min.
+Iter 012400/100000. train loss : 1.193. valid loss : 0.709. lr : 0.00005. uptime : 00h24min. ETA : 02h50min.
+Iter 012600/100000. train loss : 0.754. valid loss : 0.695. lr : 0.00005. uptime : 00h25min. ETA : 02h50min.
+Iter 012800/100000. train loss : 1.117. valid loss : 0.631. lr : 0.00005. uptime : 00h25min. ETA : 02h50min.
+Iter 013000/100000. train loss : 0.606. valid loss : 0.644. lr : 0.00005. uptime : 00h25min. ETA : 02h53min.
+Iter 013200/100000. train loss : 0.506. valid loss : 0.589. lr : 0.00005. uptime : 00h26min. ETA : 02h49min.
+Iter 013400/100000. train loss : 0.523. valid loss : 0.612. lr : 0.00005. uptime : 00h26min. ETA : 02h48min.
+Iter 013600/100000. train loss : 0.546. valid loss : 0.581. lr : 0.00005. uptime : 00h27min. ETA : 02h48min.
+Iter 013800/100000. train loss : 0.592. valid loss : 0.577. lr : 0.00005. uptime : 00h27min. ETA : 02h48min.
+Iter 014000/100000. train loss : 0.611. valid loss : 0.559. lr : 0.00005. uptime : 00h27min. ETA : 02h52min.
+Iter 014200/100000. train loss : 0.418. valid loss : 0.576. lr : 0.00005. uptime : 00h28min. ETA : 02h47min.
+Iter 014400/100000. train loss : 0.507. valid loss : 0.546. lr : 0.00005. uptime : 00h28min. ETA : 02h47min.
+Iter 014600/100000. train loss : 0.633. valid loss : 0.519. lr : 0.00005. uptime : 00h29min. ETA : 02h46min.
+Iter 014800/100000. train loss : 0.490. valid loss : 0.523. lr : 0.00005. uptime : 00h29min. ETA : 02h46min.
+Iter 015000/100000. train loss : 0.498. valid loss : 0.575. lr : 0.00005. uptime : 00h29min. ETA : 02h50min.
+Iter 015200/100000. train loss : 0.720. valid loss : 0.514. lr : 0.00005. uptime : 00h30min. ETA : 02h45min.
+Iter 015400/100000. train loss : 0.505. valid loss : 0.518. lr : 0.00005. uptime : 00h30min. ETA : 02h45min.
+Iter 015600/100000. train loss : 0.499. valid loss : 0.489. lr : 0.00005. uptime : 00h31min. ETA : 02h44min.
+Iter 015800/100000. train loss : 0.463. valid loss : 0.494. lr : 0.00005. uptime : 00h31min. ETA : 02h44min.
+Iter 016000/100000. train loss : 0.442. valid loss : 0.475. lr : 0.00005. uptime : 00h31min. ETA : 02h48min.
+Iter 016200/100000. train loss : 0.617. valid loss : 0.501. lr : 0.00005. uptime : 00h32min. ETA : 02h43min.
+Iter 016400/100000. train loss : 0.421. valid loss : 0.493. lr : 0.00005. uptime : 00h32min. ETA : 02h43min.
+Iter 016600/100000. train loss : 0.381. valid loss : 0.473. lr : 0.00005. uptime : 00h33min. ETA : 02h43min.
+Iter 016800/100000. train loss : 0.577. valid loss : 0.469. lr : 0.00005. uptime : 00h33min. ETA : 02h42min.
+Iter 017000/100000. train loss : 0.497. valid loss : 0.455. lr : 0.00005. uptime : 00h33min. ETA : 02h46min.
+Iter 017200/100000. train loss : 0.450. valid loss : 0.453. lr : 0.00005. uptime : 00h34min. ETA : 02h41min.
+Iter 017400/100000. train loss : 0.553. valid loss : 0.448. lr : 0.00005. uptime : 00h34min. ETA : 02h41min.
+Iter 017600/100000. train loss : 0.467. valid loss : 0.473. lr : 0.00005. uptime : 00h34min. ETA : 02h41min.
+Iter 017800/100000. train loss : 0.366. valid loss : 0.449. lr : 0.00005. uptime : 00h35min. ETA : 02h40min.
+Iter 018000/100000. train loss : 0.432. valid loss : 0.434. lr : 0.00005. uptime : 00h35min. ETA : 02h44min.
+Iter 018200/100000. train loss : 0.457. valid loss : 0.517. lr : 0.00005. uptime : 00h36min. ETA : 02h39min.
+Iter 018400/100000. train loss : 0.391. valid loss : 0.421. lr : 0.00005. uptime : 00h36min. ETA : 02h39min.
+Iter 018600/100000. train loss : 0.475. valid loss : 0.463. lr : 0.00005. uptime : 00h36min. ETA : 02h39min.
+Iter 018800/100000. train loss : 0.512. valid loss : 0.409. lr : 0.00005. uptime : 00h37min. ETA : 02h38min.
+Iter 019000/100000. train loss : 0.413. valid loss : 0.410. lr : 0.00005. uptime : 00h37min. ETA : 02h42min.
+Iter 019200/100000. train loss : 0.484. valid loss : 0.429. lr : 0.00005. uptime : 00h38min. ETA : 02h37min.
+Iter 019400/100000. train loss : 0.364. valid loss : 0.427. lr : 0.00005. uptime : 00h38min. ETA : 02h37min.
+Iter 019600/100000. train loss : 0.442. valid loss : 0.423. lr : 0.00005. uptime : 00h38min. ETA : 02h37min.
+Iter 019800/100000. train loss : 0.470. valid loss : 0.428. lr : 0.00005. uptime : 00h39min. ETA : 02h36min.
+Iter 020000/100000. train loss : 0.433. valid loss : 0.421. lr : 0.00005. uptime : 00h39min. ETA : 02h40min.
+Iter 020200/100000. train loss : 0.456. valid loss : 0.419. lr : 0.00005. uptime : 00h40min. ETA : 02h53min.
+Iter 020400/100000. train loss : 0.439. valid loss : 0.390. lr : 0.00005. uptime : 00h40min. ETA : 02h35min.
+Iter 020600/100000. train loss : 0.411. valid loss : 0.398. lr : 0.00005. uptime : 00h40min. ETA : 02h35min.
+Iter 020800/100000. train loss : 0.364. valid loss : 0.397. lr : 0.00005. uptime : 00h41min. ETA : 02h35min.
+Iter 021000/100000. train loss : 0.305. valid loss : 0.396. lr : 0.00005. uptime : 00h41min. ETA : 02h38min.
+Iter 021200/100000. train loss : 0.335. valid loss : 0.389. lr : 0.00005. uptime : 00h42min. ETA : 02h33min.
+Iter 021400/100000. train loss : 0.330. valid loss : 0.379. lr : 0.00005. uptime : 00h42min. ETA : 02h33min.
+Iter 021600/100000. train loss : 0.439. valid loss : 0.401. lr : 0.00005. uptime : 00h42min. ETA : 02h33min.
+Iter 021800/100000. train loss : 0.547. valid loss : 0.382. lr : 0.00005. uptime : 00h43min. ETA : 02h32min.
+Iter 022000/100000. train loss : 0.349. valid loss : 0.394. lr : 0.00005. uptime : 00h43min. ETA : 02h36min.
+Iter 022200/100000. train loss : 0.343. valid loss : 0.368. lr : 0.00005. uptime : 00h44min. ETA : 02h32min.
+Iter 022400/100000. train loss : 0.317. valid loss : 0.394. lr : 0.00005. uptime : 00h44min. ETA : 02h31min.
+Iter 022600/100000. train loss : 0.479. valid loss : 0.380. lr : 0.00005. uptime : 00h44min. ETA : 02h31min.
+Iter 022800/100000. train loss : 0.330. valid loss : 0.198. lr : 0.00005. uptime : 00h45min. ETA : 02h31min.
+Iter 023000/100000. train loss : 0.069. valid loss : 0.163. lr : 0.00005. uptime : 00h45min. ETA : 02h34min.
+Iter 023200/100000. train loss : 0.264. valid loss : 0.113. lr : 0.00005. uptime : 00h46min. ETA : 02h30min.
+Iter 023400/100000. train loss : 0.117. valid loss : 0.087. lr : 0.00005. uptime : 00h46min. ETA : 02h29min.
+Iter 023600/100000. train loss : 0.022. valid loss : 0.063. lr : 0.00005. uptime : 00h46min. ETA : 02h29min.
+Iter 023800/100000. train loss : 0.071. valid loss : 0.049. lr : 0.00005. uptime : 00h47min. ETA : 02h28min.
+Iter 024000/100000. train loss : 0.009. valid loss : 0.033. lr : 0.00005. uptime : 00h47min. ETA : 02h32min.
+Iter 024200/100000. train loss : 0.014. valid loss : 0.038. lr : 0.00005. uptime : 00h48min. ETA : 02h27min.
+Iter 024400/100000. train loss : 0.018. valid loss : 0.020. lr : 0.00005. uptime : 00h48min. ETA : 02h27min.
+Iter 024600/100000. train loss : 0.039. valid loss : 0.019. lr : 0.00005. uptime : 00h48min. ETA : 02h28min.
+Iter 024800/100000. train loss : 0.103. valid loss : 0.022. lr : 0.00005. uptime : 00h49min. ETA : 02h26min.
+Iter 025000/100000. train loss : 0.050. valid loss : 0.027. lr : 0.00005. uptime : 00h49min. ETA : 02h30min.
+Iter 025200/100000. train loss : 0.030. valid loss : 0.014. lr : 0.00005. uptime : 00h49min. ETA : 02h26min.
+Iter 025400/100000. train loss : 0.055. valid loss : 0.020. lr : 0.00005. uptime : 00h50min. ETA : 02h25min.
+Iter 025600/100000. train loss : 0.002. valid loss : 0.019. lr : 0.00005. uptime : 00h50min. ETA : 02h25min.
+Iter 025800/100000. train loss : 0.018. valid loss : 0.017. lr : 0.00005. uptime : 00h51min. ETA : 02h24min.
+Iter 026000/100000. train loss : 0.019. valid loss : 0.014. lr : 0.00005. uptime : 00h51min. ETA : 02h28min.
+Iter 026200/100000. train loss : 0.005. valid loss : 0.017. lr : 0.00005. uptime : 00h51min. ETA : 02h24min.
+Iter 026400/100000. train loss : 0.002. valid loss : 0.016. lr : 0.00005. uptime : 00h52min. ETA : 02h23min.
+Iter 026600/100000. train loss : 0.014. valid loss : 0.021. lr : 0.00005. uptime : 00h52min. ETA : 02h23min.
+Iter 026800/100000. train loss : 0.002. valid loss : 0.011. lr : 0.00005. uptime : 00h53min. ETA : 02h22min.
+Iter 027000/100000. train loss : 0.004. valid loss : 0.015. lr : 0.00005. uptime : 00h53min. ETA : 02h26min.
+Iter 027200/100000. train loss : 0.001. valid loss : 0.013. lr : 0.00005. uptime : 00h53min. ETA : 02h22min.
+Iter 027400/100000. train loss : 0.048. valid loss : 0.018. lr : 0.00005. uptime : 00h54min. ETA : 02h21min.
+Iter 027600/100000. train loss : 0.002. valid loss : 0.014. lr : 0.00005. uptime : 00h54min. ETA : 02h21min.
+Iter 027800/100000. train loss : 0.005. valid loss : 0.014. lr : 0.00005. uptime : 00h55min. ETA : 02h20min.
+Iter 028000/100000. train loss : 0.001. valid loss : 0.019. lr : 0.00005. uptime : 00h55min. ETA : 02h24min.
+Iter 028200/100000. train loss : 0.002. valid loss : 0.019. lr : 0.00005. uptime : 00h55min. ETA : 02h20min.
+Iter 028400/100000. train loss : 0.002. valid loss : 0.028. lr : 0.00005. uptime : 00h56min. ETA : 02h19min.
+Iter 028600/100000. train loss : 0.001. valid loss : 0.009. lr : 0.00005. uptime : 00h56min. ETA : 02h19min.
+Iter 028800/100000. train loss : 0.005. valid loss : 0.010. lr : 0.00005. uptime : 00h57min. ETA : 02h18min.
+Iter 029000/100000. train loss : 0.001. valid loss : 0.006. lr : 0.00005. uptime : 00h57min. ETA : 02h22min.
+Iter 029200/100000. train loss : 0.001. valid loss : 0.005. lr : 0.00005. uptime : 00h57min. ETA : 02h18min.
+Iter 029400/100000. train loss : 0.000. valid loss : 0.009. lr : 0.00005. uptime : 00h58min. ETA : 02h17min.
+Iter 029600/100000. train loss : 0.002. valid loss : 0.008. lr : 0.00005. uptime : 00h58min. ETA : 02h17min.
+Iter 029800/100000. train loss : 0.032. valid loss : 0.007. lr : 0.00005. uptime : 00h59min. ETA : 02h17min.
+Iter 030000/100000. train loss : 0.015. valid loss : 0.008. lr : 0.00005. uptime : 00h59min. ETA : 02h20min.
+Iter 030200/100000. train loss : 0.003. valid loss : 0.009. lr : 0.00005. uptime : 00h59min. ETA : 02h16min.
+Iter 030400/100000. train loss : 0.022. valid loss : 0.008. lr : 0.00005. uptime : 01h00min. ETA : 02h15min.
+Iter 030600/100000. train loss : 0.059. valid loss : 0.010. lr : 0.00005. uptime : 01h00min. ETA : 02h15min.
+Iter 030800/100000. train loss : 0.003. valid loss : 0.016. lr : 0.00005. uptime : 01h01min. ETA : 02h15min.
+Iter 031000/100000. train loss : 0.003. valid loss : 0.006. lr : 0.00005. uptime : 01h01min. ETA : 02h18min.
+Iter 031200/100000. train loss : 0.000. valid loss : 0.009. lr : 0.00005. uptime : 01h01min. ETA : 02h14min.
+Iter 031400/100000. train loss : 0.002. valid loss : 0.007. lr : 0.00005. uptime : 01h02min. ETA : 02h13min.
+Iter 031600/100000. train loss : 0.000. valid loss : 0.008. lr : 0.00005. uptime : 01h02min. ETA : 02h13min.
+Iter 031800/100000. train loss : 0.000. valid loss : 0.005. lr : 0.00005. uptime : 01h02min. ETA : 02h13min.
+Iter 032000/100000. train loss : 0.072. valid loss : 0.010. lr : 0.00005. uptime : 01h03min. ETA : 02h16min.
+Iter 032200/100000. train loss : 0.001. valid loss : 0.003. lr : 0.00005. uptime : 01h03min. ETA : 02h12min.
+Iter 032400/100000. train loss : 0.000. valid loss : 0.001. lr : 0.00005. uptime : 01h04min. ETA : 02h11min.
+Iter 032600/100000. train loss : 0.001. valid loss : 0.004. lr : 0.00005. uptime : 01h04min. ETA : 02h11min.
+Iter 032800/100000. train loss : 0.001. valid loss : 0.003. lr : 0.00005. uptime : 01h04min. ETA : 02h11min.
+Iter 033000/100000. train loss : 0.001. valid loss : 0.006. lr : 0.00005. uptime : 01h05min. ETA : 02h14min.
+Iter 033200/100000. train loss : 0.000. valid loss : 0.010. lr : 0.00005. uptime : 01h05min. ETA : 02h10min.
+Iter 033400/100000. train loss : 0.019. valid loss : 0.005. lr : 0.00005. uptime : 01h06min. ETA : 02h09min.
+Iter 033600/100000. train loss : 0.003. valid loss : 0.008. lr : 0.00005. uptime : 01h06min. ETA : 02h09min.
+Iter 033800/100000. train loss : 0.006. valid loss : 0.003. lr : 0.00005. uptime : 01h06min. ETA : 02h09min.
+Iter 034000/100000. train loss : 0.000. valid loss : 0.008. lr : 0.00005. uptime : 01h07min. ETA : 02h12min.
+Iter 034200/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h07min. ETA : 02h08min.
+Iter 034400/100000. train loss : 0.037. valid loss : 0.005. lr : 0.00005. uptime : 01h08min. ETA : 02h07min.
+Iter 034600/100000. train loss : 0.000. valid loss : 0.002. lr : 0.00005. uptime : 01h08min. ETA : 02h07min.
+Iter 034800/100000. train loss : 0.043. valid loss : 0.006. lr : 0.00005. uptime : 01h08min. ETA : 02h07min.
+Iter 035000/100000. train loss : 0.000. valid loss : 0.005. lr : 0.00005. uptime : 01h09min. ETA : 02h10min.
+Iter 035200/100000. train loss : 0.000. valid loss : 0.005. lr : 0.00005. uptime : 01h09min. ETA : 02h06min.
+Iter 035400/100000. train loss : 0.000. valid loss : 0.005. lr : 0.00005. uptime : 01h10min. ETA : 02h05min.
+Iter 035600/100000. train loss : 0.023. valid loss : 0.005. lr : 0.00005. uptime : 01h10min. ETA : 02h05min.
+Iter 035800/100000. train loss : 0.000. valid loss : 0.002. lr : 0.00005. uptime : 01h10min. ETA : 02h05min.
+Iter 036000/100000. train loss : 0.009. valid loss : 0.003. lr : 0.00005. uptime : 01h11min. ETA : 02h08min.
+Iter 036200/100000. train loss : 0.000. valid loss : 0.004. lr : 0.00005. uptime : 01h11min. ETA : 02h04min.
+Iter 036400/100000. train loss : 0.000. valid loss : 0.002. lr : 0.00005. uptime : 01h12min. ETA : 02h04min.
+Iter 036600/100000. train loss : 0.000. valid loss : 0.005. lr : 0.00005. uptime : 01h12min. ETA : 02h03min.
+Iter 036800/100000. train loss : 0.000. valid loss : 0.002. lr : 0.00005. uptime : 01h12min. ETA : 02h03min.
+Iter 037000/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h13min. ETA : 02h06min.
+Iter 037200/100000. train loss : 0.001. valid loss : 0.008. lr : 0.00005. uptime : 01h13min. ETA : 02h02min.
+Iter 037400/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h14min. ETA : 02h02min.
+Iter 037600/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h14min. ETA : 02h01min.
+Iter 037800/100000. train loss : 0.000. valid loss : 0.007. lr : 0.00005. uptime : 01h14min. ETA : 02h01min.
+Iter 038000/100000. train loss : 0.001. valid loss : 0.002. lr : 0.00005. uptime : 01h15min. ETA : 02h04min.
+Iter 038200/100000. train loss : 0.000. valid loss : 0.006. lr : 0.00005. uptime : 01h15min. ETA : 02h00min.
+Iter 038400/100000. train loss : 0.000. valid loss : 0.005. lr : 0.00005. uptime : 01h15min. ETA : 02h00min.
+Iter 038600/100000. train loss : 0.084. valid loss : 0.006. lr : 0.00005. uptime : 01h16min. ETA : 01h59min.
+Iter 038800/100000. train loss : 0.000. valid loss : 0.004. lr : 0.00005. uptime : 01h16min. ETA : 01h59min.
+Iter 039000/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h17min. ETA : 02h02min.
+Iter 039200/100000. train loss : 0.000. valid loss : 0.006. lr : 0.00005. uptime : 01h17min. ETA : 01h58min.
+Iter 039400/100000. train loss : 0.001. valid loss : 0.006. lr : 0.00005. uptime : 01h17min. ETA : 01h58min.
+Iter 039600/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h18min. ETA : 01h57min.
+Iter 039800/100000. train loss : 0.000. valid loss : 0.004. lr : 0.00005. uptime : 01h18min. ETA : 01h57min.
+Iter 040000/100000. train loss : 0.000. valid loss : 0.004. lr : 0.00005. uptime : 01h19min. ETA : 02h00min.
+Iter 040200/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h19min. ETA : 02h13min.
+Iter 040400/100000. train loss : 0.038. valid loss : 0.006. lr : 0.00005. uptime : 01h19min. ETA : 01h56min.
+Iter 040600/100000. train loss : 0.000. valid loss : 0.007. lr : 0.00005. uptime : 01h20min. ETA : 01h55min.
+Iter 040800/100000. train loss : 0.000. valid loss : 0.004. lr : 0.00005. uptime : 01h20min. ETA : 01h55min.
+Iter 041000/100000. train loss : 0.001. valid loss : 0.004. lr : 0.00005. uptime : 01h21min. ETA : 01h58min.
+Iter 041200/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h21min. ETA : 01h54min.
+Iter 041400/100000. train loss : 0.000. valid loss : 0.004. lr : 0.00005. uptime : 01h21min. ETA : 01h54min.
+Iter 041600/100000. train loss : 0.000. valid loss : 0.000. lr : 0.00005. uptime : 01h22min. ETA : 01h53min.
+Iter 041800/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h22min. ETA : 01h53min.
+Iter 042000/100000. train loss : 0.002. valid loss : 0.002. lr : 0.00005. uptime : 01h23min. ETA : 01h57min.
+Iter 042200/100000. train loss : 0.000. valid loss : 0.000. lr : 0.00005. uptime : 01h23min. ETA : 01h52min.
+Iter 042400/100000. train loss : 0.000. valid loss : 0.001. lr : 0.00005. uptime : 01h23min. ETA : 01h52min.
+Iter 042600/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h24min. ETA : 01h52min.
+Iter 042800/100000. train loss : 0.000. valid loss : 0.003. lr : 0.00005. uptime : 01h24min. ETA : 01h51min.
+Iter 043000/100000. train loss : 0.000. valid loss : 0.002. lr : 0.00005. uptime : 01h25min. ETA : 01h54min.
+Iter 043200/100000. train loss : 0.000. valid loss : 0.002. lr : 0.00005. uptime : 01h25min. ETA : 01h50min.
+Iter 043400/100000. train loss : 0.000. valid loss : 0.004. lr : 0.00005. uptime : 01h25min. ETA : 01h50min.
+Iter 043600/100000. train loss : 0.000. valid loss : 0.001. lr : 0.00005. uptime : 01h26min. ETA : 01h50min.
+Iter 043800/100000. train loss : 0.000. valid loss : 0.002. lr : 0.00005. uptime : 01h26min. ETA : 01h49min.
+Process ForkProcess-39:
+Process ForkProcess-38:
+Process ForkProcess-35:
+Process ForkProcess-25:
+Process ForkProcess-31:
+Process ForkProcess-37:
+Process ForkProcess-40:
+Traceback (most recent call last):
+Process ForkProcess-33:
+Process ForkProcess-36:
+Process ForkProcess-32:
+Process ForkProcess-29:
+Process ForkProcess-30:
+Process ForkProcess-27:
+Process ForkProcess-22:
+Process ForkProcess-34:
+Process ForkProcess-26:
+Process ForkProcess-19:
+Process ForkProcess-20:
+Process ForkProcess-24:
+Process ForkProcess-17:
+Process ForkProcess-14:
+Process ForkProcess-18:
+Process ForkProcess-15:
+Process ForkProcess-23:
+Process ForkProcess-21:
+Process ForkProcess-28:
+Process ForkProcess-11:
+Process ForkProcess-9:
+Process ForkProcess-10:
+Process ForkProcess-13:
+Process ForkProcess-12:
+Process ForkProcess-16:
+Training interrupted.Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Training is done. Took 86.78 minutes.  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+KeyboardInterrupt
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+KeyboardInterrupt
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 102, in get
+    with self._rlock:
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 103, in get
+    res = self._recv_bytes()
+  File "/usr/lib/python3.10/concurrent/futures/process.py", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+Successfully saved checkpoint and config in runs/rose-monkey-31.
+wandb: - 0.004 MB of 0.004 MB uploadedwandb: \ 0.004 MB of 0.004 MB uploadedwandb: | 0.004 MB of 0.004 MB uploadedwandb: / 0.004 MB of 0.004 MB uploadedwandb: - 0.004 MB of 0.004 MB uploadedwandb: \ 0.014 MB of 0.041 MB uploaded (0.003 MB deduped)wandb: | 0.037 MB of 0.041 MB uploaded (0.003 MB deduped)wandb: / 0.037 MB of 0.041 MB uploaded (0.003 MB deduped)wandb: - 0.041 MB of 0.041 MB uploaded (0.003 MB deduped)wandb:                                                                                
+wandb: W&B sync reduced upload amount by 6.3%
+wandb: 
+wandb: Run history:
+wandb:         grad_norm ▄▃▄▅▅▆▆▇▄▃▄▆▅▄▅▃▃▄▃▃▃▄▂▁█▂▁▁▃▅▂▁▅▁▁▁▁▁▃▁
+wandb:                lr ▁███████████████████████████████████████
+wandb:         num_iters ▁
+wandb:        num_params ▁
+wandb:        num_tokens ▁
+wandb:           success ▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▂▂▁▁▅██████████████████
+wandb:     time_per_iter ▁▂▂▂▂▂▃▄▄▄▄▄▄▇▇▇▇▇▇▆▇█▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█
+wandb:       tokens_seen ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:        train_loss ███▆▅▆▅▆▂▂▂▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:    use_flash_attn ▁
+wandb: use_torch_compile ▁
+wandb:          val_loss █▇▇▆▅▅▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb:             dtype bfloat16
+wandb:         grad_norm 0.00148
+wandb:                lr 5e-05
+wandb:         num_iters 43877
+wandb:        num_params 182590480
+wandb:        num_tokens 359440384
+wandb:           success 0.98438
+wandb:     time_per_iter 0.13835
+wandb:       tokens_seen 359219200
+wandb:        train_loss 5e-05
+wandb:    use_flash_attn True
+wandb: use_torch_compile True
+wandb:          val_loss 0.0017
+wandb: 
+wandb: 🚀 View run rose-monkey-31 at: https://wandb.ai/alexandretl/hash-hop-hub/runs/gmq0sk4c
+wandb: ⭐️ View project at: https://wandb.ai/alexandretl/hash-hop-hub
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240905_130719-gmq0sk4c/logs
+wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.

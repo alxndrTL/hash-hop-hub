@@ -40,6 +40,8 @@ from models.transformer.transformer import TransformerConfig
 from models.mamba.mamba import MambaConfig
 from models.mamba.mamba2 import Mamba2Config
 
+from grokfast import gradfilter_ema
+
 from hashhop.generator import HashHopGenerator
 from copyy.generator import CopyGenerator
 
@@ -118,6 +120,10 @@ adam_b2 = 0.95
 
 clip_value_grad = 1.0
 weight_decay = 0.1
+
+# grokfast
+grokfast_alpha = 0.98
+grokfast_lamb = 2
 
 use_torch_compile = True # do not toggle if using Mamba
 
@@ -293,6 +299,8 @@ last_print_time = start_time
 
 torch.cuda.reset_peak_memory_stats(device=None)
 
+grads = None
+
 try:
     for iter in range(start_iter, num_iters):
         data = next(iter_)
@@ -308,6 +316,8 @@ try:
             #loss = F.cross_entropy(logits, y[:, prompt_len-1:].contiguous().view(-1), ignore_index=0) # copy
 
         scaler.scale(loss).backward()
+
+        grads = gradfilter_ema(model, grads=grads, alpha=grokfast_alpha, lamb=grokfast_lamb)
 
         if clip_value_grad != 0.0:
             scaler.unscale_(optim)

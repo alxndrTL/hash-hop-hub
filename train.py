@@ -65,9 +65,9 @@ eval_interval = 1000
 num_tasks = 100
 
 # --- model parameters ---
-architecture = "Transformer" # "Transformer" or "Mamba" or "Mamba2"
+architecture = "Mamba2" # "Transformer" or "Mamba" or "Mamba2"
 d_model = 1024
-n_layers = 12
+n_layers = 24
 bias = False
 base_std = 0.02
 
@@ -75,8 +75,8 @@ base_std = 0.02
 use_cuda = True # choose True if you can (mamba-ssm installed). else, fallbacks to mamba.py (https://github.com/alxndrTL/mamba.py)
 
 # Mamba2 specific
-d_head = 54
-d_state = 64
+d_head = 64
+d_state = 128
 
 # Transformer specific
 d_ff = 3584
@@ -99,7 +99,7 @@ mup_base_width = 288
 
 # --- training parameters ---
 num_iters = 100000
-batch_size = 32
+batch_size = 16
 
 optimizer = "AdamW" # "AdamW" or "Adam-mini"
 
@@ -125,7 +125,7 @@ weight_decay = 0.1
 grokfast_alpha = 0.98
 grokfast_lamb = 2
 
-use_torch_compile = True # do not toggle if using Mamba
+use_torch_compile = False # do not toggle if using Mamba
 
 device = "cuda" # "cpu", "cuda:0", "cuda:1", ...
 dtype = "bfloat16" # "float32", "float16" or "bfloat16" (float16 will use a GradScaler)

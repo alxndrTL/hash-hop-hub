@@ -65,9 +65,9 @@ eval_interval = 1000
 num_tasks = 100
 
 # --- model parameters ---
-architecture = "Mamba2" # "Transformer" or "Mamba" or "Mamba2"
+architecture = "Transformer" # "Transformer" or "Mamba" or "Mamba2"
 d_model = 1024
-n_layers = 24
+n_layers = 12
 bias = False
 base_std = 0.02
 

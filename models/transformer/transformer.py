@@ -1,12 +1,12 @@
 import math
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Tuple
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from models.transformer.rotary_embedding import RotaryEmbedding
+from models.transformer.rope import Rotary, apply_rotary_emb
 
 """
 caching is WIP
@@ -20,16 +20,11 @@ class TransformerConfig:
     n_heads: int
     max_len: int # maximum sequence length (for positional embedding, super attn and mask if no FA)
     dropout: float = 0.
-    bias: bool = False
     norm_eps: float = 1e-5
     base_std: float = 0.02
     
     d_ff: int = None
-    n_kv_heads: Optional[int] = None # None=n_heads is MHA, 1 is MQA (multi query attention), in between is GQA (grouped)
-    
-    optimised_attn: bool = False
-    efficient_attn: bool = False
-    super_attn: bool = False # overwrites flash to False
+    n_kv_heads: Optional[int] = None # None=n_heads is MHA, 1 is MQA (multi query), in between is GQA (grouped)
 
     pos_emb: str = "absolute" # absolute, rope
     rope_theta: float = 10000
@@ -50,10 +45,6 @@ class TransformerConfig:
         if self.d_ff is None:
             self.d_ff = 4*self.d_model
 
-        # eff/opt/super attn
-        self.optimised_attn = self.optimised_attn or self.efficient_attn or self.super_attn
-        self.efficient_attn = self.efficient_attn or self.super_attn
-
         # muP
         if self.mup:
             self.mup_width_mult = self.d_model / self.mup_base_width
@@ -67,18 +58,12 @@ class Transformer(nn.Module):
 
         if self.config.pos_emb == "absolute":
             self.PE = nn.Embedding(config.max_len, config.d_model)
-            self.layers = nn.ModuleList([DecoderLayer(config) for _ in range(config.n_layers)])
 
-        elif self.config.pos_emb == "rope":
-            PE = RotaryEmbedding(dim=(self.config.d_model//self.config.n_heads)//2, theta=self.config.rope_theta)
-            self.layers = nn.ModuleList([DecoderLayer(config, PE) for _ in range(config.n_layers)])
-
-        else:
-            raise NotImplementedError
+        self.layers = nn.ModuleList([DecoderLayer(config, i+1) for i in range(config.n_layers)])
         
         self.in_dropout = nn.Dropout(config.dropout)
 
-    def forward(self, X, caches=None, seq_pos=0):
+    def forward(self, X, seq_pos=0):
         # X : (B, L, D)
 
         # Y : (B, L, D)
@@ -91,39 +76,31 @@ class Transformer(nn.Module):
         else:
             X = self.in_dropout(X)
 
-        for i, layer in enumerate(self.layers):
-            X, c = layer(X, caches[i] if caches is not None else None) # (B, L, d_model)
-
-            if caches is not None:
-                caches[i] = c
+        for layer in self.layers:
+            X = layer(X) # (B, L, d_model)
         
-        if caches is None:
-            return X
-        else:
-            return X, caches
-    
+        return X
+
 class DecoderLayer(nn.Module):
-    def __init__(self, config: TransformerConfig, rotary_emb: RotaryEmbedding = None):
+    def __init__(self, config: TransformerConfig, depth: int):
         super().__init__()
 
-        self.config = config
+        self.sa_scale = (1 / math.sqrt(2 * config.n_layers))
 
         self.attention_norm = RMSNorm(config.d_model, config.norm_eps, config.mup)
-        self.sa = SelfAttentionMultiHead(config, rotary_emb)
+        self.sa = SelfAttentionMultiHead(config)
+        #self.sa = SelfDifferientialAttentionMultiHead(config, depth)
         self.mlp_norm = RMSNorm(config.d_model, config.norm_eps, config.mup)
         self.mlp = MLP(config)
         
-    def forward(self, X, cache=None):
+    def forward(self, X):
         # X : (B, L, D)
+        # -> Y : (B, L, D)
 
-        # Y : (B, L, D)
-
-        residual = X
-        X, cache = self.sa(self.attention_norm(X), cache)
-        X = residual + X
+        X = X + self.sa_scale * self.sa(self.attention_norm(X))
         X = X + self.mlp(self.mlp_norm(X))
 
-        return X, cache
+        return X
     
     def get_empty_cache(self, batch_size):
         return (None, None)
@@ -132,116 +109,131 @@ class MLP(nn.Module):
     def __init__(self, config: TransformerConfig):
         super().__init__()
 
-        self.fc_1 = nn.Linear(config.d_model, config.d_ff, bias=config.bias)
-        self.fc_2 = nn.Linear(config.d_ff, config.d_model, bias=config.bias)
-        self.fc_3 = nn.Linear(config.d_model, config.d_ff, bias=config.bias)
+        self.fc_1 = nn.Linear(config.d_model, config.d_ff, bias=False)
+        self.fc_2 = nn.Linear(config.d_ff, config.d_model, bias=False)
+        self.fc_3 = nn.Linear(config.d_model, config.d_ff, bias=False)
         self.dropout = nn.Dropout(config.dropout)
 
     def forward(self, x):
         return self.dropout(self.fc_2(F.silu(self.fc_1(x)) * self.fc_3(x)))
 
 class SelfAttentionMultiHead(nn.Module):
-    def __init__(self, config: TransformerConfig, rotary_emb: RotaryEmbedding = None):
+    def __init__(self, config: TransformerConfig):
         super().__init__()
-
         self.config = config
+        
+        self.c_attn = nn.Linear(config.d_model, (config.n_heads + 2 * config.n_kv_heads) * self.config.d_head, bias=False)
+        self.c_proj = nn.Linear(config.d_model, config.d_model, bias=False)
+        self.rotary = Rotary(config.d_head)
 
-        # key, query, value projections for all heads
-        self.query_proj = nn.Linear(config.d_model, config.n_heads * config.d_head, bias=False) # d_query = n_heads*d_head = d_model as in the Transformer paper
+        #self.scale = self.config.mup_attn_mult/self.config.d_head if self.config.mup else 1/math.sqrt(self.config.d_head)
+        self.scale = 1/math.sqrt(self.config.d_head)
 
-        if not self.config.efficient_attn:
-            self.key_proj = nn.Linear(config.d_model, config.n_kv_heads * config.d_head, bias=False)
+    def forward(self, x, cache=None):
+        B, T, _ = x.size()
 
-        if not self.config.optimised_attn:
-            self.value_proj = nn.Linear(config.d_model, config.n_kv_heads * config.d_head, bias=False)
+        # q,k,v computations
+        qkv = self.c_attn(x)
+        q, k, v = qkv.split([self.config.n_heads * self.config.d_head, self.config.n_kv_heads * self.config.d_head, self.config.n_kv_heads * self.config.d_head], dim=-1)
+        q, k, v = map(lambda t: t.view(B, T, -1, self.config.d_head), (q, k, v)) # (B, T, n_heads, d_head)
 
-        # LxL super attention matrix params
-        if config.super_attn:
-            self.k_in_v_proj = nn.Linear(config.max_len, config.max_len, bias=False)
+        # RoPE
+        cos, sin = self.rotary(q)
+        q = apply_rotary_emb(q, cos, sin)
+        k = apply_rotary_emb(k, cos, sin)
 
-        # RoPE embedding
-        self.rotary_emb = rotary_emb
-
-        if not config.flash or config.super_attn:
-            # compute the mask once and for all here 
-            # registrer treats it like a parameter (device, state_dict...) without training
-            mask = torch.full((1, 1, config.max_len, config.max_len), float('-inf'))
-            mask = torch.triu(mask, diagonal=1)
-            self.register_buffer('mask', mask)
-
-        # output projection
-        self.c_proj = nn.Linear(config.d_model, config.d_model, bias=config.bias)
-
-        # regularization
-        self.attn_drop = nn.Dropout(config.dropout)
-        self.resid_dropout = nn.Dropout(config.dropout)
-
-    def forward(self, X, cache=None):
-        # X : (B, L, d_model)
-
-        B, L, _ = X.size()
-
-        # Q,K,V projections
-        Q = self.query_proj(X).view(B, L, self.config.n_heads, self.config.d_head).transpose(1, 2) # (B, n_heads, L, d_query)
-
-        if not self.config.efficient_attn:
-            K = self.key_proj(X).view(B, L, self.config.n_kv_heads, self.config.d_head).transpose(1, 2) # (B, n_kv_heads, L, d_key)
-        else:
-            K = X.view(B, L, self.config.n_heads, self.config.d_head).transpose(1, 2) # (B, n_kv_heads, L, d_key)
-
-        if not self.config.optimised_attn:
-            V = self.value_proj(X).view(B, L, self.config.n_kv_heads, self.config.d_head).transpose(1, 2) # (B, n_heads, L, d_head=d_value)
-        else:
-            V = X.view(B, L, self.config.n_heads, self.config.d_head).transpose(1, 2) # (B, n_heads, L, d_head=d_value)
-
-        # kv cache implementation
-        if cache is not None:
-            past_keys, past_values = cache
-            
-            # not first in the sequence
-            if past_keys is not None:
-                K = torch.cat([past_keys, K], dim=2)
-                V = torch.cat([past_values, V], dim=2)
-            
-            cache = (K, V) # prepare cache for next token
-
-        # RoPE
-        if self.config.pos_emb == "rope" and cache is None:
-            Q = self.rotary_emb.rotate_queries_or_keys(Q)
-            K = self.rotary_emb.rotate_queries_or_keys(K)
-        elif self.config.pos_emb == "rope":
-            Q, K = self.rotary_emb.rotate_queries_with_cached_keys(Q, K)
+        q, k, v = map(lambda t: t.transpose(1, 2), (q, k, v))  # (B, n_heads, T, d_head)
 
         # GQA : expand K and V to compute standard attention
-        if not self.config.efficient_attn:
-            K = repeat_kv(K, self.config.kv_rep)
-        if not self.config.optimised_attn:
-            V = repeat_kv(V, self.config.kv_rep)
+        k = repeat_kv(k, self.config.kv_rep)
+        v = repeat_kv(v, self.config.kv_rep)
 
-        # attn computation (torch or manual)
-        scale = self.config.mup_attn_mult/self.config.d_head if self.config.mup else 1/math.sqrt(self.config.d_head)
+        # attention computation
+        y = F.scaled_dot_product_attention(q, k, v, is_causal=(cache is None), scale=self.scale)
+        y = y.transpose(1, 2).contiguous().view(B, T, self.config.d_model)
+        
+        # output projection
+        y = self.c_proj(y)
+        return y
+    
+# todo : handle n_kv_heads!=n_heads
+def lambda_init_fn(depth): # depth in [|1, L|]
+    return 0.8 - 0.6 * math.exp(-0.3 * (depth-1))
 
-        if self.config.flash and not self.config.super_attn:
-            attention = F.scaled_dot_product_attention(Q, K, V, attn_mask=None, dropout_p=self.config.dropout if self.training else 0, is_causal=not(L==1), scale=scale)
-        else:
-            QK_T = Q @ torch.transpose(K, 2, 3) # (B, n_heads, L, L)
-            QK_T = QK_T + self.mask[:, :, :L, :L]
+class SelfDifferientialAttentionMultiHead(nn.Module):
+    def __init__(self, config: TransformerConfig, depth: int):
+        super().__init__()
+        self.config = config
 
-            attention_scores = torch.softmax(scale * QK_T, dim=3) # (B, n_heads, L, L)
+        self.n_heads = config.n_heads
+        self.d_head = config.d_head//2
+        self.kv_rep = 1
+        
+        self.c_attn = nn.Linear(config.d_model, (2 * self.n_heads + 2 * 2 * self.n_heads) * self.d_head, bias=False)
+        self.c_proj = nn.Linear(config.d_model, config.d_model, bias=False)
+        self.rotary = Rotary(self.d_head)
 
-            if self.config.super_attn:
-                assert L == self.config.max_len, "Super Attention only currently supports a seq len of max_len"
-                attention = self.attn_drop(attention_scores) @ self.k_in_v_proj.weight[:L, :L] @ V # (B, n_h, L, d_value=d_head)
-            else:
-                attention = self.attn_drop(attention_scores) @ V # (B, n_h, L, d_value=d_head)
+        self.lambda_init = lambda_init_fn(depth)
+        self.lambda_q1 = nn.Parameter(torch.zeros(self.d_head, dtype=torch.float32).normal_(mean=0,std=0.1))
+        self.lambda_k1 = nn.Parameter(torch.zeros(self.d_head, dtype=torch.float32).normal_(mean=0,std=0.1))
+        self.lambda_q2 = nn.Parameter(torch.zeros(self.d_head, dtype=torch.float32).normal_(mean=0,std=0.1))
+        self.lambda_k2 = nn.Parameter(torch.zeros(self.d_head, dtype=torch.float32).normal_(mean=0,std=0.1))
+        self.subln = RMSNorm(dim=2*self.d_head, eps=1e-5, use_mup=False)
 
-        attention = attention.transpose(1, 2) # (B, L, n_heafs, d_head)
-        y = attention.contiguous().view(B, L, self.config.d_model) # n_heads * d_head = d_model
+        self.scale = 1/math.sqrt(self.config.d_head)
 
-        y = self.resid_dropout(self.c_proj(y))
+    def forward(self, x, cache=None):
+        B, T, _ = x.size()
 
-        return y, cache
+        # q,k,v computations
+        qkv = self.c_attn(x) # (B, L, n_heads*d_head+2*n_kv_heads*d_head)
+        q, k, v = qkv.split([2 * self.n_heads * self.d_head, 2 * self.n_heads * self.d_head, 2 * self.n_heads * self.d_head], dim=-1)
+        q, k = map(lambda t: t.view(B, T, -1, self.d_head), (q, k)) # (B, T, 2*n_heads, d_head)
+        v = v.view(B, T, self.n_heads, 2 * self.d_head)
 
+        # RoPE
+        cos, sin = self.rotary(q)
+        q = apply_rotary_emb(q, cos, sin)
+        k = apply_rotary_emb(k, cos, sin)
+
+        q, k, v = map(lambda t: t.transpose(1, 2), (q, k, v))  # q,k : (B, 2*n_heads, T, d_head), v : (B, n_heads, T, 2*d_head)
+        q = q.reshape(B, 2, self.n_heads, T, self.d_head)
+        k = k.reshape(B, 2, self.n_heads, T, self.d_head)
+
+        q1, q2 = q[:, 0], q[:, 1] # (B, n_heads, T, d_head)
+        k1, k2 = k[:, 0], k[:, 1] # (B, n_heads, T, d_head)
+
+        attn1 = F.scaled_dot_product_attention(q1, k1, v, is_causal=(cache is None), scale=self.scale)
+        attn2 = F.scaled_dot_product_attention(q2, k2, v, is_causal=(cache is None), scale=self.scale)
+        # attn12 : (B, n_heads, T, 2*d_head)
+
+        lambda_1 = torch.exp(torch.sum(self.lambda_q1 * self.lambda_k1, dim=-1).float()).type_as(q)
+        lambda_2 = torch.exp(torch.sum(self.lambda_q2 * self.lambda_k2, dim=-1).float()).type_as(q)
+        lambda_full = lambda_1 - lambda_2 + self.lambda_init
+
+        attn = attn1 - lambda_full * attn2 # (B, n_heads, T, 2*d_head)
+
+        attn = self.subln(attn)
+        attn = attn * (1 - self.lambda_init)
+
+        attn = attn.transpose(1, 2).contiguous().view(B, T, self.config.d_model)
+        y = self.c_proj(attn)
+
+        #attn = attn.reshape(bsz, tgt_len, self.num_heads * 2 * self.head_dim)
+
+        # GQA : expand K and V to compute standard attention
+        #k = repeat_kv(k, self.config.kv_rep)
+        #v = repeat_kv(v, self.config.kv_rep)
+
+        # attention computation
+        #y = F.scaled_dot_product_attention(q, k, v, is_causal=(cache is None), scale=self.scale)
+        #y = y.transpose(1, 2).contiguous().view(B, T, self.config.d_model)
+        
+        # output projection
+        #y = self.c_proj(y)
+        return y
+
+# todo : remove dim, use_mup
 class RMSNorm(nn.Module):
     def __init__(self, dim: int, eps: float, use_mup: bool):
         super().__init__()
@@ -250,19 +242,20 @@ class RMSNorm(nn.Module):
         self.eps = eps
 
         # https://arxiv.org/abs/2404.05728, RMSNorm gains prevents muTransfer (section 4.2.3)
-        if not use_mup:
-            self.weight = nn.Parameter(torch.ones(dim))
+        #if not use_mup:
+        #    self.weight = nn.Parameter(torch.ones(dim))
 
     def _norm(self, x):
         return x * torch.rsqrt(x.pow(2).mean(-1, keepdim=True) + self.eps)
 
     def forward(self, x):
         output = self._norm(x.float()).type_as(x)
+        return output
 
-        if not self.use_mup:
-            return output * self.weight
-        else:
-            return output
+        #if not self.use_mup:
+        #    return output * self.weight
+        #else:
+        #    return output
 
 # taken from modeling_jamba.py (jamba official implementation)
 # the same as the one in llama2.c model.py, but dim of repeat is 1 instead of 2

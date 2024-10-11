@@ -21,13 +21,14 @@ from models.mamba.mamba2 import Mamba2, Mamba2Config
 from models.mamba.mamba import Mamba, MambaConfig
 
 class LM(nn.Module):
-    def __init__(self, model_config: Union[TransformerConfig, MambaConfig, Mamba2Config], vocab_size: int):
+    def __init__(self, model_config: Union[TransformerConfig, MambaConfig, Mamba2Config], vocab_size: int, rng: torch.Generator = None):
         super().__init__()
 
         self.config = model_config
         self.vocab_size = vocab_size
+        self.rng = rng
 
-        self.embedding = nn.Embedding(self.vocab_size, self.config.d_model, padding_idx=0)
+        self.embedding = nn.Embedding(self.vocab_size, self.config.d_model)
         
         if isinstance(self.config, TransformerConfig):
             self.core = Transformer(self.config)
@@ -41,25 +42,28 @@ class LM(nn.Module):
         self.out_norm = RMSNorm(self.config.d_model, self.config.norm_eps, self.config.mup)
 
         self.lm_head = nn.Linear(self.config.d_model, self.vocab_size, bias=False)
-        #self.embedding.weight = self.lm_head.weight
+        self.embedding.weight = self.lm_head.weight
+
+        if rng is None:
+            rng = torch.Generator()
 
         if self.config.mup and isinstance(self.config, TransformerConfig):
             for pn, p in self.named_parameters():
-                if any(pn.endswith(w) for w in ['sa.key_proj.weight','sa.value_proj.weight', 'sa.c_proj.weight', 'mlp.fc_1.weight', 'mlp.fc_2.weight', 'mlp.fc_3.weight']):
+                if any(pn.endswith(w) for w in ['sa.c_attn.weight', 'sa.c_proj.weight', 'mlp.fc_1.weight', 'mlp.fc_2.weight', 'mlp.fc_3.weight']):
                     std = self.config.base_std
 
-                    if any(pn.endswith(w) for w in ['sa.c_proj.weight', 'mlp.fc_3.weight']):
+                    if any(pn.endswith(w) for w in ['sa.c_proj.weight', 'mlp.fc_2.weight']):
                         std = std / math.sqrt(2 * self.config.n_layers)
                     
-                    torch.nn.init.normal_(p, mean=0.0, std=std / math.sqrt(self.config.mup_width_mult))
-                elif pn.endswith('sa.query_proj.weight'):
-                    torch.nn.init.zeros_(p) # init query proj to zeros
+                    torch.nn.init.normal_(p, mean=0.0, std=std / math.sqrt(self.config.mup_width_mult), generator=self.rng)
+
+                    #if pn.endswith('sa.c_attn.weight'):
+                    #    torch.nn.init.zeros_(p[self.config.d_model:]) # init query proj to 0
+
                 elif pn == "embedding.weight":
-                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std)
-                elif pn == "lm_head.weight":
-                    torch.nn.init.zeros_(p)
+                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std, generator=self.rng)
                 elif pn == "core.PE.weight":
-                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std)
+                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std, generator=self.rng)
                 else:
                     # here, we only have biases and rotary_emb.freqs
                     assert p.dim() == 1, f"a 2d param ({pn}) has not been filtered out for init. please check."
@@ -78,13 +82,13 @@ class LM(nn.Module):
                     if 'mixer.dt_proj.weight' in pn:
                         std = self.config.dt_rank**-0.5 * self.config.dt_scale
 
-                    torch.nn.init.normal_(p, mean=0.0, std=std / math.sqrt(self.config.mup_width_mult))
+                    torch.nn.init.normal_(p, mean=0.0, std=std / math.sqrt(self.config.mup_width_mult), generator=self.rng)
                 elif 'mixer.x_BC_proj.weight' in pn:
                     torch.nn.init.zeros_(p[self.config.dt_rank:])
                 elif 'mixer.conv1d.weight' in pn:
                     torch.nn.init.zeros_(p)
                 elif pn == "embedding.weight":
-                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std)
+                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std, generator=self.rng)
                 elif pn == "lm_head.weight":
                     torch.nn.init.zeros_(p)
                 elif any(pn.endswith(w) for w in ['mixer.A_log', 'mixer.D']):
@@ -105,13 +109,13 @@ class LM(nn.Module):
                     if 'mixer.out_proj.weight' in pn:
                         std = std / math.sqrt(2 * self.config.n_layers)
 
-                    torch.nn.init.normal_(p, mean=0.0, std=std / math.sqrt(self.config.mup_width_mult))
+                    torch.nn.init.normal_(p, mean=0.0, std=std / math.sqrt(self.config.mup_width_mult), generator=self.rng)
                 
                 elif 'mixer.conv1d.weight' in pn:
                     torch.nn.init.zeros_(p)
                 
                 elif pn == "embedding.weight":
-                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std)
+                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std, generator=self.rng)
                 
                 elif pn == "lm_head.weight":
                     torch.nn.init.zeros_(p)
@@ -128,10 +132,10 @@ class LM(nn.Module):
         else: # transformer and mamba
             self.apply(self._init_weights)
             for pn, p in self.named_parameters():
-                if pn.endswith('fc_3.weight') or pn.endswith('c_proj.weight') or pn.endswith('mixer.out_proj.weight'):
-                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std/math.sqrt(2 * self.config.n_layers))
+                if pn.endswith('fc_2.weight') or pn.endswith('c_proj.weight') or pn.endswith('mixer.out_proj.weight'):
+                    torch.nn.init.normal_(p, mean=0.0, std=self.config.base_std/math.sqrt(2 * self.config.n_layers))#, generator=self.rng)
 
-    def forward(self, tokens, caches=None, seq_pos=0):
+    def forward(self, tokens, targets=None, caches=None, prompt_len=None, seq_pos=0):
         # tokens : (B, L)
 
         # logits : (B, L, vocab_size)
@@ -141,15 +145,21 @@ class LM(nn.Module):
             x = self.core(x)
         else:
             x, caches = self.core(x, caches, seq_pos)
+
         x = self.out_norm(x)
 
         if self.config.mup:
             x = x / self.config.mup_width_mult
 
         logits = self.lm_head(x)
-
-        if caches is None:
-            return logits
+        
+        if targets is not None:
+            logits = logits[:, prompt_len-1+8:].contiguous() # hashhop
+            #logits = logits[:, prompt_len-1:].contiguous() # copy
+            logits = logits.view(-1, logits.size(-1))
+            loss = F.cross_entropy(logits, targets[:, prompt_len-1+8:].contiguous().view(-1), ignore_index=0) # hashhop
+            #loss = F.cross_entropy(logits, y[:, prompt_len-1:].contiguous().view(-1), ignore_index=0) # copy
+            return loss
         else:
             return logits, caches
         
@@ -369,41 +379,30 @@ class LM(nn.Module):
         self.train()
 
         return prompt[:, -num_tokens:]
-        
-    def forward_up_to(self, tokens, layer):
-        # tokens : (B, L)
-        # layer (1->n_layers): will stop the forward pass just after this layer
-
-        # x : (B, L, D) activations after {layer}
-
-        x = self.embedding(tokens)
-        x = self.core(x, stop_at_layer=layer)
-
-        return x
     
     # non-muP init
     # taken from llama2.c
     def _init_weights(self, module):
         if isinstance(module, nn.Linear):
-            torch.nn.init.normal_(module.weight, mean=0.0, std=self.config.base_std)
+            torch.nn.init.normal_(module.weight, mean=0.0, std=self.config.base_std)#, generator=self.rng)
             if module.bias is not None:
                 torch.nn.init.zeros_(module.bias)
         elif isinstance(module, nn.Embedding):
-            torch.nn.init.normal_(module.weight, mean=0.0, std=self.config.base_std)
+            torch.nn.init.normal_(module.weight, mean=0.0, std=self.config.base_std)#, generator=self.rng)
 
     # adapted from llama2.c, with muP
-    def configure_optimizers(self, weight_decay, learning_rate, betas, device_type):
+    def configure_optimizers(self, optimizer, weight_decay, learning_rate, betas, device_type, beta3=None, alpha=None, T_ab3=None):
         param_dict = {pn: p for pn, p in self.named_parameters()}
         param_dict = {pn: p for pn, p in param_dict.items() if p.requires_grad}
 
         if self.config.mup and isinstance(self.config, TransformerConfig):
-            mup_params_keys = set([pn for pn in param_dict.keys() if any(pn.endswith(w) for w in ['sa.query_proj.weight', 'sa.key_proj.weight','sa.value_proj.weight', 'sa.c_proj.weight', 'mlp.fc_1.weight', 'mlp.fc_2.weight', 'mlp.fc_3.weight'])])
+            mup_params_keys = set([pn for pn in param_dict.keys() if any(pn.endswith(w) for w in ['sa.c_attn.weight', 'sa.c_proj.weight', 'mlp.fc_1.weight', 'mlp.fc_2.weight', 'mlp.fc_3.weight'])])
             dim2_params_keys = set([pn for pn in param_dict.keys() if param_dict[pn].dim() >= 2])
 
-            assert dim2_params_keys.difference(mup_params_keys) == ({'embedding.weight', 'lm_head.weight'} if self.config.pos_emb == "rope" else {'embedding.weight', 'lm_head.weight', 'core.PE.weight'})
+            assert dim2_params_keys.difference(mup_params_keys) == ({'embedding.weight'} if self.config.pos_emb == "rope" else {'embedding.weight', 'core.PE.weight'})
             assert mup_params_keys.difference(dim2_params_keys) == set()
 
-            dim2_params_keys = dim2_params_keys.difference(mup_params_keys) # only biases, embd and lm_head left
+            dim2_params_keys = dim2_params_keys.difference(mup_params_keys) # only biases and embd left
 
             mup_parameters = [p for n, p in param_dict.items() if n in mup_params_keys]
             decay_params = [p for n, p in param_dict.items() if n in dim2_params_keys]
@@ -456,14 +455,17 @@ class LM(nn.Module):
                 {'params': nodecay_params, 'weight_decay': 0.0, 'lr': learning_rate}
             ]
 
-        # Create AdamW optimizer and use the fused version if it is available
-        fused_available = 'fused' in inspect.signature(torch.optim.AdamW).parameters
-        use_fused = fused_available and device_type == 'cuda'
-        optimizer = torch.optim.AdamW(optim_groups, betas=betas, fused=use_fused)
+        if optimizer == "AdamW":
+            # Create AdamW optimizer and use the fused version if it is available
+            fused_available = 'fused' in inspect.signature(torch.optim.AdamW).parameters
+            use_fused = fused_available and device_type == 'cuda'
+            optimizer = torch.optim.AdamW(optim_groups, betas=betas, fused=use_fused)
+        else:
+            raise NotImplementedError
 
         return optimizer
 
-def load_model(load_dir, device="cuda"):
+def load_model(load_dir, vocab_size, device="cuda"):
     config_dir = os.path.join(load_dir, 'config.json')
     checkpoint_dir = os.path.join(load_dir, 'model.pth')
 
@@ -480,7 +482,7 @@ def load_model(load_dir, device="cuda"):
     else:
         raise NotImplementedError
 
-    model = LM(config, vocab_size=52+3).to(device)
+    model = LM(config, vocab_size=vocab_size).to(device)
     checkpoint = torch.load(checkpoint_dir, map_location=device)
     model.load_state_dict(checkpoint['model'])
     model.eval()

@@ -1,0 +1,449 @@
+wandb: Using wandb-core as the SDK backend. Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: alexandretl. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.18.3
+wandb: Run data is saved locally in /workspace/hash-hop-hub/wandb/run-20241011_070735-fdcpporx
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run quiet-moon-73
+wandb: ⭐️ View project at https://wandb.ai/alexandretl/hash-hop-hub
+wandb: 🚀 View run at https://wandb.ai/alexandretl/hash-hop-hub/runs/fdcpporx
+Run name: quiet-moon-73.
+Tokens processed per iteration: 262144
+Number of micro batches: 16
+Model initialized. Number of parameters : 84976896.
+Training is starting.
+Iter 0000/4768. train loss: 4.381. valid loss: 4.376. lr: 0.00000. 110528 tok/s. uptime: 0.0h1.0min. ETA: -1.0h58.0min
+Iter 0012/4768. train loss: 3.916. valid loss: 3.906. lr: 0.00002. 127403 tok/s. uptime: 0.0h0.0min. ETA: 2.0h56.0min
+Iter 0024/4768. train loss: 3.897. valid loss: 3.894. lr: 0.00004. 126899 tok/s. uptime: 0.0h0.0min. ETA: 2.0h56.0min
+Iter 0036/4768. train loss: 3.874. valid loss: 3.869. lr: 0.00006. 126990 tok/s. uptime: 0.0h1.0min. ETA: 2.0h56.0min
+Iter 0048/4768. train loss: 3.853. valid loss: 3.858. lr: 0.00007. 127014 tok/s. uptime: 0.0h1.0min. ETA: 2.0h55.0min
+Iter 0060/4768. train loss: 3.850. valid loss: 3.851. lr: 0.00009. 127120 tok/s. uptime: 0.0h2.0min. ETA: 2.0h55.0min
+Iter 0072/4768. train loss: 3.563. valid loss: 3.598. lr: 0.00011. 127146 tok/s. uptime: 0.0h2.0min. ETA: 2.0h55.0min
+Iter 0084/4768. train loss: 3.521. valid loss: 3.562. lr: 0.00013. 127151 tok/s. uptime: 0.0h3.0min. ETA: 2.0h54.0min
+Iter 0096/4768. train loss: 3.515. valid loss: 3.521. lr: 0.00015. 127095 tok/s. uptime: 0.0h3.0min. ETA: 2.0h54.0min
+Iter 0108/4768. train loss: 3.519. valid loss: 3.519. lr: 0.00016. 127472 tok/s. uptime: 0.0h4.0min. ETA: 2.0h53.0min
+Iter 0120/4768. train loss: 3.519. valid loss: 3.519. lr: 0.00018. 127511 tok/s. uptime: 0.0h4.0min. ETA: 2.0h53.0min
+Iter 0132/4768. train loss: 3.517. valid loss: 3.517. lr: 0.00020. 127249 tok/s. uptime: 0.0h4.0min. ETA: 2.0h53.0min
+Iter 0144/4768. train loss: 3.517. valid loss: 3.516. lr: 0.00022. 127281 tok/s. uptime: 0.0h5.0min. ETA: 2.0h52.0min
+Iter 0156/4768. train loss: 3.519. valid loss: 3.517. lr: 0.00024. 127399 tok/s. uptime: 0.0h5.0min. ETA: 2.0h52.0min
+Iter 0168/4768. train loss: 3.519. valid loss: 3.532. lr: 0.00025. 127382 tok/s. uptime: 0.0h6.0min. ETA: 2.0h52.0min
+Iter 0180/4768. train loss: 3.518. valid loss: 3.520. lr: 0.00027. 127023 tok/s. uptime: 0.0h6.0min. ETA: 2.0h51.0min
+Iter 0192/4768. train loss: 3.518. valid loss: 3.519. lr: 0.00029. 126914 tok/s. uptime: 0.0h7.0min. ETA: 2.0h51.0min
+Iter 0204/4768. train loss: 3.519. valid loss: 3.518. lr: 0.00030. 127035 tok/s. uptime: 0.0h7.0min. ETA: 2.0h50.0min
+Iter 0216/4768. train loss: 3.517. valid loss: 3.516. lr: 0.00030. 126997 tok/s. uptime: 0.0h8.0min. ETA: 2.0h50.0min
+Iter 0228/4768. train loss: 3.528. valid loss: 3.521. lr: 0.00030. 126935 tok/s. uptime: 0.0h8.0min. ETA: 2.0h49.0min
+Iter 0240/4768. train loss: 3.519. valid loss: 3.518. lr: 0.00030. 126991 tok/s. uptime: 0.0h8.0min. ETA: 2.0h49.0min
+Iter 0252/4768. train loss: 3.516. valid loss: 3.516. lr: 0.00030. 127051 tok/s. uptime: 0.0h9.0min. ETA: 2.0h48.0min
+Iter 0264/4768. train loss: 3.519. valid loss: 3.518. lr: 0.00030. 127104 tok/s. uptime: 0.0h9.0min. ETA: 2.0h48.0min
+Iter 0276/4768. train loss: 3.516. valid loss: 3.516. lr: 0.00030. 127009 tok/s. uptime: 0.0h10.0min. ETA: 2.0h48.0min
+Iter 0288/4768. train loss: 3.517. valid loss: 3.514. lr: 0.00030. 126752 tok/s. uptime: 0.0h10.0min. ETA: 2.0h47.0min
+Iter 0300/4768. train loss: 3.514. valid loss: 3.515. lr: 0.00030. 126842 tok/s. uptime: 0.0h11.0min. ETA: 2.0h47.0min
+Iter 0312/4768. train loss: 3.514. valid loss: 3.710. lr: 0.00030. 126932 tok/s. uptime: 0.0h11.0min. ETA: 2.0h46.0min
+Iter 0324/4768. train loss: 3.515. valid loss: 3.516. lr: 0.00030. 127134 tok/s. uptime: 0.0h12.0min. ETA: 2.0h46.0min
+Iter 0336/4768. train loss: 3.518. valid loss: 3.517. lr: 0.00030. 127131 tok/s. uptime: 0.0h12.0min. ETA: 2.0h45.0min
+Iter 0348/4768. train loss: 3.514. valid loss: 3.514. lr: 0.00030. 127056 tok/s. uptime: 0.0h13.0min. ETA: 2.0h45.0min
+Iter 0360/4768. train loss: 3.514. valid loss: 3.512. lr: 0.00030. 127077 tok/s. uptime: 0.0h13.0min. ETA: 2.0h45.0min
+Iter 0372/4768. train loss: 3.512. valid loss: 3.512. lr: 0.00030. 127074 tok/s. uptime: 0.0h13.0min. ETA: 2.0h44.0min
+Iter 0384/4768. train loss: 3.507. valid loss: 3.509. lr: 0.00030. 127049 tok/s. uptime: 0.0h14.0min. ETA: 2.0h44.0min
+Iter 0396/4768. train loss: 3.505. valid loss: 3.506. lr: 0.00030. 127333 tok/s. uptime: 0.0h14.0min. ETA: 2.0h43.0min
+Iter 0408/4768. train loss: 3.501. valid loss: 3.506. lr: 0.00030. 126827 tok/s. uptime: 0.0h15.0min. ETA: 2.0h43.0min
+Iter 0420/4768. train loss: 3.494. valid loss: 3.494. lr: 0.00030. 127006 tok/s. uptime: 0.0h15.0min. ETA: 2.0h42.0min
+Iter 0432/4768. train loss: 3.496. valid loss: 3.494. lr: 0.00030. 127009 tok/s. uptime: 0.0h16.0min. ETA: 2.0h42.0min
+Iter 0444/4768. train loss: 3.487. valid loss: 3.481. lr: 0.00030. 127003 tok/s. uptime: 0.0h16.0min. ETA: 2.0h42.0min
+Iter 0456/4768. train loss: 3.481. valid loss: 3.477. lr: 0.00030. 127017 tok/s. uptime: 0.0h17.0min. ETA: 2.0h41.0min
+Iter 0468/4768. train loss: 3.464. valid loss: 3.461. lr: 0.00030. 127055 tok/s. uptime: 0.0h17.0min. ETA: 2.0h41.0min
+Iter 0480/4768. train loss: 3.450. valid loss: 3.453. lr: 0.00030. 127033 tok/s. uptime: 0.0h17.0min. ETA: 2.0h40.0min
+Iter 0492/4768. train loss: 3.453. valid loss: 3.437. lr: 0.00030. 127038 tok/s. uptime: 0.0h18.0min. ETA: 2.0h40.0min
+Iter 0504/4768. train loss: 3.438. valid loss: 3.441. lr: 0.00030. 127031 tok/s. uptime: 0.0h18.0min. ETA: 2.0h39.0min
+Iter 0516/4768. train loss: 3.398. valid loss: 3.411. lr: 0.00030. 127047 tok/s. uptime: 0.0h19.0min. ETA: 2.0h39.0min
+Iter 0528/4768. train loss: 3.416. valid loss: 3.399. lr: 0.00030. 127023 tok/s. uptime: 0.0h19.0min. ETA: 2.0h38.0min
+Iter 0540/4768. train loss: 3.403. valid loss: 3.402. lr: 0.00030. 126996 tok/s. uptime: 0.0h20.0min. ETA: 2.0h38.0min
+Iter 0552/4768. train loss: 3.389. valid loss: 3.388. lr: 0.00030. 127022 tok/s. uptime: 0.0h20.0min. ETA: 2.0h37.0min
+Iter 0564/4768. train loss: 3.377. valid loss: 3.376. lr: 0.00030. 127152 tok/s. uptime: 0.0h21.0min. ETA: 2.0h37.0min
+Iter 0576/4768. train loss: 3.367. valid loss: 3.364. lr: 0.00030. 127172 tok/s. uptime: 0.0h21.0min. ETA: 2.0h37.0min
+Iter 0588/4768. train loss: 3.345. valid loss: 3.337. lr: 0.00030. 127081 tok/s. uptime: 0.0h22.0min. ETA: 2.0h36.0min
+Iter 0600/4768. train loss: 3.319. valid loss: 3.327. lr: 0.00030. 126908 tok/s. uptime: 0.0h22.0min. ETA: 2.0h36.0min
+Iter 0612/4768. train loss: 3.327. valid loss: 3.320. lr: 0.00030. 127160 tok/s. uptime: 0.0h22.0min. ETA: 2.0h35.0min
+Iter 0624/4768. train loss: 3.264. valid loss: 3.290. lr: 0.00030. 126559 tok/s. uptime: 0.0h23.0min. ETA: 2.0h35.0min
+Iter 0636/4768. train loss: 3.312. valid loss: 3.265. lr: 0.00030. 126870 tok/s. uptime: 0.0h23.0min. ETA: 2.0h34.0min
+Iter 0648/4768. train loss: 3.286. valid loss: 3.257. lr: 0.00030. 126955 tok/s. uptime: 0.0h24.0min. ETA: 2.0h34.0min
+Iter 0660/4768. train loss: 3.222. valid loss: 3.249. lr: 0.00030. 126955 tok/s. uptime: 0.0h24.0min. ETA: 2.0h34.0min
+Iter 0672/4768. train loss: 3.243. valid loss: 3.228. lr: 0.00030. 127298 tok/s. uptime: 0.0h25.0min. ETA: 2.0h33.0min
+Iter 0684/4768. train loss: 3.213. valid loss: 3.215. lr: 0.00030. 127089 tok/s. uptime: 0.0h25.0min. ETA: 2.0h33.0min
+Iter 0696/4768. train loss: 3.185. valid loss: 3.160. lr: 0.00030. 126880 tok/s. uptime: 0.0h26.0min. ETA: 2.0h32.0min
+Iter 0708/4768. train loss: 3.165. valid loss: 3.166. lr: 0.00030. 126864 tok/s. uptime: 0.0h26.0min. ETA: 2.0h32.0min
+Iter 0720/4768. train loss: 3.158. valid loss: 3.138. lr: 0.00030. 127055 tok/s. uptime: 0.0h26.0min. ETA: 2.0h31.0min
+Iter 0732/4768. train loss: 3.131. valid loss: 3.144. lr: 0.00030. 127047 tok/s. uptime: 0.0h27.0min. ETA: 2.0h31.0min
+Iter 0744/4768. train loss: 3.034. valid loss: 3.089. lr: 0.00030. 127080 tok/s. uptime: 0.0h27.0min. ETA: 2.0h30.0min
+Iter 0756/4768. train loss: 3.033. valid loss: 3.084. lr: 0.00030. 127030 tok/s. uptime: 0.0h28.0min. ETA: 2.0h30.0min
+Iter 0768/4768. train loss: 3.073. valid loss: 3.030. lr: 0.00030. 127162 tok/s. uptime: 0.0h28.0min. ETA: 2.0h29.0min
+Iter 0780/4768. train loss: 3.014. valid loss: 3.047. lr: 0.00030. 126936 tok/s. uptime: 0.0h29.0min. ETA: 2.0h29.0min
+Iter 0792/4768. train loss: 3.106. valid loss: 3.011. lr: 0.00030. 126935 tok/s. uptime: 0.0h29.0min. ETA: 2.0h29.0min
+Iter 0804/4768. train loss: 2.961. valid loss: 3.018. lr: 0.00030. 127020 tok/s. uptime: 0.0h30.0min. ETA: 2.0h28.0min
+Iter 0816/4768. train loss: 2.990. valid loss: 2.992. lr: 0.00030. 127013 tok/s. uptime: 0.0h30.0min. ETA: 2.0h28.0min
+Iter 0828/4768. train loss: 2.973. valid loss: 2.997. lr: 0.00030. 126931 tok/s. uptime: 0.0h31.0min. ETA: 2.0h27.0min
+Iter 0840/4768. train loss: 2.877. valid loss: 2.953. lr: 0.00030. 126938 tok/s. uptime: 0.0h31.0min. ETA: 2.0h27.0min
+Iter 0852/4768. train loss: 3.028. valid loss: 2.944. lr: 0.00030. 126978 tok/s. uptime: 0.0h31.0min. ETA: 2.0h26.0min
+Iter 0864/4768. train loss: 2.902. valid loss: 2.918. lr: 0.00030. 126931 tok/s. uptime: 0.0h32.0min. ETA: 2.0h26.0min
+Iter 0876/4768. train loss: 2.920. valid loss: 2.834. lr: 0.00030. 126979 tok/s. uptime: 0.0h32.0min. ETA: 2.0h25.0min
+Iter 0888/4768. train loss: 2.814. valid loss: 2.876. lr: 0.00030. 126844 tok/s. uptime: 0.0h33.0min. ETA: 2.0h25.0min
+Iter 0900/4768. train loss: 2.784. valid loss: 2.791. lr: 0.00030. 126978 tok/s. uptime: 0.0h33.0min. ETA: 2.0h25.0min
+Iter 0912/4768. train loss: 2.816. valid loss: 2.761. lr: 0.00030. 126964 tok/s. uptime: 0.0h34.0min. ETA: 2.0h24.0min
+Iter 0924/4768. train loss: 2.701. valid loss: 2.779. lr: 0.00030. 126951 tok/s. uptime: 0.0h34.0min. ETA: 2.0h24.0min
+Iter 0936/4768. train loss: 2.783. valid loss: 2.767. lr: 0.00030. 126978 tok/s. uptime: 0.0h35.0min. ETA: 2.0h23.0min
+Iter 0948/4768. train loss: 2.646. valid loss: 2.721. lr: 0.00030. 126972 tok/s. uptime: 0.0h35.0min. ETA: 2.0h23.0min
+Iter 0960/4768. train loss: 2.565. valid loss: 2.714. lr: 0.00030. 126945 tok/s. uptime: 0.0h36.0min. ETA: 2.0h22.0min
+Iter 0972/4768. train loss: 2.551. valid loss: 2.693. lr: 0.00030. 126979 tok/s. uptime: 0.0h36.0min. ETA: 2.0h22.0min
+Iter 0984/4768. train loss: 2.535. valid loss: 2.592. lr: 0.00030. 126984 tok/s. uptime: 0.0h36.0min. ETA: 2.0h21.0min
+Iter 0996/4768. train loss: 2.650. valid loss: 2.603. lr: 0.00030. 126866 tok/s. uptime: 0.0h37.0min. ETA: 2.0h21.0min
+Iter 1008/4768. train loss: 2.570. valid loss: 2.557. lr: 0.00030. 126938 tok/s. uptime: 0.0h37.0min. ETA: 2.0h21.0min
+Iter 1020/4768. train loss: 2.625. valid loss: 2.474. lr: 0.00030. 126922 tok/s. uptime: 0.0h38.0min. ETA: 2.0h20.0min
+Iter 1032/4768. train loss: 2.626. valid loss: 2.461. lr: 0.00030. 126942 tok/s. uptime: 0.0h38.0min. ETA: 2.0h20.0min
+Iter 1044/4768. train loss: 2.498. valid loss: 2.457. lr: 0.00030. 126974 tok/s. uptime: 0.0h39.0min. ETA: 2.0h19.0min
+Iter 1056/4768. train loss: 2.427. valid loss: 2.447. lr: 0.00030. 126964 tok/s. uptime: 0.0h39.0min. ETA: 2.0h19.0min
+Iter 1068/4768. train loss: 2.357. valid loss: 2.299. lr: 0.00030. 126962 tok/s. uptime: 0.0h40.0min. ETA: 2.0h18.0min
+Iter 1080/4768. train loss: 2.314. valid loss: 2.366. lr: 0.00030. 126959 tok/s. uptime: 0.0h40.0min. ETA: 2.0h18.0min
+Iter 1092/4768. train loss: 2.362. valid loss: 2.363. lr: 0.00030. 126978 tok/s. uptime: 0.0h40.0min. ETA: 2.0h17.0min
+Iter 1104/4768. train loss: 2.435. valid loss: 2.386. lr: 0.00030. 126802 tok/s. uptime: 0.0h41.0min. ETA: 2.0h17.0min
+Iter 1116/4768. train loss: 2.345. valid loss: 2.391. lr: 0.00030. 126966 tok/s. uptime: 0.0h41.0min. ETA: 2.0h16.0min
+Iter 1128/4768. train loss: 2.316. valid loss: 2.166. lr: 0.00030. 126938 tok/s. uptime: 0.0h42.0min. ETA: 2.0h16.0min
+Iter 1140/4768. train loss: 2.344. valid loss: 2.345. lr: 0.00030. 126970 tok/s. uptime: 0.0h42.0min. ETA: 2.0h16.0min
+Iter 1152/4768. train loss: 2.235. valid loss: 2.207. lr: 0.00030. 126985 tok/s. uptime: 0.0h43.0min. ETA: 2.0h15.0min
+Iter 1164/4768. train loss: 2.410. valid loss: 2.248. lr: 0.00030. 127040 tok/s. uptime: 0.0h43.0min. ETA: 2.0h15.0min
+Iter 1176/4768. train loss: 2.231. valid loss: 2.244. lr: 0.00030. 126956 tok/s. uptime: 0.0h44.0min. ETA: 2.0h14.0min
+Iter 1188/4768. train loss: 2.293. valid loss: 2.154. lr: 0.00030. 127005 tok/s. uptime: 0.0h44.0min. ETA: 2.0h14.0min
+Iter 1200/4768. train loss: 2.272. valid loss: 2.146. lr: 0.00030. 127056 tok/s. uptime: 0.0h45.0min. ETA: 2.0h13.0min
+Iter 1212/4768. train loss: 2.228. valid loss: 2.179. lr: 0.00030. 126846 tok/s. uptime: 0.0h45.0min. ETA: 2.0h13.0min
+Iter 1224/4768. train loss: 2.332. valid loss: 2.012. lr: 0.00030. 126979 tok/s. uptime: 0.0h45.0min. ETA: 2.0h12.0min
+Iter 1236/4768. train loss: 2.062. valid loss: 2.117. lr: 0.00030. 127018 tok/s. uptime: 0.0h46.0min. ETA: 2.0h12.0min
+Iter 1248/4768. train loss: 2.144. valid loss: 2.029. lr: 0.00030. 126959 tok/s. uptime: 0.0h46.0min. ETA: 2.0h12.0min
+Iter 1260/4768. train loss: 2.012. valid loss: 2.020. lr: 0.00030. 127028 tok/s. uptime: 0.0h47.0min. ETA: 2.0h11.0min
+Iter 1272/4768. train loss: 2.057. valid loss: 2.008. lr: 0.00030. 127193 tok/s. uptime: 0.0h47.0min. ETA: 2.0h11.0min
+Iter 1284/4768. train loss: 1.953. valid loss: 1.947. lr: 0.00030. 127197 tok/s. uptime: 0.0h48.0min. ETA: 2.0h10.0min
+Iter 1296/4768. train loss: 2.066. valid loss: 1.903. lr: 0.00030. 127209 tok/s. uptime: 0.0h48.0min. ETA: 2.0h10.0min
+Iter 1308/4768. train loss: 2.015. valid loss: 1.856. lr: 0.00030. 127059 tok/s. uptime: 0.0h49.0min. ETA: 2.0h9.0min
+Iter 1320/4768. train loss: 1.840. valid loss: 1.899. lr: 0.00030. 127012 tok/s. uptime: 0.0h49.0min. ETA: 2.0h9.0min
+Iter 1332/4768. train loss: 1.789. valid loss: 1.885. lr: 0.00030. 127186 tok/s. uptime: 0.0h49.0min. ETA: 2.0h8.0min
+Iter 1344/4768. train loss: 1.680. valid loss: 1.890. lr: 0.00030. 126871 tok/s. uptime: 0.0h50.0min. ETA: 2.0h8.0min
+Iter 1356/4768. train loss: 1.820. valid loss: 1.704. lr: 0.00030. 127051 tok/s. uptime: 0.0h50.0min. ETA: 2.0h7.0min
+Iter 1368/4768. train loss: 1.692. valid loss: 1.756. lr: 0.00030. 127056 tok/s. uptime: 0.0h51.0min. ETA: 2.0h7.0min
+Iter 1380/4768. train loss: 1.727. valid loss: 1.689. lr: 0.00030. 127020 tok/s. uptime: 0.0h51.0min. ETA: 2.0h7.0min
+Iter 1392/4768. train loss: 1.783. valid loss: 1.819. lr: 0.00030. 126953 tok/s. uptime: 0.0h52.0min. ETA: 2.0h6.0min
+Iter 1404/4768. train loss: 1.763. valid loss: 1.725. lr: 0.00030. 126984 tok/s. uptime: 0.0h52.0min. ETA: 2.0h6.0min
+Iter 1416/4768. train loss: 1.587. valid loss: 1.768. lr: 0.00030. 127096 tok/s. uptime: 0.0h53.0min. ETA: 2.0h5.0min
+Iter 1428/4768. train loss: 1.695. valid loss: 1.735. lr: 0.00030. 127000 tok/s. uptime: 0.0h53.0min. ETA: 2.0h5.0min
+Iter 1440/4768. train loss: 1.755. valid loss: 1.641. lr: 0.00030. 126875 tok/s. uptime: 0.0h54.0min. ETA: 2.0h4.0min
+Iter 1452/4768. train loss: 1.776. valid loss: 1.735. lr: 0.00030. 126834 tok/s. uptime: 0.0h54.0min. ETA: 2.0h4.0min
+Iter 1464/4768. train loss: 1.668. valid loss: 1.629. lr: 0.00030. 126976 tok/s. uptime: 0.0h54.0min. ETA: 2.0h3.0min
+Iter 1476/4768. train loss: 1.685. valid loss: 1.703. lr: 0.00030. 126871 tok/s. uptime: 0.0h55.0min. ETA: 2.0h3.0min
+Iter 1488/4768. train loss: 1.589. valid loss: 1.589. lr: 0.00030. 126853 tok/s. uptime: 0.0h55.0min. ETA: 2.0h3.0min
+Iter 1500/4768. train loss: 1.543. valid loss: 1.687. lr: 0.00030. 126924 tok/s. uptime: 0.0h56.0min. ETA: 2.0h2.0min
+Iter 1512/4768. train loss: 1.873. valid loss: 1.661. lr: 0.00030. 126900 tok/s. uptime: 0.0h56.0min. ETA: 2.0h2.0min
+Iter 1524/4768. train loss: 1.649. valid loss: 1.573. lr: 0.00030. 127364 tok/s. uptime: 0.0h57.0min. ETA: 2.0h1.0min
+Iter 1536/4768. train loss: 1.558. valid loss: 1.583. lr: 0.00030. 127356 tok/s. uptime: 0.0h57.0min. ETA: 2.0h1.0min
+Iter 1548/4768. train loss: 1.575. valid loss: 1.600. lr: 0.00030. 127386 tok/s. uptime: 0.0h58.0min. ETA: 2.0h0.0min
+Iter 1560/4768. train loss: 1.658. valid loss: 1.582. lr: 0.00030. 127380 tok/s. uptime: 0.0h58.0min. ETA: 2.0h0.0min
+Iter 1572/4768. train loss: 1.641. valid loss: 1.540. lr: 0.00030. 127382 tok/s. uptime: 0.0h59.0min. ETA: 1.0h59.0min
+Iter 1584/4768. train loss: 1.593. valid loss: 1.612. lr: 0.00030. 127359 tok/s. uptime: 0.0h59.0min. ETA: 1.0h59.0min
+Iter 1596/4768. train loss: 1.533. valid loss: 1.482. lr: 0.00030. 127393 tok/s. uptime: 0.0h59.0min. ETA: 1.0h59.0min
+Iter 1608/4768. train loss: 1.481. valid loss: 1.506. lr: 0.00030. 127355 tok/s. uptime: 1.0h0.0min. ETA: 1.0h58.0min
+Iter 1620/4768. train loss: 1.460. valid loss: 1.480. lr: 0.00030. 127357 tok/s. uptime: 1.0h0.0min. ETA: 1.0h58.0min
+Iter 1632/4768. train loss: 1.429. valid loss: 1.451. lr: 0.00030. 127273 tok/s. uptime: 1.0h1.0min. ETA: 1.0h57.0min
+Iter 1644/4768. train loss: 1.490. valid loss: 1.506. lr: 0.00030. 127317 tok/s. uptime: 1.0h1.0min. ETA: 1.0h57.0min
+Iter 1656/4768. train loss: 1.517. valid loss: 1.437. lr: 0.00030. 127353 tok/s. uptime: 1.0h2.0min. ETA: 1.0h56.0min
+Iter 1668/4768. train loss: 1.479. valid loss: 1.410. lr: 0.00030. 127260 tok/s. uptime: 1.0h2.0min. ETA: 1.0h56.0min
+Iter 1680/4768. train loss: 1.466. valid loss: 1.442. lr: 0.00030. 127239 tok/s. uptime: 1.0h3.0min. ETA: 1.0h55.0min
+Iter 1692/4768. train loss: 1.430. valid loss: 1.396. lr: 0.00030. 127340 tok/s. uptime: 1.0h3.0min. ETA: 1.0h55.0min
+Iter 1704/4768. train loss: 1.463. valid loss: 1.470. lr: 0.00030. 127694 tok/s. uptime: 1.0h3.0min. ETA: 1.0h54.0min
+Iter 1716/4768. train loss: 1.431. valid loss: 1.356. lr: 0.00030. 127349 tok/s. uptime: 1.0h4.0min. ETA: 1.0h54.0min
+Iter 1728/4768. train loss: 1.434. valid loss: 1.477. lr: 0.00030. 127193 tok/s. uptime: 1.0h4.0min. ETA: 1.0h54.0min
+Iter 1740/4768. train loss: 1.402. valid loss: 1.405. lr: 0.00030. 127369 tok/s. uptime: 1.0h5.0min. ETA: 1.0h53.0min
+Iter 1752/4768. train loss: 1.336. valid loss: 1.399. lr: 0.00030. 127308 tok/s. uptime: 1.0h5.0min. ETA: 1.0h53.0min
+Iter 1764/4768. train loss: 1.301. valid loss: 1.317. lr: 0.00030. 127283 tok/s. uptime: 1.0h6.0min. ETA: 1.0h52.0min
+Iter 1776/4768. train loss: 1.322. valid loss: 1.384. lr: 0.00030. 127376 tok/s. uptime: 1.0h6.0min. ETA: 1.0h52.0min
+Iter 1788/4768. train loss: 1.364. valid loss: 1.316. lr: 0.00030. 127383 tok/s. uptime: 1.0h7.0min. ETA: 1.0h51.0min
+Iter 1800/4768. train loss: 1.370. valid loss: 1.344. lr: 0.00030. 127364 tok/s. uptime: 1.0h7.0min. ETA: 1.0h51.0min
+Iter 1812/4768. train loss: 1.266. valid loss: 1.318. lr: 0.00030. 127366 tok/s. uptime: 1.0h7.0min. ETA: 1.0h50.0min
+Iter 1824/4768. train loss: 1.450. valid loss: 1.297. lr: 0.00030. 127396 tok/s. uptime: 1.0h8.0min. ETA: 1.0h50.0min
+Iter 1836/4768. train loss: 1.355. valid loss: 1.367. lr: 0.00030. 127356 tok/s. uptime: 1.0h8.0min. ETA: 1.0h50.0min
+Iter 1848/4768. train loss: 1.244. valid loss: 1.319. lr: 0.00030. 127350 tok/s. uptime: 1.0h9.0min. ETA: 1.0h49.0min
+Iter 1860/4768. train loss: 1.273. valid loss: 1.338. lr: 0.00030. 127086 tok/s. uptime: 1.0h9.0min. ETA: 1.0h49.0min
+Iter 1872/4768. train loss: 1.314. valid loss: 1.327. lr: 0.00030. 127042 tok/s. uptime: 1.0h10.0min. ETA: 1.0h48.0min
+Iter 1884/4768. train loss: 1.273. valid loss: 1.274. lr: 0.00030. 127313 tok/s. uptime: 1.0h10.0min. ETA: 1.0h48.0min
+Iter 1896/4768. train loss: 1.296. valid loss: 1.217. lr: 0.00030. 127345 tok/s. uptime: 1.0h11.0min. ETA: 1.0h47.0min
+Iter 1908/4768. train loss: 1.256. valid loss: 1.276. lr: 0.00030. 127339 tok/s. uptime: 1.0h11.0min. ETA: 1.0h47.0min
+Iter 1920/4768. train loss: 1.277. valid loss: 1.287. lr: 0.00030. 127325 tok/s. uptime: 1.0h12.0min. ETA: 1.0h46.0min
+Iter 1932/4768. train loss: 1.306. valid loss: 1.232. lr: 0.00030. 127323 tok/s. uptime: 1.0h12.0min. ETA: 1.0h46.0min
+Iter 1944/4768. train loss: 1.233. valid loss: 1.288. lr: 0.00030. 126978 tok/s. uptime: 1.0h12.0min. ETA: 1.0h45.0min
+Iter 1956/4768. train loss: 1.276. valid loss: 1.253. lr: 0.00030. 127232 tok/s. uptime: 1.0h13.0min. ETA: 1.0h45.0min
+Iter 1968/4768. train loss: 1.272. valid loss: 1.283. lr: 0.00030. 127330 tok/s. uptime: 1.0h13.0min. ETA: 1.0h45.0min
+Iter 1980/4768. train loss: 1.262. valid loss: 1.252. lr: 0.00030. 127282 tok/s. uptime: 1.0h14.0min. ETA: 1.0h44.0min
+Iter 1992/4768. train loss: 1.260. valid loss: 1.223. lr: 0.00030. 127388 tok/s. uptime: 1.0h14.0min. ETA: 1.0h44.0min
+Iter 2004/4768. train loss: 1.280. valid loss: 1.224. lr: 0.00030. 127396 tok/s. uptime: 1.0h15.0min. ETA: 1.0h43.0min
+Iter 2016/4768. train loss: 1.263. valid loss: 1.234. lr: 0.00030. 127363 tok/s. uptime: 1.0h15.0min. ETA: 1.0h43.0min
+Iter 2028/4768. train loss: 1.227. valid loss: 1.241. lr: 0.00030. 127392 tok/s. uptime: 1.0h16.0min. ETA: 1.0h42.0min
+Iter 2040/4768. train loss: 1.197. valid loss: 1.226. lr: 0.00030. 127387 tok/s. uptime: 1.0h16.0min. ETA: 1.0h42.0min
+Iter 2052/4768. train loss: 1.216. valid loss: 1.205. lr: 0.00030. 127306 tok/s. uptime: 1.0h17.0min. ETA: 1.0h41.0min
+Iter 2064/4768. train loss: 1.163. valid loss: 1.163. lr: 0.00030. 127377 tok/s. uptime: 1.0h17.0min. ETA: 1.0h41.0min
+Iter 2076/4768. train loss: 1.173. valid loss: 1.183. lr: 0.00030. 127134 tok/s. uptime: 1.0h17.0min. ETA: 1.0h41.0min
+Iter 2088/4768. train loss: 1.179. valid loss: 1.210. lr: 0.00030. 127365 tok/s. uptime: 1.0h18.0min. ETA: 1.0h40.0min
+Iter 2100/4768. train loss: 1.107. valid loss: 1.208. lr: 0.00030. 127347 tok/s. uptime: 1.0h18.0min. ETA: 1.0h40.0min
+Iter 2112/4768. train loss: 1.159. valid loss: 1.175. lr: 0.00030. 127382 tok/s. uptime: 1.0h19.0min. ETA: 1.0h39.0min
+Iter 2124/4768. train loss: 1.209. valid loss: 1.219. lr: 0.00030. 127264 tok/s. uptime: 1.0h19.0min. ETA: 1.0h39.0min
+Iter 2136/4768. train loss: 1.199. valid loss: 1.148. lr: 0.00030. 127393 tok/s. uptime: 1.0h20.0min. ETA: 1.0h38.0min
+Iter 2148/4768. train loss: 1.180. valid loss: 1.128. lr: 0.00030. 127341 tok/s. uptime: 1.0h20.0min. ETA: 1.0h38.0min
+Iter 2160/4768. train loss: 1.172. valid loss: 1.110. lr: 0.00030. 127403 tok/s. uptime: 1.0h21.0min. ETA: 1.0h37.0min
+Iter 2172/4768. train loss: 1.152. valid loss: 1.111. lr: 0.00030. 127350 tok/s. uptime: 1.0h21.0min. ETA: 1.0h37.0min
+Iter 2184/4768. train loss: 1.138. valid loss: 1.131. lr: 0.00030. 127390 tok/s. uptime: 1.0h21.0min. ETA: 1.0h36.0min
+Iter 2196/4768. train loss: 1.157. valid loss: 1.174. lr: 0.00030. 127355 tok/s. uptime: 1.0h22.0min. ETA: 1.0h36.0min
+Iter 2208/4768. train loss: 1.130. valid loss: 1.137. lr: 0.00030. 127379 tok/s. uptime: 1.0h22.0min. ETA: 1.0h36.0min
+Iter 2220/4768. train loss: 1.132. valid loss: 1.094. lr: 0.00030. 127395 tok/s. uptime: 1.0h23.0min. ETA: 1.0h35.0min
+Iter 2232/4768. train loss: 1.201. valid loss: 1.114. lr: 0.00030. 127358 tok/s. uptime: 1.0h23.0min. ETA: 1.0h35.0min
+Iter 2244/4768. train loss: 1.183. valid loss: 1.118. lr: 0.00030. 127355 tok/s. uptime: 1.0h24.0min. ETA: 1.0h34.0min
+Iter 2256/4768. train loss: 1.073. valid loss: 1.114. lr: 0.00030. 127355 tok/s. uptime: 1.0h24.0min. ETA: 1.0h34.0min
+Iter 2268/4768. train loss: 1.114. valid loss: 1.098. lr: 0.00030. 127372 tok/s. uptime: 1.0h25.0min. ETA: 1.0h33.0min
+Iter 2280/4768. train loss: 1.065. valid loss: 1.123. lr: 0.00030. 127360 tok/s. uptime: 1.0h25.0min. ETA: 1.0h33.0min
+Iter 2292/4768. train loss: 1.140. valid loss: 1.095. lr: 0.00030. 126992 tok/s. uptime: 1.0h25.0min. ETA: 1.0h32.0min
+Iter 2304/4768. train loss: 1.182. valid loss: 1.056. lr: 0.00030. 127038 tok/s. uptime: 1.0h26.0min. ETA: 1.0h32.0min
+Iter 2316/4768. train loss: 1.160. valid loss: 1.079. lr: 0.00030. 127045 tok/s. uptime: 1.0h26.0min. ETA: 1.0h31.0min
+Iter 2328/4768. train loss: 1.086. valid loss: 1.093. lr: 0.00030. 127029 tok/s. uptime: 1.0h27.0min. ETA: 1.0h31.0min
+Iter 2340/4768. train loss: 1.065. valid loss: 1.059. lr: 0.00030. 127029 tok/s. uptime: 1.0h27.0min. ETA: 1.0h31.0min
+Iter 2352/4768. train loss: 1.073. valid loss: 1.055. lr: 0.00030. 127021 tok/s. uptime: 1.0h28.0min. ETA: 1.0h30.0min
+Iter 2364/4768. train loss: 1.022. valid loss: 1.050. lr: 0.00030. 127007 tok/s. uptime: 1.0h28.0min. ETA: 1.0h30.0min
+Iter 2376/4768. train loss: 1.127. valid loss: 1.121. lr: 0.00030. 127048 tok/s. uptime: 1.0h29.0min. ETA: 1.0h29.0min
+Iter 2388/4768. train loss: 1.119. valid loss: 1.072. lr: 0.00030. 127024 tok/s. uptime: 1.0h29.0min. ETA: 1.0h29.0min
+Iter 2400/4768. train loss: 1.086. valid loss: 1.039. lr: 0.00030. 127060 tok/s. uptime: 1.0h30.0min. ETA: 1.0h28.0min
+Iter 2412/4768. train loss: 1.067. valid loss: 1.031. lr: 0.00030. 127049 tok/s. uptime: 1.0h30.0min. ETA: 1.0h28.0min
+Iter 2424/4768. train loss: 1.060. valid loss: 1.088. lr: 0.00030. 127021 tok/s. uptime: 1.0h30.0min. ETA: 1.0h27.0min
+Iter 2436/4768. train loss: 1.081. valid loss: 1.010. lr: 0.00030. 127004 tok/s. uptime: 1.0h31.0min. ETA: 1.0h27.0min
+Iter 2448/4768. train loss: 1.050. valid loss: 1.062. lr: 0.00030. 127110 tok/s. uptime: 1.0h31.0min. ETA: 1.0h27.0min
+Iter 2460/4768. train loss: 1.163. valid loss: 1.073. lr: 0.00030. 127190 tok/s. uptime: 1.0h32.0min. ETA: 1.0h26.0min
+Iter 2472/4768. train loss: 1.048. valid loss: 1.058. lr: 0.00030. 126941 tok/s. uptime: 1.0h32.0min. ETA: 1.0h26.0min
+Iter 2484/4768. train loss: 1.113. valid loss: 1.025. lr: 0.00030. 126994 tok/s. uptime: 1.0h33.0min. ETA: 1.0h25.0min
+Iter 2496/4768. train loss: 1.017. valid loss: 1.056. lr: 0.00030. 127082 tok/s. uptime: 1.0h33.0min. ETA: 1.0h25.0min
+Iter 2508/4768. train loss: 0.989. valid loss: 1.062. lr: 0.00030. 127064 tok/s. uptime: 1.0h34.0min. ETA: 1.0h24.0min
+Iter 2520/4768. train loss: 1.026. valid loss: 1.014. lr: 0.00030. 127016 tok/s. uptime: 1.0h34.0min. ETA: 1.0h24.0min
+Iter 2532/4768. train loss: 1.044. valid loss: 1.049. lr: 0.00030. 126991 tok/s. uptime: 1.0h35.0min. ETA: 1.0h23.0min
+Iter 2544/4768. train loss: 1.051. valid loss: 1.057. lr: 0.00030. 127059 tok/s. uptime: 1.0h35.0min. ETA: 1.0h23.0min
+Iter 2556/4768. train loss: 0.996. valid loss: 1.057. lr: 0.00030. 127017 tok/s. uptime: 1.0h35.0min. ETA: 1.0h23.0min
+Iter 2568/4768. train loss: 1.036. valid loss: 1.046. lr: 0.00030. 127050 tok/s. uptime: 1.0h36.0min. ETA: 1.0h22.0min
+Iter 2580/4768. train loss: 1.033. valid loss: 0.973. lr: 0.00030. 126994 tok/s. uptime: 1.0h36.0min. ETA: 1.0h22.0min
+Iter 2592/4768. train loss: 1.040. valid loss: 1.046. lr: 0.00030. 127081 tok/s. uptime: 1.0h37.0min. ETA: 1.0h21.0min
+Iter 2604/4768. train loss: 0.991. valid loss: 1.014. lr: 0.00030. 127012 tok/s. uptime: 1.0h37.0min. ETA: 1.0h21.0min
+Iter 2616/4768. train loss: 1.048. valid loss: 0.993. lr: 0.00030. 126957 tok/s. uptime: 1.0h38.0min. ETA: 1.0h20.0min
+Iter 2628/4768. train loss: 1.076. valid loss: 1.009. lr: 0.00030. 126995 tok/s. uptime: 1.0h38.0min. ETA: 1.0h20.0min
+Iter 2640/4768. train loss: 1.007. valid loss: 0.986. lr: 0.00030. 126953 tok/s. uptime: 1.0h39.0min. ETA: 1.0h19.0min
+Iter 2652/4768. train loss: 0.988. valid loss: 0.951. lr: 0.00030. 126911 tok/s. uptime: 1.0h39.0min. ETA: 1.0h19.0min
+Iter 2664/4768. train loss: 1.017. valid loss: 0.974. lr: 0.00030. 127016 tok/s. uptime: 1.0h39.0min. ETA: 1.0h18.0min
+Iter 2676/4768. train loss: 0.940. valid loss: 1.007. lr: 0.00030. 127037 tok/s. uptime: 1.0h40.0min. ETA: 1.0h18.0min
+Iter 2688/4768. train loss: 0.996. valid loss: 0.970. lr: 0.00030. 126979 tok/s. uptime: 1.0h40.0min. ETA: 1.0h18.0min
+Iter 2700/4768. train loss: 0.941. valid loss: 0.921. lr: 0.00030. 127013 tok/s. uptime: 1.0h41.0min. ETA: 1.0h17.0min
+Iter 2712/4768. train loss: 1.007. valid loss: 0.958. lr: 0.00030. 126998 tok/s. uptime: 1.0h41.0min. ETA: 1.0h17.0min
+Iter 2724/4768. train loss: 0.936. valid loss: 1.003. lr: 0.00030. 126981 tok/s. uptime: 1.0h42.0min. ETA: 1.0h16.0min
+Iter 2736/4768. train loss: 0.985. valid loss: 0.920. lr: 0.00030. 127042 tok/s. uptime: 1.0h42.0min. ETA: 1.0h16.0min
+Iter 2748/4768. train loss: 1.023. valid loss: 0.982. lr: 0.00030. 127010 tok/s. uptime: 1.0h43.0min. ETA: 1.0h15.0min
+Iter 2760/4768. train loss: 0.970. valid loss: 0.947. lr: 0.00030. 127028 tok/s. uptime: 1.0h43.0min. ETA: 1.0h15.0min
+Iter 2772/4768. train loss: 1.021. valid loss: 1.025. lr: 0.00030. 127016 tok/s. uptime: 1.0h44.0min. ETA: 1.0h14.0min
+Iter 2784/4768. train loss: 0.987. valid loss: 0.963. lr: 0.00030. 127005 tok/s. uptime: 1.0h44.0min. ETA: 1.0h14.0min
+Iter 2796/4768. train loss: 1.050. valid loss: 0.911. lr: 0.00030. 127016 tok/s. uptime: 1.0h44.0min. ETA: 1.0h14.0min
+Iter 2808/4768. train loss: 0.948. valid loss: 0.979. lr: 0.00030. 127042 tok/s. uptime: 1.0h45.0min. ETA: 1.0h13.0min
+Iter 2820/4768. train loss: 1.000. valid loss: 0.965. lr: 0.00030. 127035 tok/s. uptime: 1.0h45.0min. ETA: 1.0h13.0min
+Iter 2832/4768. train loss: 0.936. valid loss: 0.954. lr: 0.00030. 126994 tok/s. uptime: 1.0h46.0min. ETA: 1.0h12.0min
+Iter 2844/4768. train loss: 0.991. valid loss: 0.954. lr: 0.00030. 126989 tok/s. uptime: 1.0h46.0min. ETA: 1.0h12.0min
+Iter 2856/4768. train loss: 0.927. valid loss: 0.930. lr: 0.00030. 127060 tok/s. uptime: 1.0h47.0min. ETA: 1.0h11.0min
+Iter 2868/4768. train loss: 0.880. valid loss: 0.936. lr: 0.00030. 127133 tok/s. uptime: 1.0h47.0min. ETA: 1.0h11.0min
+Iter 2880/4768. train loss: 0.951. valid loss: 0.945. lr: 0.00030. 127012 tok/s. uptime: 1.0h48.0min. ETA: 1.0h10.0min
+Iter 2892/4768. train loss: 0.927. valid loss: 0.971. lr: 0.00030. 127060 tok/s. uptime: 1.0h48.0min. ETA: 1.0h10.0min
+Iter 2904/4768. train loss: 0.972. valid loss: 0.929. lr: 0.00030. 127010 tok/s. uptime: 1.0h48.0min. ETA: 1.0h9.0min
+Iter 2916/4768. train loss: 0.861. valid loss: 0.938. lr: 0.00030. 126799 tok/s. uptime: 1.0h49.0min. ETA: 1.0h9.0min
+Iter 2928/4768. train loss: 0.883. valid loss: 0.974. lr: 0.00030. 126933 tok/s. uptime: 1.0h49.0min. ETA: 1.0h9.0min
+Iter 2940/4768. train loss: 0.981. valid loss: 0.946. lr: 0.00030. 126988 tok/s. uptime: 1.0h50.0min. ETA: 1.0h8.0min
+Iter 2952/4768. train loss: 0.965. valid loss: 0.910. lr: 0.00030. 127018 tok/s. uptime: 1.0h50.0min. ETA: 1.0h8.0min
+Iter 2964/4768. train loss: 0.953. valid loss: 0.913. lr: 0.00030. 126986 tok/s. uptime: 1.0h51.0min. ETA: 1.0h7.0min
+Iter 2976/4768. train loss: 0.970. valid loss: 0.880. lr: 0.00030. 127049 tok/s. uptime: 1.0h51.0min. ETA: 1.0h7.0min
+Iter 2988/4768. train loss: 0.954. valid loss: 0.877. lr: 0.00030. 127038 tok/s. uptime: 1.0h52.0min. ETA: 1.0h6.0min
+Iter 3000/4768. train loss: 0.923. valid loss: 0.928. lr: 0.00030. 127045 tok/s. uptime: 1.0h52.0min. ETA: 1.0h6.0min
+Iter 3012/4768. train loss: 0.978. valid loss: 0.895. lr: 0.00030. 127030 tok/s. uptime: 1.0h53.0min. ETA: 1.0h5.0min
+Iter 3024/4768. train loss: 1.037. valid loss: 0.942. lr: 0.00030. 127041 tok/s. uptime: 1.0h53.0min. ETA: 1.0h5.0min
+Iter 3036/4768. train loss: 0.961. valid loss: 0.934. lr: 0.00030. 126970 tok/s. uptime: 1.0h53.0min. ETA: 1.0h5.0min
+Iter 3048/4768. train loss: 0.899. valid loss: 0.929. lr: 0.00030. 127018 tok/s. uptime: 1.0h54.0min. ETA: 1.0h4.0min
+Iter 3060/4768. train loss: 0.903. valid loss: 0.917. lr: 0.00030. 126980 tok/s. uptime: 1.0h54.0min. ETA: 1.0h4.0min
+Iter 3072/4768. train loss: 0.962. valid loss: 0.919. lr: 0.00030. 126850 tok/s. uptime: 1.0h55.0min. ETA: 1.0h3.0min
+Iter 3084/4768. train loss: 0.920. valid loss: 0.936. lr: 0.00030. 127055 tok/s. uptime: 1.0h55.0min. ETA: 1.0h3.0min
+Iter 3096/4768. train loss: 0.835. valid loss: 0.929. lr: 0.00030. 127014 tok/s. uptime: 1.0h56.0min. ETA: 1.0h2.0min
+Iter 3108/4768. train loss: 1.018. valid loss: 0.918. lr: 0.00030. 126958 tok/s. uptime: 1.0h56.0min. ETA: 1.0h2.0min
+Iter 3120/4768. train loss: 0.945. valid loss: 0.942. lr: 0.00030. 126993 tok/s. uptime: 1.0h57.0min. ETA: 1.0h1.0min
+Iter 3132/4768. train loss: 0.871. valid loss: 0.901. lr: 0.00030. 126985 tok/s. uptime: 1.0h57.0min. ETA: 1.0h1.0min
+Iter 3144/4768. train loss: 0.837. valid loss: 0.939. lr: 0.00030. 127366 tok/s. uptime: 1.0h58.0min. ETA: 1.0h0.0min
+Iter 3156/4768. train loss: 0.846. valid loss: 0.911. lr: 0.00030. 127371 tok/s. uptime: 1.0h58.0min. ETA: 1.0h0.0min
+Iter 3168/4768. train loss: 0.917. valid loss: 0.959. lr: 0.00030. 127260 tok/s. uptime: 1.0h58.0min. ETA: 1.0h0.0min
+Iter 3180/4768. train loss: 0.935. valid loss: 0.901. lr: 0.00030. 127358 tok/s. uptime: 1.0h59.0min. ETA: 0.0h59.0min
+Iter 3192/4768. train loss: 0.939. valid loss: 0.893. lr: 0.00030. 127327 tok/s. uptime: 1.0h59.0min. ETA: 0.0h59.0min
+Iter 3204/4768. train loss: 0.898. valid loss: 0.934. lr: 0.00030. 127031 tok/s. uptime: 2.0h0.0min. ETA: 0.0h58.0min
+Iter 3216/4768. train loss: 0.919. valid loss: 0.955. lr: 0.00030. 127084 tok/s. uptime: 2.0h0.0min. ETA: 0.0h58.0min
+Iter 3228/4768. train loss: 0.920. valid loss: 0.903. lr: 0.00030. 127066 tok/s. uptime: 2.0h1.0min. ETA: 0.0h57.0min
+Iter 3240/4768. train loss: 0.930. valid loss: 0.891. lr: 0.00030. 127015 tok/s. uptime: 2.0h1.0min. ETA: 0.0h57.0min
+Iter 3252/4768. train loss: 0.923. valid loss: 0.892. lr: 0.00030. 127018 tok/s. uptime: 2.0h2.0min. ETA: 0.0h56.0min
+Iter 3264/4768. train loss: 0.842. valid loss: 0.901. lr: 0.00030. 127025 tok/s. uptime: 2.0h2.0min. ETA: 0.0h56.0min
+Iter 3276/4768. train loss: 0.911. valid loss: 0.921. lr: 0.00030. 127048 tok/s. uptime: 2.0h2.0min. ETA: 0.0h56.0min
+Iter 3288/4768. train loss: 0.861. valid loss: 0.901. lr: 0.00030. 127021 tok/s. uptime: 2.0h3.0min. ETA: 0.0h55.0min
+Iter 3300/4768. train loss: 0.892. valid loss: 0.941. lr: 0.00030. 127057 tok/s. uptime: 2.0h3.0min. ETA: 0.0h55.0min
+Iter 3312/4768. train loss: 0.931. valid loss: 0.910. lr: 0.00030. 127048 tok/s. uptime: 2.0h4.0min. ETA: 0.0h54.0min
+Iter 3324/4768. train loss: 0.885. valid loss: 0.866. lr: 0.00030. 127019 tok/s. uptime: 2.0h4.0min. ETA: 0.0h54.0min
+Iter 3336/4768. train loss: 0.855. valid loss: 0.832. lr: 0.00030. 127032 tok/s. uptime: 2.0h5.0min. ETA: 0.0h53.0min
+Iter 3348/4768. train loss: 0.804. valid loss: 0.897. lr: 0.00030. 126840 tok/s. uptime: 2.0h5.0min. ETA: 0.0h53.0min
+Iter 3360/4768. train loss: 0.854. valid loss: 0.898. lr: 0.00030. 127024 tok/s. uptime: 2.0h6.0min. ETA: 0.0h52.0min
+Iter 3372/4768. train loss: 0.866. valid loss: 0.846. lr: 0.00030. 126969 tok/s. uptime: 2.0h6.0min. ETA: 0.0h52.0min
+Iter 3384/4768. train loss: 0.883. valid loss: 0.864. lr: 0.00030. 127046 tok/s. uptime: 2.0h7.0min. ETA: 0.0h51.0min
+Iter 3396/4768. train loss: 0.896. valid loss: 0.818. lr: 0.00030. 127011 tok/s. uptime: 2.0h7.0min. ETA: 0.0h51.0min
+Iter 3408/4768. train loss: 0.902. valid loss: 0.831. lr: 0.00030. 126827 tok/s. uptime: 2.0h7.0min. ETA: 0.0h51.0min
+Iter 3420/4768. train loss: 0.897. valid loss: 0.843. lr: 0.00030. 126778 tok/s. uptime: 2.0h8.0min. ETA: 0.0h50.0min
+Iter 3432/4768. train loss: 0.802. valid loss: 0.821. lr: 0.00030. 127002 tok/s. uptime: 2.0h8.0min. ETA: 0.0h50.0min
+Iter 3444/4768. train loss: 0.791. valid loss: 0.829. lr: 0.00030. 126877 tok/s. uptime: 2.0h9.0min. ETA: 0.0h49.0min
+Iter 3456/4768. train loss: 0.819. valid loss: 0.852. lr: 0.00030. 127045 tok/s. uptime: 2.0h9.0min. ETA: 0.0h49.0min
+Iter 3468/4768. train loss: 0.735. valid loss: 0.836. lr: 0.00030. 126966 tok/s. uptime: 2.0h10.0min. ETA: 0.0h48.0min
+Iter 3480/4768. train loss: 0.833. valid loss: 0.857. lr: 0.00030. 127028 tok/s. uptime: 2.0h10.0min. ETA: 0.0h48.0min
+Iter 3492/4768. train loss: 0.865. valid loss: 0.788. lr: 0.00030. 126901 tok/s. uptime: 2.0h11.0min. ETA: 0.0h47.0min
+Iter 3504/4768. train loss: 0.862. valid loss: 0.817. lr: 0.00030. 127028 tok/s. uptime: 2.0h11.0min. ETA: 0.0h47.0min
+Iter 3516/4768. train loss: 0.818. valid loss: 0.831. lr: 0.00030. 127295 tok/s. uptime: 2.0h12.0min. ETA: 0.0h47.0min
+Iter 3528/4768. train loss: 0.787. valid loss: 0.817. lr: 0.00030. 127336 tok/s. uptime: 2.0h12.0min. ETA: 0.0h46.0min
+Iter 3540/4768. train loss: 0.819. valid loss: 0.779. lr: 0.00030. 127319 tok/s. uptime: 2.0h12.0min. ETA: 0.0h46.0min
+Iter 3552/4768. train loss: 0.823. valid loss: 0.814. lr: 0.00030. 127262 tok/s. uptime: 2.0h13.0min. ETA: 0.0h45.0min
+Iter 3564/4768. train loss: 0.789. valid loss: 0.802. lr: 0.00030. 127317 tok/s. uptime: 2.0h13.0min. ETA: 0.0h45.0min
+Iter 3576/4768. train loss: 0.762. valid loss: 0.757. lr: 0.00030. 126789 tok/s. uptime: 2.0h14.0min. ETA: 0.0h44.0min
+Iter 3588/4768. train loss: 0.881. valid loss: 0.812. lr: 0.00030. 126957 tok/s. uptime: 2.0h14.0min. ETA: 0.0h44.0min
+Iter 3600/4768. train loss: 0.773. valid loss: 0.751. lr: 0.00030. 126925 tok/s. uptime: 2.0h15.0min. ETA: 0.0h43.0min
+Iter 3612/4768. train loss: 0.729. valid loss: 0.743. lr: 0.00030. 126920 tok/s. uptime: 2.0h15.0min. ETA: 0.0h43.0min
+Iter 3624/4768. train loss: 0.857. valid loss: 0.786. lr: 0.00030. 126954 tok/s. uptime: 2.0h16.0min. ETA: 0.0h42.0min
+Iter 3636/4768. train loss: 0.738. valid loss: 0.738. lr: 0.00030. 126968 tok/s. uptime: 2.0h16.0min. ETA: 0.0h42.0min
+Iter 3648/4768. train loss: 0.748. valid loss: 0.706. lr: 0.00030. 126928 tok/s. uptime: 2.0h17.0min. ETA: 0.0h42.0min
+Iter 3660/4768. train loss: 0.693. valid loss: 0.683. lr: 0.00030. 126939 tok/s. uptime: 2.0h17.0min. ETA: 0.0h41.0min
+Iter 3672/4768. train loss: 0.591. valid loss: 0.664. lr: 0.00030. 126898 tok/s. uptime: 2.0h17.0min. ETA: 0.0h41.0min
+Iter 3684/4768. train loss: 0.695. valid loss: 0.604. lr: 0.00030. 127050 tok/s. uptime: 2.0h18.0min. ETA: 0.0h40.0min
+Iter 3696/4768. train loss: 0.635. valid loss: 0.663. lr: 0.00030. 126970 tok/s. uptime: 2.0h18.0min. ETA: 0.0h40.0min
+Iter 3708/4768. train loss: 0.670. valid loss: 0.615. lr: 0.00030. 126967 tok/s. uptime: 2.0h19.0min. ETA: 0.0h39.0min
+Iter 3720/4768. train loss: 0.702. valid loss: 0.651. lr: 0.00030. 127184 tok/s. uptime: 2.0h19.0min. ETA: 0.0h39.0min
+Iter 3732/4768. train loss: 0.588. valid loss: 0.631. lr: 0.00030. 124993 tok/s. uptime: 2.0h20.0min. ETA: 0.0h38.0min
+Iter 3744/4768. train loss: 0.660. valid loss: 0.637. lr: 0.00030. 126734 tok/s. uptime: 2.0h20.0min. ETA: 0.0h38.0min
+Iter 3756/4768. train loss: 0.618. valid loss: 0.584. lr: 0.00030. 126615 tok/s. uptime: 2.0h21.0min. ETA: 0.0h38.0min
+----- Starting cooldown -----
+Iter 3768/4768. train loss: 0.644. valid loss: 0.633. lr: 0.00029. 126629 tok/s. uptime: 2.0h29.0min. ETA: 0.0h39.0min
+Iter 3780/4768. train loss: 0.645. valid loss: 0.610. lr: 0.00027. 126853 tok/s. uptime: 2.0h30.0min. ETA: 0.0h39.0min
+Iter 3792/4768. train loss: 0.568. valid loss: 0.589. lr: 0.00025. 126983 tok/s. uptime: 2.0h30.0min. ETA: 0.0h38.0min
+Iter 3804/4768. train loss: 0.578. valid loss: 0.575. lr: 0.00024. 127008 tok/s. uptime: 2.0h31.0min. ETA: 0.0h38.0min
+Iter 3816/4768. train loss: 0.580. valid loss: 0.577. lr: 0.00023. 126710 tok/s. uptime: 2.0h31.0min. ETA: 0.0h37.0min
+Iter 3828/4768. train loss: 0.562. valid loss: 0.554. lr: 0.00023. 126507 tok/s. uptime: 2.0h31.0min. ETA: 0.0h37.0min
+Iter 3840/4768. train loss: 0.548. valid loss: 0.532. lr: 0.00022. 127109 tok/s. uptime: 2.0h32.0min. ETA: 0.0h36.0min
+Iter 3852/4768. train loss: 0.552. valid loss: 0.537. lr: 0.00021. 127285 tok/s. uptime: 2.0h32.0min. ETA: 0.0h36.0min
+Iter 3864/4768. train loss: 0.525. valid loss: 0.539. lr: 0.00021. 126898 tok/s. uptime: 2.0h33.0min. ETA: 0.0h35.0min
+Iter 3876/4768. train loss: 0.522. valid loss: 0.534. lr: 0.00020. 126041 tok/s. uptime: 2.0h33.0min. ETA: 0.0h35.0min
+Iter 3888/4768. train loss: 0.530. valid loss: 0.533. lr: 0.00020. 126975 tok/s. uptime: 2.0h34.0min. ETA: 0.0h34.0min
+Iter 3900/4768. train loss: 0.550. valid loss: 0.504. lr: 0.00019. 126904 tok/s. uptime: 2.0h34.0min. ETA: 0.0h34.0min
+Iter 3912/4768. train loss: 0.559. valid loss: 0.525. lr: 0.00019. 127319 tok/s. uptime: 2.0h35.0min. ETA: 0.0h33.0min
+Iter 3924/4768. train loss: 0.504. valid loss: 0.515. lr: 0.00018. 126860 tok/s. uptime: 2.0h35.0min. ETA: 0.0h33.0min
+Iter 3936/4768. train loss: 0.530. valid loss: 0.548. lr: 0.00018. 126811 tok/s. uptime: 2.0h36.0min. ETA: 0.0h32.0min
+Iter 3948/4768. train loss: 0.508. valid loss: 0.556. lr: 0.00017. 126978 tok/s. uptime: 2.0h36.0min. ETA: 0.0h32.0min
+Iter 3960/4768. train loss: 0.540. valid loss: 0.511. lr: 0.00017. 127695 tok/s. uptime: 2.0h36.0min. ETA: 0.0h32.0min
+Iter 3972/4768. train loss: 0.517. valid loss: 0.559. lr: 0.00016. 127292 tok/s. uptime: 2.0h37.0min. ETA: 0.0h31.0min
+Iter 3984/4768. train loss: 0.500. valid loss: 0.532. lr: 0.00016. 127243 tok/s. uptime: 2.0h37.0min. ETA: 0.0h31.0min
+Iter 3996/4768. train loss: 0.509. valid loss: 0.509. lr: 0.00016. 126900 tok/s. uptime: 2.0h38.0min. ETA: 0.0h30.0min
+Iter 4008/4768. train loss: 0.487. valid loss: 0.512. lr: 0.00015. 126897 tok/s. uptime: 2.0h38.0min. ETA: 0.0h30.0min
+Iter 4020/4768. train loss: 0.530. valid loss: 0.499. lr: 0.00015. 126884 tok/s. uptime: 2.0h39.0min. ETA: 0.0h29.0min
+Iter 4032/4768. train loss: 0.510. valid loss: 0.521. lr: 0.00015. 127278 tok/s. uptime: 2.0h39.0min. ETA: 0.0h29.0min
+Iter 4044/4768. train loss: 0.516. valid loss: 0.503. lr: 0.00014. 127139 tok/s. uptime: 2.0h40.0min. ETA: 0.0h28.0min
+Iter 4056/4768. train loss: 0.517. valid loss: 0.508. lr: 0.00014. 126927 tok/s. uptime: 2.0h40.0min. ETA: 0.0h28.0min
+Iter 4068/4768. train loss: 0.455. valid loss: 0.491. lr: 0.00014. 126958 tok/s. uptime: 2.0h41.0min. ETA: 0.0h27.0min
+Iter 4080/4768. train loss: 0.460. valid loss: 0.510. lr: 0.00013. 126925 tok/s. uptime: 2.0h41.0min. ETA: 0.0h27.0min
+Iter 4092/4768. train loss: 0.491. valid loss: 0.482. lr: 0.00013. 126668 tok/s. uptime: 2.0h41.0min. ETA: 0.0h26.0min
+Iter 4104/4768. train loss: 0.537. valid loss: 0.472. lr: 0.00013. 126815 tok/s. uptime: 2.0h42.0min. ETA: 0.0h26.0min
+Iter 4116/4768. train loss: 0.486. valid loss: 0.482. lr: 0.00012. 126961 tok/s. uptime: 2.0h42.0min. ETA: 0.0h25.0min
+Iter 4128/4768. train loss: 0.467. valid loss: 0.480. lr: 0.00012. 126878 tok/s. uptime: 2.0h43.0min. ETA: 0.0h25.0min
+Iter 4140/4768. train loss: 0.467. valid loss: 0.446. lr: 0.00012. 126796 tok/s. uptime: 2.0h43.0min. ETA: 0.0h24.0min
+Iter 4152/4768. train loss: 0.485. valid loss: 0.453. lr: 0.00011. 126865 tok/s. uptime: 2.0h44.0min. ETA: 0.0h24.0min
+Iter 4164/4768. train loss: 0.451. valid loss: 0.472. lr: 0.00011. 126938 tok/s. uptime: 2.0h44.0min. ETA: 0.0h23.0min
+Iter 4176/4768. train loss: 0.452. valid loss: 0.463. lr: 0.00011. 126914 tok/s. uptime: 2.0h45.0min. ETA: 0.0h23.0min
+Iter 4188/4768. train loss: 0.479. valid loss: 0.462. lr: 0.00011. 126952 tok/s. uptime: 2.0h45.0min. ETA: 0.0h22.0min
+Iter 4200/4768. train loss: 0.457. valid loss: 0.449. lr: 0.00010. 126883 tok/s. uptime: 2.0h45.0min. ETA: 0.0h22.0min
+Iter 4212/4768. train loss: 0.425. valid loss: 0.482. lr: 0.00010. 126980 tok/s. uptime: 2.0h46.0min. ETA: 0.0h21.0min
+Iter 4224/4768. train loss: 0.464. valid loss: 0.444. lr: 0.00010. 126957 tok/s. uptime: 2.0h46.0min. ETA: 0.0h21.0min
+Iter 4236/4768. train loss: 0.412. valid loss: 0.437. lr: 0.00009. 126731 tok/s. uptime: 2.0h47.0min. ETA: 0.0h21.0min
+Iter 4248/4768. train loss: 0.434. valid loss: 0.444. lr: 0.00009. 126996 tok/s. uptime: 2.0h47.0min. ETA: 0.0h20.0min
+Iter 4260/4768. train loss: 0.413. valid loss: 0.416. lr: 0.00009. 126951 tok/s. uptime: 2.0h48.0min. ETA: 0.0h20.0min
+Iter 4272/4768. train loss: 0.434. valid loss: 0.443. lr: 0.00009. 126489 tok/s. uptime: 2.0h48.0min. ETA: 0.0h19.0min
+Iter 4284/4768. train loss: 0.452. valid loss: 0.422. lr: 0.00008. 126969 tok/s. uptime: 2.0h49.0min. ETA: 0.0h19.0min
+Iter 4296/4768. train loss: 0.429. valid loss: 0.444. lr: 0.00008. 126838 tok/s. uptime: 2.0h49.0min. ETA: 0.0h18.0min
+Iter 4308/4768. train loss: 0.415. valid loss: 0.438. lr: 0.00008. 126880 tok/s. uptime: 2.0h50.0min. ETA: 0.0h18.0min
+Iter 4320/4768. train loss: 0.382. valid loss: 0.418. lr: 0.00008. 126777 tok/s. uptime: 2.0h50.0min. ETA: 0.0h17.0min
+Iter 4332/4768. train loss: 0.414. valid loss: 0.409. lr: 0.00007. 126897 tok/s. uptime: 2.0h50.0min. ETA: 0.0h17.0min
+Iter 4344/4768. train loss: 0.436. valid loss: 0.429. lr: 0.00007. 126868 tok/s. uptime: 2.0h51.0min. ETA: 0.0h16.0min
+Iter 4356/4768. train loss: 0.418. valid loss: 0.418. lr: 0.00007. 127276 tok/s. uptime: 2.0h51.0min. ETA: 0.0h16.0min
+Iter 4368/4768. train loss: 0.409. valid loss: 0.444. lr: 0.00007. 126850 tok/s. uptime: 2.0h52.0min. ETA: 0.0h15.0min
+Iter 4380/4768. train loss: 0.414. valid loss: 0.416. lr: 0.00007. 126824 tok/s. uptime: 2.0h52.0min. ETA: 0.0h15.0min
+Iter 4392/4768. train loss: 0.430. valid loss: 0.409. lr: 0.00006. 126693 tok/s. uptime: 2.0h53.0min. ETA: 0.0h14.0min
+Iter 4404/4768. train loss: 0.392. valid loss: 0.400. lr: 0.00006. 126850 tok/s. uptime: 2.0h53.0min. ETA: 0.0h14.0min
+Iter 4416/4768. train loss: 0.396. valid loss: 0.420. lr: 0.00006. 126897 tok/s. uptime: 2.0h54.0min. ETA: 0.0h13.0min
+Iter 4428/4768. train loss: 0.427. valid loss: 0.398. lr: 0.00006. 126876 tok/s. uptime: 2.0h54.0min. ETA: 0.0h13.0min
+Iter 4440/4768. train loss: 0.378. valid loss: 0.394. lr: 0.00005. 126896 tok/s. uptime: 2.0h55.0min. ETA: 0.0h12.0min
+Iter 4452/4768. train loss: 0.392. valid loss: 0.399. lr: 0.00005. 126593 tok/s. uptime: 2.0h55.0min. ETA: 0.0h12.0min
+Iter 4464/4768. train loss: 0.386. valid loss: 0.396. lr: 0.00005. 127204 tok/s. uptime: 2.0h55.0min. ETA: 0.0h11.0min
+Iter 4476/4768. train loss: 0.338. valid loss: 0.389. lr: 0.00005. 127208 tok/s. uptime: 2.0h56.0min. ETA: 0.0h11.0min
+Iter 4488/4768. train loss: 0.395. valid loss: 0.387. lr: 0.00005. 127165 tok/s. uptime: 2.0h56.0min. ETA: 0.0h11.0min
+Iter 4500/4768. train loss: 0.395. valid loss: 0.379. lr: 0.00004. 126564 tok/s. uptime: 2.0h57.0min. ETA: 0.0h10.0min
+Iter 4512/4768. train loss: 0.391. valid loss: 0.405. lr: 0.00004. 126958 tok/s. uptime: 2.0h57.0min. ETA: 0.0h10.0min
+Iter 4524/4768. train loss: 0.360. valid loss: 0.402. lr: 0.00004. 126922 tok/s. uptime: 2.0h58.0min. ETA: 0.0h9.0min
+Iter 4536/4768. train loss: 0.414. valid loss: 0.392. lr: 0.00004. 126921 tok/s. uptime: 2.0h58.0min. ETA: 0.0h9.0min
+Iter 4548/4768. train loss: 0.394. valid loss: 0.383. lr: 0.00003. 126909 tok/s. uptime: 2.0h59.0min. ETA: 0.0h8.0min
+Iter 4560/4768. train loss: 0.396. valid loss: 0.374. lr: 0.00003. 126947 tok/s. uptime: 2.0h59.0min. ETA: 0.0h8.0min
+Iter 4572/4768. train loss: 0.365. valid loss: 0.385. lr: 0.00003. 126873 tok/s. uptime: 3.0h0.0min. ETA: 0.0h7.0min
+Iter 4584/4768. train loss: 0.390. valid loss: 0.363. lr: 0.00003. 126768 tok/s. uptime: 3.0h0.0min. ETA: 0.0h7.0min
+Iter 4596/4768. train loss: 0.422. valid loss: 0.386. lr: 0.00003. 126894 tok/s. uptime: 3.0h0.0min. ETA: 0.0h6.0min
+Iter 4608/4768. train loss: 0.435. valid loss: 0.384. lr: 0.00002. 126794 tok/s. uptime: 3.0h1.0min. ETA: 0.0h6.0min
+Iter 4620/4768. train loss: 0.380. valid loss: 0.381. lr: 0.00002. 126754 tok/s. uptime: 3.0h1.0min. ETA: 0.0h5.0min
+Iter 4632/4768. train loss: 0.342. valid loss: 0.415. lr: 0.00002. 126741 tok/s. uptime: 3.0h2.0min. ETA: 0.0h5.0min
+Iter 4644/4768. train loss: 0.339. valid loss: 0.368. lr: 0.00002. 126591 tok/s. uptime: 3.0h2.0min. ETA: 0.0h4.0min
+Iter 4656/4768. train loss: 0.393. valid loss: 0.360. lr: 0.00002. 126743 tok/s. uptime: 3.0h3.0min. ETA: 0.0h4.0min
+Iter 4668/4768. train loss: 0.340. valid loss: 0.388. lr: 0.00002. 126462 tok/s. uptime: 3.0h3.0min. ETA: 0.0h3.0min
+Iter 4680/4768. train loss: 0.392. valid loss: 0.380. lr: 0.00001. 125112 tok/s. uptime: 3.0h4.0min. ETA: 0.0h3.0min
+Iter 4692/4768. train loss: 0.352. valid loss: 0.372. lr: 0.00001. 126585 tok/s. uptime: 3.0h4.0min. ETA: 0.0h2.0min
+Iter 4704/4768. train loss: 0.369. valid loss: 0.393. lr: 0.00001. 127002 tok/s. uptime: 3.0h5.0min. ETA: 0.0h2.0min
+Iter 4716/4768. train loss: 0.366. valid loss: 0.391. lr: 0.00001. 126461 tok/s. uptime: 3.0h5.0min. ETA: 0.0h2.0min
+Iter 4728/4768. train loss: 0.366. valid loss: 0.397. lr: 0.00001. 124745 tok/s. uptime: 3.0h5.0min. ETA: 0.0h1.0min
+Iter 4740/4768. train loss: 0.369. valid loss: 0.391. lr: 0.00000. 126117 tok/s. uptime: 3.0h6.0min. ETA: 0.0h1.0min
+Iter 4752/4768. train loss: 0.380. valid loss: 0.380. lr: 0.00000. 126690 tok/s. uptime: 3.0h6.0min. ETA: 0.0h0.0min
+Iter 4764/4768. train loss: 0.369. valid loss: 0.376. lr: 0.00000. 126041 tok/s. uptime: 3.0h7.0min. ETA: 0.0h0.0min
+Training is done. Took 187.41 minutes.
+Successfully saved checkpoint and config in runs/quiet-moon-73.
+wandb: - 0.004 MB of 0.004 MB uploadedwandb: \ 0.004 MB of 0.004 MB uploadedwandb: | 0.004 MB of 0.004 MB uploadedwandb: / 0.051 MB of 0.051 MB uploadedwandb: - 0.051 MB of 0.051 MB uploadedwandb: \ 0.051 MB of 0.051 MB uploadedwandb: | 0.053 MB of 0.053 MB uploadedwandb: / 0.053 MB of 0.053 MB uploadedwandb: - 0.053 MB of 0.053 MB uploadedwandb: \ 0.053 MB of 0.053 MB uploadedwandb: | 0.053 MB of 0.053 MB uploadedwandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:      grad_norm ▁▂▃▃▃▆▆▆▆█▇▆▇▆▆▇▅▅▅▅▄▄▃▄▄▃▃▃▃▄▄▆▃▃▃▂▂▂▁▂
+wandb:             lr ▃██████████████████████████▇▆▆▄▄▄▄▃▂▂▂▁▁
+wandb: num_iters_done ▁
+wandb:     num_params ▁
+wandb:     num_tokens ▁
+wandb:    peak_memory ▁
+wandb:   tokens_per_s ▇▇▇▆▆▆▆▆▆▆▇▇▇▇▇▇▇▇▇▇▆▆▆▆▆▆▆▆▅▅▆▇▆█▇▆▆▆▁▄
+wandb: tokens_per_sec ▁
+wandb:    tokens_seen ▁▁▁▁▂▂▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇████
+wandb:     train_loss █▇▇▇▇▇▆▆▆▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁
+wandb:       val_loss ███████▇▇▆▄▄▄▄▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▂▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb:             dtype bfloat16
+wandb:         grad_norm 0.61183
+wandb:                lr 0.0
+wandb:    num_iters_done 4767
+wandb:        num_params 84976896
+wandb:        num_tokens 1249640448
+wandb:       peak_memory 9073
+wandb:      tokens_per_s 126041.04593
+wandb:    tokens_per_sec 126041.04593
+wandb:       tokens_seen 1249116160
+wandb:        train_loss 0.36896
+wandb:    use_flash_attn True
+wandb: use_torch_compile False
+wandb:          val_loss 0.37642
+wandb: 
+wandb: 🚀 View run quiet-moon-73 at: https://wandb.ai/alexandretl/hash-hop-hub/runs/fdcpporx
+wandb: ⭐️ View project at: https://wandb.ai/alexandretl/hash-hop-hub
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20241011_070735-fdcpporx/logs

@@ -37,7 +37,7 @@ from utils.lr_schedules import cosine_warmup_schedule, wsd_schedule
 
 from models.lm import LM
 from hashhop.generator import HashHopGenerator
-from copyy.generator import CopyGenerator
+#from copyy.generator import CopyGenerator
 from eval import eval_hashhop, eval_copy
 from utils.misc import format_time
 
@@ -61,7 +61,7 @@ torch_dtype = {"float32": torch.float32, "float16": torch.float16, "bfloat16": t
 dtype_ctx = (nullcontext() if device_type == "cpu" else torch.amp.autocast(device_type, torch_dtype))
 
 if log_wandb:
-    wandb.init(project="arena",
+    wandb.init(project="hash-hop-hub",
             config={
                 "hash-hop": {
                     "max_tokens": max_tokens,
@@ -144,7 +144,7 @@ json.dump(config_dict, open(os.path.join(save_dir, 'config.json'), 'w'))
 g = torch.Generator()
 g.manual_seed(seed)
 
-model = LM(config, vocab_size=vocab_size, rng=g).to(device)
+model = LM(config, vocab_size=vocab_size+3, rng=g).to(device)
 
 optim = model.configure_optimizers(optimizer, weight_decay, lr, (adam_b1, adam_b2), device_type, beta3=adam_b3, alpha=alpha, T_ab3=num_iters)
 
@@ -220,6 +220,17 @@ try:
                 eval_loss /= eval_val_iters
                 model.train()
 
+        # eval accuracy
+        if (iter % eval_interval == 0):
+            with torch.no_grad():
+                model.eval()
+                model_generate = model.setup_generation(sample=False)
+
+                success = eval_hashhop(model_generate, n_tasks=num_tasks, batch_size=micro_batch_size, max_tokens=max_tokens, max_hops=max_hops, cot=cot, hash_len=hash_len, vocab_size=vocab_size)
+                #success = eval_copy(model_generate, n_tasks=num_tasks, batch_size=batch_size, max_tokens=max_tokens, vocab_size=vocab_size)
+
+                model.train()
+
         # checkpointing
         if (ckpt_interval and iter % ckpt_interval == 0) or (schedule == "wsd" and (iter == num_iters-lr_decay_iters)):
             
@@ -242,6 +253,9 @@ try:
 
         if iter % eval_val_interval == 0:
             to_log.update({"val_loss": eval_loss})
+
+        if iter % eval_interval == 0:
+            to_log.update({"success": success})
             
         if to_log:
             tokens_seen = (iter+1)*max_tokens*total_batch_size

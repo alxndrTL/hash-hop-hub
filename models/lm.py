@@ -138,7 +138,7 @@ class LM(nn.Module):
     def forward(self, tokens, targets=None, caches=None, prompt_len=None, seq_pos=0):
         # tokens : (B, L)
 
-        # logits : (B, L, vocab_size)
+        # logits : (B, L, vocab_size)caches
 
         x = self.embedding(tokens)
         if caches is None:
@@ -181,7 +181,7 @@ class LM(nn.Module):
 
         with torch.no_grad():
             for _ in range(num_tokens):
-                logits = self.forward(generated) # (B, L, vocab_size)
+                logits, _ = self.forward(generated) # (B, L, vocab_size)
                 next_token_logits = logits[:, -1]
 
                 if sample:
@@ -243,7 +243,7 @@ class LM(nn.Module):
 
         with torch.no_grad():
             # process prompt in one go
-            logits, caches = self.forward(batched_generated[:, :min_len], caches) # (B, L, vocab_size)
+            logits, caches = self.forward(batched_generated[:, :min_len], caches=caches) # (B, L, vocab_size)
             next_token_logits = logits[:, -1] # (B, vocab_size)
 
             for t in range(min_len, max_len_generation):
@@ -264,7 +264,7 @@ class LM(nn.Module):
                 update_mask = ~active_mask[:, t]
                 batched_generated[:, t] = torch.where(update_mask, next_token.squeeze(1), batched_generated[:, t])
 
-                next_token_logits, caches = self.forward(batched_generated[:, [t]], caches, seq_pos=t) # (B, 1, vocab_size), caches
+                next_token_logits, caches = self.forward(batched_generated[:, [t]], caches=caches, seq_pos=t) # (B, 1, vocab_size), caches
                 next_token_logits = next_token_logits.squeeze(1) # (B, vocab_size)
 
         self.train()
@@ -276,14 +276,14 @@ class LM(nn.Module):
         warning_length = [False]
         
         def generate(prompts, num_tokens):
-            if isinstance(num_tokens, int):
-                num_tokens= [num_tokens] * len(prompts)
+            #if isinstance(num_tokens, int):
+            #    num_tokens=[num_tokens] * len(prompts)
 
-            if max(p.size(0) + nt for (p, nt) in zip(prompts, num_tokens)) > self.config.max_len and not warning_length[0]:
-                print(f"Warning: going over the context length seen during training. ({max(p.size(0) + nt for (p, nt) in zip(prompts, num_tokens))})")
-                #warning_length[0] = True
+            #if max(p.size(0) + nt for (p, nt) in zip(prompts, num_tokens)) > self.config.max_len and not warning_length[0]:
+            #    print(f"Warning: going over the context length seen during training. ({max(p.size(0) + nt for (p, nt) in zip(prompts, num_tokens))})")
+            #    #warning_length[0] = True
             
-            generation = self.generate4(prompts, num_tokens=num_tokens, sample=sample, top_k=top_k, temperature=temperature)
+            generation = self.generate(prompts, num_tokens=num_tokens, sample=sample, top_k=top_k, temperature=temperature)
 
             return generation
         
@@ -318,7 +318,7 @@ class LM(nn.Module):
 
         with torch.no_grad():
             # process prompt in one go
-            logits, caches = self.forward(prompt, caches) # (B, L, vocab_size)
+            logits, caches = self.forward(prompt, caches=caches) # (B, L, vocab_size)
             next_token_logits = logits[:, -1] # (B, vocab_size)
 
             for t in range(num_tokens):
@@ -335,7 +335,7 @@ class LM(nn.Module):
                     next_token = next_token_logits.argmax(dim=-1, keepdim=True) # (B, 1)
 
                 generated = torch.cat([generated, next_token], dim=1)
-                next_token_logits, caches = self.forward(generated[:, [len_prompt+t]], caches, seq_pos=len_prompt+t) # (B, 1, vocab_size), caches
+                next_token_logits, caches = self.forward(generated[:, [len_prompt+t]], caches=caches, seq_pos=len_prompt+t) # (B, 1, vocab_size), caches
                 next_token_logits = next_token_logits.squeeze(1) # (B, vocab_size)
 
         self.train()
@@ -357,7 +357,7 @@ class LM(nn.Module):
         for i in range(prompt.size(1) + num_tokens - 1):
             with torch.no_grad():
                 # forward the new output, get new cache
-                next_token_logits, caches = self.forward(prompt[:, [i]], caches, seq_pos=i) # (B, 1, vocab_size), caches
+                next_token_logits, caches = self.forward(prompt[:, [i]], caches=caches, seq_pos=i) # (B, 1, vocab_size), caches
                 next_token_logits = next_token_logits.squeeze(1) # (B, vocab_size)
 
             # sample (no sampling when the prompt is being processed)

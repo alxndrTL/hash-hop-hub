@@ -244,7 +244,7 @@ try:
             to_log.update({"val_loss": eval_loss})
             
         if to_log:
-            tokens_seen = (iter+1)*ctx_len*total_batch_size
+            tokens_seen = (iter+1)*max_tokens*total_batch_size
             to_log.update({"lr": lr_iter, "tokens_seen": tokens_seen})
 
             # printing
@@ -284,7 +284,7 @@ print(f"Successfully saved checkpoint and config in {save_dir}.")
 #todo : réfléchir à d'autres
 to_log = {"num_params": num_params,
           "num_iters_done": iter,
-          "num_tokens": iter*total_batch_size*ctx_len,
+          "num_tokens": iter*total_batch_size*max_tokens,
           "use_torch_compile": use_torch_compile,
           "use_flash_attn": use_flash_attention,
           "peak_memory": torch.cuda.max_memory_allocated() // 1024 // 1024, # MiB

@@ -10,6 +10,9 @@ from models.mamba.mamba2 import Mamba2Config
 
 seed = 0 # 0, 1, 2...
 
+# 512, 8, 3, true
+# 256, 4, 2, true
+
 # --- hash-hop parameters ---
 max_tokens = 512
 hash_len = 8
@@ -18,7 +21,7 @@ cot = True
 vocab_size = 52
 
 # --- downstream eval parameters ---
-eval_interval = 1000
+eval_interval = 200
 num_tasks = 100
 
 # --- model parameters ---
@@ -58,7 +61,7 @@ micro_batch_size = 32 # 16 for width=768, 32 for width=64
 # LR and scheduler
 schedule = "wsd" # "cosine" or "wsd"
 
-lr = 3e-4
+lr = 2**(-14) # 3e-4
 lr_warmup_iters = 200
 
 # cosine schedule specific

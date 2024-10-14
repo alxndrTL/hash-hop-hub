@@ -26,6 +26,8 @@ class TransformerConfig:
     d_ff: int = None
     n_kv_heads: Optional[int] = None # None=n_heads is MHA, 1 is MQA (multi query), in between is GQA (grouped)
 
+    diff_transformer: bool = False
+
     pos_emb: str = "absolute" # absolute, rope
     rope_theta: float = 10000
 
@@ -88,8 +90,10 @@ class DecoderLayer(nn.Module):
         self.sa_scale = (1 / math.sqrt(2 * config.n_layers))
 
         self.attention_norm = RMSNorm(config.d_model, config.norm_eps, config.mup)
-        self.sa = SelfAttentionMultiHead(config)
-        #self.sa = SelfDifferientialAttentionMultiHead(config, depth)
+        if config.diff_transformer:
+            self.sa = SelfDifferientialAttentionMultiHead(config, depth)
+        else:
+            self.sa = SelfAttentionMultiHead(config)
         self.mlp_norm = RMSNorm(config.d_model, config.norm_eps, config.mup)
         self.mlp = MLP(config)
         
@@ -165,8 +169,8 @@ class SelfDifferientialAttentionMultiHead(nn.Module):
         super().__init__()
         self.config = config
 
-        self.n_heads = config.n_heads
-        self.d_head = config.d_head//2
+        self.n_heads = config.n_heads//2
+        self.d_head = config.d_head
         self.kv_rep = 1
         
         self.c_attn = nn.Linear(config.d_model, (2 * self.n_heads + 2 * 2 * self.n_heads) * self.d_head, bias=False)

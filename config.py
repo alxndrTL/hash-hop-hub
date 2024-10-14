@@ -14,7 +14,7 @@ seed = 0 # 0, 1, 2...
 # 256, 4, 2, true
 
 # --- hash-hop parameters ---
-max_tokens = 512
+max_tokens = 256
 hash_len = 8
 max_hops = 3
 cot = True
@@ -26,8 +26,8 @@ num_tasks = 100
 
 # --- model parameters ---
 architecture = "Transformer" # "Transformer" or "Mamba" or "Mamba2"
-d_model = 768
-n_layers = 12
+d_model = 64
+n_layers = 8
 base_std = 0.02
 
 # Mamba specific
@@ -39,9 +39,9 @@ d_head = 64
 d_state = 128
 
 # Transformer specific
-d_ff = 2048
-n_heads = 12
-n_kv_heads = 12 # n_heads is MHA, 1 is MQA (multi query), in between is GQA (grouped query attention)
+d_ff = 172
+n_heads = 2
+n_kv_heads = 2 # n_heads is MHA, 1 is MQA (multi query), in between is GQA (grouped query attention)
 dropout = 0.
 
 pos_emb = "rope" # "absolute" or "rope"
@@ -61,7 +61,7 @@ micro_batch_size = 32 # 16 for width=768, 32 for width=64
 # LR and scheduler
 schedule = "wsd" # "cosine" or "wsd"
 
-lr = 2**(-14) # 3e-4
+lr = 3e-4
 lr_warmup_iters = 200
 
 # cosine schedule specific
